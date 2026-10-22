@@ -429,6 +429,10 @@
 	.process-item .txt {width:auto; height:auto; min-height:70px; margin-top:10px; font-size:14px; letter-spacing:-0.7px; line-height:20px;}
 	.process-item .txt br {display:none;}
 	.process-item .tag {margin-top:30px; padding:0 15px; font-size:12px; letter-spacing:-0.6px; line-height:18px;}
+	@media screen and (max-width:319px) {
+		.process-list {grid-template-columns:1fr; gap:60px 0;}
+		.process-item:nth-child(n) {padding-top:0; min-height:0;}
+	}
 
 	/* sect-why */
 	.sect-why .inner {display:block; padding-top:100px; padding-bottom:200px;}
