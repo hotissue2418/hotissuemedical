@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+:root{
+	/* color */
+	--color-black:#000000;
+	--color-dark:#17191A;
+	--color-gray01:#2F3133;
+	--color-gray02:#464A4D;
+	--color-gray03:#5E6366;
+	--color-gray04:#757B80;
+	--color-gray05:#8C9499;
+	--color-gray06:#A4ADB2;
+	--color-gray07:#BBC5CC;
+	--color-gray08:#E8EEF2;
+	--color-light:#F2F8FC;
+	--color-white:#FFFFFF;
+	--color-primary:#58B7B3;
+	--color-secondary:#4E75D9;
+	--color-tertiary:#E66565;
+	--color-brand:#006FFF;
+	--color-brand-light:#EDF9FF;
+	--color-kakao:#FAE100;
+	--color-accent-red:#F95F51;
+	--color-surface-dark:#222222;
+
+	/* font family */
+	--font-family-bebas:"Bebas Neue",sans-serif;
+
+	/* font */
+	--font-color-black:#000000;
+	--font-color-dark:#17191A;
+	--font-color-gray01:#2F3133;
+	--font-color-gray02:#464A4D;
+	--font-color-gray03:#5E6366;
+	--font-color-gray04:#757B80;
+	--font-color-gray05:#8C9499;
+	--font-color-gray06:#A4ADB2;
+	--font-color-gray07:#BBC5CC;
+	--font-color-gray08:#E8EEF2;
+	--font-color-light:#F2F8FC;
+	--font-color-white:#FFFFFF;
+
+	/* font colored */
+	--font-color-primary:#58B7B3;
+	--font-color-secondary:#4E75D9;
+	--font-color-tertiary:#E66565;
+	--font-color-accent-red:#F95F51;
+	--font-color-on-dark-primary:#646464;
+	--font-color-on-dark-secondary:#A2A2A2;
+
+	/* dim */
+	--dim-color-black:rgba(0,0,0,0.5);
+	--dim-color-medium:rgba(0,0,0,0.6);
+	--line-color-white:rgba(255,255,255,0.3);
+	--dim-color-white:rgba(255,255,255,0.5);
+
+	/* shadow */
+	--shadow-color-black:rgba(0,0,0,0.1);
+	--shadow-color-white:rgba(255,255,255,0.1);
+
+	/* button */
+	--button-radius:15px;
+	--button-font-size:18px;
+	--button-line-height:20px;
+	--button-height:56px;
+
+	/* input */
+	--input-border:#f8f8f8; 
+	--input-focus-border:var(--color-primary);
+	--input-radius:15px;
+
+	/* img mask */
+	--img-mask-arrow-right:url("/assets/images/common/ico_arrow_right.svg") center/100% no-repeat;
+    --img-mask-arrow-left:url("/assets/images/common/ico_arrow_left.svg") center/100% no-repeat;
+    --img-mask-arrow-down:url("/assets/images/common/ico_arrow_down.svg") center/100% no-repeat;
+    --img-mask-arrow-up:url("/assets/images/common/ico_arrow_up.svg") center/100% no-repeat;
+    --img-mask-arrow-fill-down:url("/assets/images/common/ico_arrow_fill_down.svg") center/100% no-repeat;
+    --img-mask-arrow-fill-up:url("/assets/images/common/ico_arrow_fill_up.svg") center/100% no-repeat;
+	--img-mask-check:url("/assets/images/common/ico_check.svg") center/100% no-repeat;
+}

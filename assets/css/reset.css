@@ -1,0 +1,239 @@
+@charset "utf-8";
+
+* {box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+*::before,
+*::after {box-sizing:border-box;}
+
+body, 
+head,
+div, 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+header, 
+footer, 
+article, 
+aside, 
+section, 
+aside,
+ul, 
+ol, 
+li, 
+nav, 
+p, 
+span, 
+a, 
+img, 
+form, 
+input, 
+select,
+optgroup,
+option,
+textarea,
+em, 
+i, 
+strong, 
+iframe, 
+button, 
+table,
+caption,
+col,
+colgroup,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td,
+dl,
+dt,
+dd,
+br, 
+hr, 
+abbr, 
+address, 
+area, 
+audio, 
+b, 
+base, 
+bdi, 
+bdo, 
+blockquote, 
+canvas,
+cite,
+code,
+datalist,
+del,
+details,
+dfn,
+embed,
+fieldset,
+figcaption,
+figure,
+hgroup,
+ins,
+kbd,
+legend,
+link,
+map,
+mark,
+menu,
+object,
+output,
+picture,
+pre,
+progress,
+q,
+rp,
+rt,
+ruby,
+s,
+samp,
+small,
+source,
+sub,
+summary,
+sup,
+time,
+track,
+u,
+var,
+video,
+wbr {padding:0; margin:0; color:inherit; word-break:keep-all;}
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {margin-block-end:0;}
+
+html,
+body {-webkit-text-size-adjust:none; -ms-text-size-adjust:none; -moz-text-size-adjust:none; -o-text-size-adjust:none;}
+html {font-size:16px;}
+body {min-height:100vh; font-family:"Pretendard",sans-serif; font-size:1rem; font-weight:400; line-height:1.5;}
+
+ul,
+ol {list-style:none;}
+
+a {text-decoration:none;}
+a:link,
+a:visited {text-decoration:none;}
+a:active, 
+a:hover, 
+a:focus {text-decoration:none;}
+
+blockquote, 
+q {quotes:none;}
+blockquote::before, 
+blockquote::after,
+q::before, 
+q::after {content:""; content:none;}
+
+em {font-style:normal;}
+
+img,
+picture {display:inline-block; width:auto; max-width:100%;}
+
+input,
+button,
+textarea,
+select {font:inherit; appearance:none; -webkit-appearance:none; -moz-appearance:none; -o-appearance:none; border-style:none; font-size:100%; margin:0;}
+
+button,
+select {text-transform:none;}
+input[type="checkbox"],
+input[type="radio"] {box-sizing:border-box; padding:0;}
+html input[type="button"],
+input[type="reset"],
+input[type="submit"],
+button {-webkit-appearance:button; cursor:pointer;}
+button[disabled],
+html input[disabled] {cursor:default;}
+
+table{padding:0; border:0; border-spacing:0px; border-collapse:collapse;}
+th,
+td {padding:0;}
+
+a:focus, 
+input:focus, 
+button:focus, 
+textarea:focus, 
+select:focus {transition:none;}
+
+address {display:inline; font-style:normal;}
+
+/* jquery datepicker reset */
+.ui-widget.ui-widget-content {z-index:5; border:none;}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {border-bottom-right-radius:0;}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {border-bottom-left-radius:0;}
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {border-top-right-radius:0;}
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {border-top-left-radius:0;}
+.ui-widget {font-family:"Pretendard",sans-serif; font-size:1.6em;}
+.ui-widget-content {border:none; background:var(--color-white); color:var(--font-color-dark);}
+.ui-widget-header {border:none; background:none; color:var(--font-color-dark); font-weight:400;}
+.ui-widget-header a {color:var(--font-color-dark);}
+.ui-datepicker {width:unset; padding:unset;}
+.ui-datepicker .ui-datepicker-header {padding:unset;}
+.ui-datepicker .ui-datepicker-prev, 
+.ui-datepicker .ui-datepicker-next {top:unset; width:unset; height:unset;}
+.ui-datepicker .ui-datepicker-prev {left:unset;}
+.ui-datepicker .ui-datepicker-next {right:unset;}
+.ui-datepicker .ui-datepicker-prev span, 
+.ui-datepicker .ui-datepicker-next span {width:100%; height:100%; margin-top:unset; margin-left:unset; background:none; transform:translate(-50%,-50%);}
+.ui-datepicker .ui-datepicker-title {display:flex; justify-content:center; margin:unset; line-height:unset; text-align:left;}
+.ui-datepicker table {font-size:1.6rem; margin:unset;}
+.ui-datepicker th {padding:unset; font-weight:700;}
+.ui-datepicker td {padding:unset;}
+.ui-datepicker td span, 
+.ui-datepicker td a {padding:unset;}
+.ui-state-default, 
+.ui-widget-content .ui-state-default, 
+.ui-widget-header .ui-state-default, 
+.ui-button, 
+html .ui-button.ui-state-disabled:hover, 
+html .ui-button.ui-state-disabled:active {border:none; background:none; color:var(--font-color-dark); font-weight:400; text-align:center;}
+.ui-state-hover, 
+.ui-widget-content .ui-state-hover, 
+.ui-widget-header .ui-state-hover, 
+.ui-state-focus, 
+.ui-widget-content .ui-state-focus, 
+.ui-widget-header .ui-state-focus, 
+.ui-button:hover, 
+.ui-button:focus {border:none; background:none; color:var(--font-color-dark); font-weight:400;}
+.ui-datepicker select.ui-datepicker-month, 
+.ui-datepicker select.ui-datepicker-year {width:unset;}
+.ui-datepicker .ui-datepicker-title select {margin:unset; font-size:1.6rem;}
+.ui-widget input, 
+.ui-widget select, 
+.ui-widget textarea, 
+.ui-widget button {font-family:"Pretendard",sans-serif; font-size:1.6em;}
+.ui-widget select {max-height:unset; padding:unset; border:none; background-color:var(--color-white); -webkit-border-radius:0;}
+
+/* swiper reset */
+.swiper-pagination {position:unset; text-align:unset;}
+.swiper-container-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {bottom:unset; left:unset; width:unset;}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {margin:unset;}
+.swiper-pagination-bullet {width:unset; height:unset; border-radius:unset; background:none; opacity:1;}
+.swiper-pagination-bullet-active {opacity:1; background:none;}
+.swiper-container-horizontal>.swiper-pagination-progressbar, 
+.swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {width:100%; height:5px;}
+.swiper-pagination-progressbar {background:var(--color-gray05);}
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {background:var(--color-primary);}
+.swiper-button-prev,
+.swiper-button-next {position:unset; top:unset; width:unset; height:unset; margin-top:unset; z-index:unset; background-size:unset; background-position:unset; background-repeat:unset;}
+.swiper-button-prev, 
+.swiper-container-rtl .swiper-button-next {background-image:none; left:unset; right:unset;}
+.swiper-button-next, 
+.swiper-container-rtl .swiper-button-prev {background-image:none; right:unset; left:unset;}
+@media screen and (max-width: 767px) {
+	.swiper-container-horizontal>.swiper-pagination-progressbar, 
+	.swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {height:3px;}
+}

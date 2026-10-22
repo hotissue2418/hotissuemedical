@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+/* --------------------------------------------------------------------------
+   Pretendard
+   -------------------------------------------------------------------------- */
+@font-face{
+	font-family:"Pretendard";
+	src:url("./pretendard/PretendardVariable.woff2") format("woff2-variations");
+	font-weight:100 900;
+	font-style:normal;
+	font-display:swap;
+}
+
+/* --------------------------------------------------------------------------
+   Roboto
+   -------------------------------------------------------------------------- */
+@font-face{
+	font-family:"Roboto";
+	src:url("./roboto/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+	font-weight:100 900;
+	font-style:normal;
+	font-display:swap;
+}
+
+/* --------------------------------------------------------------------------
+   Noto Sans KR
+   -------------------------------------------------------------------------- */
+@font-face{
+	font-family:"Noto Sans KR";
+	src:url("./noto-sans/NotoSansKR-VariableFont_wght.ttf") format("truetype");
+	font-weight:100 900;
+	font-style:normal;
+	font-display:swap;
+}
+
+/* --------------------------------------------------------------------------
+   Bebas Neue
+   -------------------------------------------------------------------------- */
+@font-face{
+	font-family:"Bebas Neue";
+	src:url("./bebas-neue/BebasNeue-Regular.ttf") format("truetype");
+	font-weight:400;
+	font-style:normal;
+	font-display:swap;
+}

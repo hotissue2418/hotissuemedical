@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>핫이슈메디컬 리뉴얼 사이트 메뉴구조 페이지</title>
+	<meta name="viewport" id="meta_viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=no">
+	<link rel="stylesheet" href="./ia.css">
+	<script src="./assets/js/jquery-3.7.1.js"></script>
+	<style>
+	/*** reset ***/
+	body, 
+	head,
+	div, 
+	h1, 
+	h2, 
+	h3, 
+	h4, 
+	h5, 
+	header, 
+	footer, 
+	article, 
+	aside, 
+	section, 
+	aside,
+	ul, 
+	ol, 
+	li, 
+	nav, 
+	p, 
+	span, 
+	a, 
+	img, 
+	form, 
+	input, 
+	select,
+	optgroup,
+	option,
+	textarea,
+	em, 
+	i, 
+	strong, 
+	iframe, 
+	button, 
+	table,
+	caption,
+	col,
+	colgroup,
+	thead,
+	tbody,
+	tfoot,
+	tr,
+	th,
+	td,
+	dl,
+	dt,
+	dd,
+	br, 
+	hr, 
+	abbr, 
+	address, 
+	area, 
+	audio, 
+	b, 
+	base, 
+	bdi, 
+	bdo, 
+	blockquote, 
+	canvas,
+	cite,
+	code,
+	datalist,
+	del,
+	details,
+	dfn,
+	embed,
+	fieldset,
+	figcaption,
+	figure,
+	hgroup,
+	ins,
+	kbd,
+	legend,
+	link,
+	map,
+	mark,
+	menu,
+	object,
+	output,
+	picture,
+	pre,
+	progress,
+	q,
+	rp,
+	rt,
+	ruby,
+	s,
+	samp,
+	small,
+	source,
+	sub,
+	summary,
+	sup,
+	time,
+	track,
+	u,
+	var,
+	video,
+	wbr {padding:0; margin:0; box-sizing:border-box; color:inherit; word-break:keep-all;}
+
+	body,
+	h1,
+	h2,
+	h3,
+	h4,
+	p,
+	figure,
+	blockquote,
+	dl,
+	dd {margin-block-end:0;}
+
+	html {font-size:62.5%; -moz-text-size-adjust:none; -webkit-text-size-adjust:none; text-size-adjust:none;}
+	body {min-height:100vh; font-size:1.4rem; font-weight:400; line-height:1.3;}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	button,
+	input,
+	label {line-height:1.1;}
+
+	ul,
+	ol {list-style:none;}
+
+	a {text-decoration:none;}
+	a:link,
+	a:visited {text-decoration:none;}
+	a:active, 
+	a:hover, 
+	a:focus {text-decoration:none;}
+
+	em {font-style:normal;}
+
+	img,
+	picture {display:inline-block; width:100%; max-width:100%; height:100%; object-fit:cover;}
+
+	input,
+	button,
+	textarea,
+	select {font:inherit; appearance:none; -webkit-appearance:none; -moz-appearance:none; -o-appearance:none; border-style:none; font-size:100%; margin:0; }
+
+	input[type="checkbox"],
+	input[type="radio"] {box-sizing:border-box; padding:0;}
+	input::-ms-clear {display:none;}
+	select::-ms-expand {display:none;}
+
+	button,
+	select {text-transform:none;}
+
+	html input[type="button"],
+	input[type="reset"],
+	input[type="submit"],
+	button {-webkit-appearance:button; cursor:pointer;}
+
+	button[disabled],
+	html input[disabled] {cursor:default;}
+
+	table{padding:0; border:0; border-spacing:0px; border-collapse:collapse;}
+	th,
+	td {padding:0;}
+
+	a:focus, 
+	input:focus, 
+	button:focus, 
+	textarea:focus, 
+	select:focus {transition:none;}
+
+	address {display:inline; font-style:normal;}
+
+	textarea:not([rows]) {min-height:10em;}
+
+	:target {scroll-margin-block:5ex;}
+
+	/*** css ***/
+	.ia-wrap {width:100%; min-width:700px; padding:50px 20px; margin:0 auto;}
+	.ia-wrap h1 {margin-bottom:20px; font-size:3rem; font-weight:bold;}
+	.ia-wrap h1 strong {color:#F95F51;}
+
+	.ia-wrap .container {display:inline-block; width:100%; margin:0 auto;}
+
+	.ia-wrap .tab-wrap {float:left; display:inline-block; width:100%; margin:10px 0; border-bottom:1px solid #ddd;}
+	.ia-wrap .tab-wrap > li {float:left; display:inline-block; padding:10px; border:1px solid #ddd; border-bottom:0; border-top-left-radius:5px; border-top-right-radius:5px; font-size:1.2rem;}
+	.ia-wrap .tab-wrap > li.active {background:#aaa; border:0;}
+	.ia-wrap .tab-wrap > li.active > a {color:#fff;}
+
+	.ia-wrap .box-wrap {position:relative; display:inline-block; width:100%;}
+	.ia-wrap .box-wrap.type01 {padding:10px 30px; margin:30px 0; background:#fff; border:10px solid #f1f1f1;}
+	.ia-wrap .box-wrap .list > li {position:relative; font-size:1.6rem; line-height:2;}
+	.ia-wrap .box-wrap .list.type-dash > li {padding-left:10px;}
+	.ia-wrap .box-wrap .list.type-dash > li::before {content:'-'; position:absolute; left:0;}
+	.ia-wrap .box-wrap .list.type-arr > li {padding-left:15px;}
+	.ia-wrap .box-wrap .list.type-arr > li::before {content:'▶'; position:absolute; top:5px; left:0; font-size:1rem; line-height:2;}
+	.ia-wrap .title01 {display:inline-block; margin:20px 0 10px 0; font-size:2rem; font-weight:bold;}
+	.ia-wrap .table-wrap {margin-bottom:20px; border-top:1px solid #000;}
+	.ia-wrap .table-wrap table {width:100%; border-collapse:collapse;}
+	.ia-wrap .table-wrap caption {display:none;}
+	.ia-wrap .table-wrap th, 
+	.ia-wrap .table-wrap td {padding:10px 5px; color:#333; border-right:1px solid #ddd; border-bottom:1px solid #ddd;}
+	.ia-wrap .table-wrap th {background:#f5f5f5;} 
+	.ia-wrap .table-wrap th:last-child, 
+	.ia-wrap .table-wrap td:last-child {border-right:0;}
+	.ia-wrap .table-wrap td.no,
+	.ia-wrap .table-wrap td.state {text-align:center;}
+	.ia-wrap .table-wrap tr.complete {background:#f6f6f6;}
+	.ia-wrap .table-wrap tr.off td {text-decoration:line-through; color:#aaa;}
+
+	.ia-wrap .deco-bar-left {position:relative; display:inline-block; padding-left:15px;}
+	.ia-wrap .deco-bar-left::before {content:""; position:absolute; top:50%; left:0; display:inline-block; width:5px; height:80%; background-color:#F95F51; transform:translateY(-50%);}
+	</style>
+</head>
+<body>
+
+<div class="all-wrap ia-wrap">
+	<header>
+		<h1><strong>핫이슈메디컬 리뉴얼 사이트</strong> 메뉴구조 페이지</h1>
+	</header>
+	
+	<div class="container">
+		
+		<p class="title01 deco-bar-left">메인</p>
+		<div class="table-wrap">
+			<table>
+				<caption>메인</caption>
+				<colgroup>
+					<col style="width:3%">
+					<col style="width:10%">
+					<col style="width:20%">
+					<col style="width:20%">
+					<col style="width:5%">
+					<col style="width:*">
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">Depth01</th>
+						<th scope="col">Depth02</th>
+						<th scope="col">File Name</th>
+						<th scope="col">State</th>
+						<th scope="col">info</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="no"></td>
+						<td class="dep01">메인</td>
+						<td class="dep02">시간차 노출형</td>
+						<td class="file"><a href="./html/main.html" target="_blank">main.html</a></td>
+						<td class="state"></td>
+						<td class="memo"></td>
+					</tr>
+					<tr>
+						<td class="no"></td>
+						<td class="dep01"></td>
+						<td class="dep02">스크롤 노출형</td>
+						<td class="file"><a href="./html/main_.html" target="_blank">main_.html</a></td>
+						<td class="state"></td>
+						<td class="memo"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<!-- <p class="title01 deco-bar-left">서브</p>
+		<div class="table-wrap">
+			<table>
+				<caption>서브</caption>
+				<colgroup>
+					<col style="width:3%">
+					<col style="width:10%">
+					<col style="width:20%">
+					<col style="width:20%">
+					<col style="width:5%">
+					<col style="width:*">
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">Depth01</th>
+						<th scope="col">Depth02</th>
+						<th scope="col">File Name</th>
+						<th scope="col">State</td>
+						<th scope="col">info</th>
+					</tr>
+				</thead>
+				<tbody>
+					서브
+					<tr>
+						<td class="no"></td>
+						<td class="dep01">로그인</td>
+						<td class="dep02">중앙 배치형</td>
+						<td class="file"><a href="./html/login_center.html" target="_blank">login_center.html</a></td>
+						<td class="state"></td>
+						<td class="memo"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div> -->
+		
+	</div>
+</div>
+
+<script>
+$(document).ready(function(){
+	iaFunc();
+	$(".state").each(function(i, e){
+		if( $(this).text() == "Y" ){
+			$(this).closest("tr").addClass("complete");
+		}
+	});
+});
+function iaFunc(){
+	var $fileName = $(".file > a");
+	$(".table-wrap tr").each(function(i, e){
+		$(".no").eq(i).text(i+1);
+	});
+}
+</script>
+
+</body>
+</html>

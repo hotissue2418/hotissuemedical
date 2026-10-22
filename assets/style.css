@@ -1,0 +1,14 @@
+﻿@charset "utf-8";
+
+@import "../fonts/fonts.css";
+@import "./css/plugin/swiper.min.css";
+@import "./css/plugin/lenis.css";
+@import "./css/var.css";
+@import "./css/reset.css";
+@import "./css/common.css";
+@import "./css/layout.css";
+@import "./css/component.css";
+
+@import "./css/main.css";
+
+/* @import "./css/sub.css"; */

@@ -1,0 +1,4 @@
+@charset "utf-8";
+
+/* main_.html 전용: sect-process 숫자 영역을 스크롤 진행도에 맞춰 순차 노출 (값은 main_.js 에서 지정) */
+.process-scroll .process-item {opacity:0; transform:translateX(-100px); will-change:opacity, transform;}
