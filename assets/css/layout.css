@@ -281,3 +281,9 @@
 	.quick-menu-kakao img {width:22px; height:21.744px;}
 	.btn-quick-top {right:15px; bottom:calc(15px + var(--quick-lift, 0px)); width:45px; height:45px;}
 }
+
+@media screen and (max-width:319px) {
+	.footer-tit .tit {font-size:80px;}
+	.footer-contact picture {display:block;}
+	.footer-contact img {width:80px; height:80px; margin:0 auto;}
+}
