@@ -311,7 +311,10 @@
 	.letter-deco .img img {position:absolute; margin:0;}
 
 	/* sect-visual */
-	.sect-visual {height:100vh; min-height:422px; --u:clamp(0.5px, 0.11848vh, 1px); --tit-fs:max(57px, min(clamp(114px, 22vw, 150px), 13.51vh));}
+	.sect-visual {height:100vh; height:100svh; min-height:422px; --u:clamp(0.5px, 0.11848vh, 1px); --tit-fs:max(57px, min(clamp(114px, 22vw, 150px), 13.51vh));}
+	@media (orientation:landscape) and (max-height:500px) {
+		.sect-visual {min-height:0;}
+	}
 	.visual-slider {top:calc(50% - 141.5 * var(--u));}
 	.visual-list {gap:calc(20 * var(--u)); animation-name:visualSlideMo; animation-duration:9.33s;}
 	.visual-item {width:calc(220 * var(--u)); height:calc(283 * var(--u));}
