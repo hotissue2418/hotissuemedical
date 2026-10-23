@@ -353,21 +353,21 @@
 	.about-tit-mo .eng-row-start {justify-content:flex-start;}
 	.about-tit-mo .eng-row-between {justify-content:space-between;}
 	.about-tit-mo .eng-row-center {justify-content:center;}
+	.about-tit-mo .eng-row-end {justify-content:flex-end;}
 	.about-tit .eng-line {width:auto; height:0.72em; font-size:inherit; letter-spacing:-0.01em;}
-	.about-badge {padding:4px 10px; font-size:12px; letter-spacing:-0.6px;}
+	.about-badge {padding:4px 10px; font-size:12px; font-weight:200; letter-spacing:-0.6px;}
 	.about-badge-pc {display:none;}
 	.about-tit-mo .eng-word {position:relative; display:block;}
-	.about-tit-mo .eng-word-wrap {display:flex; flex-wrap:wrap; column-gap:0.25em; row-gap:0.38em; max-width:100%;}
+	.about-tit-mo .eng-word-wrap {display:flex; flex-wrap:wrap; justify-content:flex-end; column-gap:0.25em; row-gap:0.38em; max-width:100%;}
 	.about-tit-mo .eng-tail {position:relative; display:block;}
 	.about-badge-mo {display:block;}
 	.about-badge-mo-metadata {top:calc(var(--about-fs) * 0.5); left:calc(var(--about-fs) * 2.84);}
 	.about-badge-mo-powerlink {top:calc(var(--about-fs) * 0.5); right:calc(100% - var(--about-fs) * 0.22);}
 	.about-badge-mo-viral {top:calc(var(--about-fs) * 0.68); right:calc(var(--about-fs) * -0.34);}
 	.about-list {flex-direction:column; align-items:stretch; margin-top:100px;}
-	.about-item {width:100%; height:auto; min-height:189px;}
-	.about-item:first-child {min-height:180px;}
+	.about-item {width:100%; height:auto; min-height:189px; padding:0 0 50px;}
 	.about-item .line {width:100%;}
-	.about-item .tit-area {align-items:center; gap:15px; height:auto; padding-top:51px;}
+	.about-item .tit-area {align-items:center; gap:15px; height:auto;}
 	.about-item .tit-area picture {display:block; flex-shrink:0;}
 	.about-item .tit {font-size:20px; letter-spacing:-1px; line-height:26px; white-space:normal;}
 	.about-item .txt {margin-top:13px; font-size:14px; letter-spacing:-0.7px; line-height:24px; white-space:normal;}
@@ -384,7 +384,7 @@
 	.sect-intro {height:500px;}
 	.intro-area {width:100%; height:auto; padding:0 3.846%;}
 	.intro-area .sub {font-size:16px; letter-spacing:-0.8px; line-height:24px;}
-	.intro-area .tit {height:auto; margin-top:20px; font-size:50px; letter-spacing:-0.01em; line-height:55px;}
+	.intro-area .tit {height:auto; margin-top:20px; font-size:60px; letter-spacing:-0.01em; line-height:60px;}
 	.intro-area .txt {margin-top:30px; font-size:14px; letter-spacing:-0.7px; line-height:24px;}
 
 	/* sect-works */
