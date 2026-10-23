@@ -244,12 +244,17 @@ function quickMenuToggle(){
 /* quick menu: 푸터가 보이기 시작하면 푸터 위에서 멈춤 (푸터가 올라온 만큼 같이 밀려 올라감) */
 function quickMenuStopAtFooter(){
     const $wrap = $(".wrapper"),
-        $footer = $(".footer");
+        $footer = $(".footer"),
+        $top = $(".btn-quick-top");
 
     if(!$footer.length) return;
 
     function liftUpdate(){
-        const lift = Math.max($(window).height() - $footer[0].getBoundingClientRect().top, 0);
+        /* iOS Safari는 툴바 때문에 window 높이와 fixed 기준선이 달라, fixed 버튼의 실제 위치(rect.bottom + bottom값)로 화면 하단 기준선을 구함 */
+        const viewBottom = $top.length
+            ? $top[0].getBoundingClientRect().bottom + parseFloat($top.css("bottom"))
+            : $(window).height(),
+            lift = Math.max(viewBottom - $footer[0].getBoundingClientRect().top, 0);
 
         $wrap.css("--quick-lift", lift + "px");
     }
