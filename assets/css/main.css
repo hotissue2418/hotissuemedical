@@ -349,7 +349,7 @@
 	.about-lead {height:auto; margin-bottom:40px; font-size:20px; letter-spacing:-1px; line-height:30px;}
 	.about-tit-pc {display:none;}
 	.about-tit-mo {display:flex; flex-direction:column; row-gap:0.38em; height:auto; font-size:var(--about-fs);}
-	.about-tit-mo .eng-row {display:flex; align-items:flex-start; width:100%;}
+	.about-tit-mo .eng-row {display:flex; flex-wrap:wrap; align-items:flex-start; gap:20px; width:100%;}
 	.about-tit-mo .eng-row-start {justify-content:flex-start;}
 	.about-tit-mo .eng-row-between {justify-content:space-between;}
 	.about-tit-mo .eng-row-center {justify-content:center;}
