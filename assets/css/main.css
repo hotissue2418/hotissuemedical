@@ -397,10 +397,9 @@
 	.works-tit-area .our,
 	.works-tit-area .works {font-size:1em; letter-spacing:-0.01em;}
 	.works-tit-area .selected-works {justify-content:space-between; align-items:center; gap:20px; height:auto;}
-	.works-tit-area .selected-works::before {content:"WORKS"; margin-top:25px; font-family:var(--font-family-bebas); font-size:1em; font-weight:400; letter-spacing:-0.01em; text-transform:uppercase; text-box-trim:trim-both; text-box-edge:cap alphabetic; visibility:hidden; pointer-events:none;}
-	.works-tit-area .selected {width:auto; height:47px; font-size:1em; letter-spacing:-0.01em;}
-	.works-tit-area .works {margin-top:25px;}
-	.works-tit-area .selected .word {width:auto; margin-top:5px;}
+	.works-tit-area .selected-works::before {content:"WORKS"; font-family:var(--font-family-bebas); font-size:1em; font-weight:400; letter-spacing:-0.01em; text-transform:uppercase; text-box-trim:trim-both; text-box-edge:cap alphabetic; visibility:hidden; pointer-events:none;}
+	.works-tit-area .selected {width:auto; height:auto; font-size:1em; letter-spacing:-0.01em;}
+	.works-tit-area .selected .word {width:auto; margin-top:6px;}
 	.works-tit-area .selected .bracket {margin-top:0;}
 	.works-tit-area .selected .bracket-l {width:0.4em;}
 	.works-tit-area .selected .bracket-r {margin-left:0.1em;}
@@ -409,7 +408,7 @@
 		.works-tit-area .selected-works::before,
 		.works-tit-area .works,
 		.works-tit-area .selected {line-height:1;}
-		.works-tit-area .selected {align-items:center; height:auto;}
+		.works-tit-area .selected {align-items:center;}
 		.works-tit-area .selected .word,
 		.works-tit-area .selected .bracket {margin-top:0; line-height:1;}
 	}
@@ -490,9 +489,8 @@
 
 /* responsive: 768px 미만 */
 @media screen and (max-width:767px) {
-	.works-tit-area .works {margin-top:0;}
 	.works-tit-area .selected-works {justify-content:flex-end; padding-left:10.83%;}
-	.works-tit-area .selected-works::before {margin-top:0;}
+	.works-tit-area .selected .word {width:auto; margin-top:5px;}
 }
 
 /* responsive: 320px 미만 */
@@ -501,8 +499,10 @@
 	.about-lead {font-size:16px;}
 	.about-badge-mo-powerlink {right:calc(100% - var(--about-fs) * 0.22 - 20px);}
 	.works-tit-area {--works-fs:40px;}
-	.works-tit-area .selected {height:0.94em;}
 	.works-tit-area .selected-works {gap:5px; padding-left:5%;}
+	.works-tit-area .selected .word {width:auto; margin-top:4px;}
+	.works-tit-area .works {margin-top:5px;}
+	.works-tit-area .selected-works::before {margin-top:5px;}
 	.process-tit-area .main-tit {font-size:40px;}
 	.why-tit-area .why {font-size:105px;}
 	.deco-built-medical {top:43.5px; left:103px; transform:scale(0.75); transform-origin:0 0;}
