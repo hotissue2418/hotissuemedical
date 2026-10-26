@@ -396,7 +396,8 @@
 	.works-tit-area {--works-fs:clamp(50px, 8vw, 100px); flex-direction:column; align-items:stretch; justify-content:flex-start; gap:0.4em; height:auto; font-size:var(--works-fs);}
 	.works-tit-area .our,
 	.works-tit-area .works {font-size:1em; letter-spacing:-0.01em;}
-	.works-tit-area .selected-works {justify-content:space-between; align-items:center; gap:10px; height:auto; padding-left:10.83%;}
+	.works-tit-area .selected-works {justify-content:space-between; align-items:center; gap:20px; height:auto;}
+	.works-tit-area .selected-works::before {content:"WORKS"; margin-top:25px; font-family:var(--font-family-bebas); font-size:1em; font-weight:400; letter-spacing:-0.01em; text-transform:uppercase; text-box-trim:trim-both; text-box-edge:cap alphabetic; visibility:hidden; pointer-events:none;}
 	.works-tit-area .selected {width:auto; height:47px; font-size:1em; letter-spacing:-0.01em;}
 	.works-tit-area .works {margin-top:25px;}
 	.works-tit-area .selected .word {width:auto; margin-top:5px;}
@@ -405,6 +406,7 @@
 	.works-tit-area .selected .bracket-r {margin-left:0.1em;}
 	@supports not (text-box-trim:trim-both) {
 		.works-tit-area .our,
+		.works-tit-area .selected-works::before,
 		.works-tit-area .works,
 		.works-tit-area .selected {line-height:1;}
 		.works-tit-area .selected {align-items:center; height:auto;}
@@ -489,6 +491,8 @@
 /* responsive: 768px 미만 */
 @media screen and (max-width:767px) {
 	.works-tit-area .works {margin-top:0;}
+	.works-tit-area .selected-works {justify-content:flex-end; padding-left:10.83%;}
+	.works-tit-area .selected-works::before {margin-top:0;}
 }
 
 /* responsive: 320px 미만 */
