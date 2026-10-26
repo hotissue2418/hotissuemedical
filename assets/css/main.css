@@ -334,14 +334,14 @@
 	.deco-visual-edge .letter-deco {width:100px; height:23px; filter:drop-shadow(0 1px 0.5px rgba(0, 0, 0, 0.25));}
 	.deco-visual-edge .img {width:100px; height:23px; margin:0;}
 	.deco-visual-edge .img img {width:142.75%; height:409.6%; left:-23.6%; top:-159.18%;}
-	.deco-visual-edge .txt {align-self:center; margin:0 0 0 50px;}
 	.deco-brand-builder {top:calc(50% + 199 * var(--u) - 0.2632 * var(--tit-fs)); right:2.05%; left:auto; width:122.2px; height:52.8px;}
 	.deco-brand-builder .letter-deco {width:120px; height:23.025px; filter:drop-shadow(0 1px 0.5px rgba(0, 0, 0, 0.25));}
 	.deco-brand-builder .img,
 	.deco-built-medical .img {width:100%; height:100%; margin:0;}
 	.deco-brand-builder .img img,
 	.deco-built-medical .img img {width:110.68%; height:192.28%; left:-5.3%; top:-45.4%;}
-	.deco-brand-builder .txt {align-self:center; margin:0 0 0 60px;}
+	.deco-visual-edge .txt,
+	.deco-brand-builder .txt {justify-self:center; align-self:center; margin:0; line-height:1; transform:none; position:relative; top:0.06em;}
 
 	/* sect-about */
 	.sect-about {height:auto; padding-bottom:150px; border-radius:30px 30px 0 0;}
