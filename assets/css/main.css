@@ -423,7 +423,7 @@
 	.works-item .txt {width:auto; margin-top:20px; font-size:14px; letter-spacing:-0.7px; line-height:24px;}
 	.works-item .txt br {display:none;}
 	.works-item .tag-list {gap:10px; width:auto; height:auto; min-height:0; margin:40px 8.333% 0;}
-	.works-item .tag {padding:2px 20px; font-size:16px; letter-spacing:-0.16px; line-height:20px;}
+	.works-item .tag {display:flex; align-items:center; justify-content:center; height:27px; padding:0 20px; font-size:16px; letter-spacing:-0.16px; line-height:1;}
 	.works-item .img-area {aspect-ratio:360 / 309; margin-top:60px; contain:none;}
 	.works-item .img-area .zoom {position:relative; display:block;}
 	.works-item .img-area img {position:absolute; margin:0;}
@@ -468,7 +468,7 @@
 	.why-tit-area .eng {height:auto; margin-top:40px; font-size:10px; letter-spacing:-0.1px; line-height:16px;}
 	.deco-built-medical {top:58px; left:137px; width:132.3px; height:52px;}
 	.deco-built-medical .letter-deco {width:130px; height:25px; filter:drop-shadow(0 1px 0.5px rgba(0, 0, 0, 0.25));}
-	.deco-built-medical .txt {align-self:center; margin:0 0 0 65px;}
+	.deco-built-medical .txt {justify-self:center; align-self:center; margin:0; line-height:1; transform:none; position:relative; top:0.06em;}
 	.accordion-list {width:100%;}
 	.accordion-head .meta {width:auto; height:auto;}
 	.accordion-head .num {width:31px; font-size:16px; letter-spacing:-0.8px;}
