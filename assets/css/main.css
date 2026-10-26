@@ -228,7 +228,7 @@
 .accordion-head .icon {display:grid; flex-shrink:0; width:25px; height:25px;}
 .accordion-head .icon::before {content:""; grid-area:1 / 1; align-self:start; width:25px; height:1px; margin-top:12px; background-color:var(--color-black);}
 .accordion-head .icon::after {content:""; grid-area:1 / 1; justify-self:start; width:1px; height:25px; margin-left:12px; background-color:var(--color-black); transition:transform 0.4s;}
-.accordion-item.on .icon::after {transform:rotate(90deg);}
+.accordion-item.on .icon::after {transform:rotate(-90deg);}
 .accordion-btn .tit {display:block; margin-top:30px; font-size:32px; font-weight:500; letter-spacing:-1.6px; line-height:40px; text-transform:uppercase;}
 .accordion-cont {display:grid; grid-template-rows:0fr; margin-top:30px; transition:grid-template-rows 0.4s;}
 .accordion-item.on .accordion-cont {grid-template-rows:1fr;}
