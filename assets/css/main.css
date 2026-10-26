@@ -403,6 +403,14 @@
 	.works-tit-area .selected .bracket {margin-top:0;}
 	.works-tit-area .selected .bracket-l {width:0.4em;}
 	.works-tit-area .selected .bracket-r {margin-left:0.1em;}
+	@supports not (text-box-trim:trim-both) {
+		.works-tit-area .our,
+		.works-tit-area .works,
+		.works-tit-area .selected {line-height:1;}
+		.works-tit-area .selected {align-items:center; height:auto;}
+		.works-tit-area .selected .word,
+		.works-tit-area .selected .bracket {margin-top:0; line-height:1;}
+	}
 	.works-line {margin-top:50px;}
 	.works-list {gap:40px; margin-top:49px;}
 	.works-item {grid-template-columns:100%; grid-template-rows:auto auto auto; grid-template-areas:"txt" "tag" "img"; column-gap:0; height:auto; aspect-ratio:auto; padding:60px 0 0;}
@@ -415,7 +423,7 @@
 	.works-item .txt {width:auto; margin-top:20px; font-size:14px; letter-spacing:-0.7px; line-height:24px;}
 	.works-item .txt br {display:none;}
 	.works-item .tag-list {gap:10px; width:auto; height:auto; min-height:0; margin:40px 8.333% 0;}
-	.works-item .tag {padding:2px 20px; font-size:16px; letter-spacing:-0.16px;}
+	.works-item .tag {padding:2px 20px; font-size:16px; letter-spacing:-0.16px; line-height:20px;}
 	.works-item .img-area {aspect-ratio:360 / 309; margin-top:60px; contain:none;}
 	.works-item .img-area .zoom {position:relative; display:block;}
 	.works-item .img-area img {position:absolute; margin:0;}
@@ -443,9 +451,9 @@
 	.process-item .cont-area {width:auto; height:auto; min-height:0;}
 	.process-item .tit {height:auto; font-size:40px; letter-spacing:-0.4px; line-height:60px;}
 	.process-item .sub {height:auto; margin-top:20px; font-size:18px; letter-spacing:-0.9px; line-height:22px;}
-	.process-item .txt {width:auto; height:auto; margin-top:10px; font-size:14px; letter-spacing:-0.7px; line-height:20px;}
+	.process-item .txt {width:auto; height:auto; margin-top:20px; font-size:14px; letter-spacing:-0.7px; line-height:20px;}
 	.process-item .txt br {display:none;}
-	.process-item .tag {margin-top:30px; padding:0 15px; font-size:12px; letter-spacing:-0.6px; line-height:18px;}
+	.process-item .tag {display:flex; align-items:center; height:20px; margin-top:30px; padding:0 15px; font-size:12px; letter-spacing:-0.6px; line-height:1;}
 	@media screen and (max-width:319px) {
 		.process-list {grid-template-columns:1fr; gap:60px 0;}
 		.process-item:nth-child(n) {padding-top:0; min-height:0;}
@@ -455,8 +463,8 @@
 	.sect-why .inner {display:block; padding-top:100px; padding-bottom:200px;}
 	.why-tit-area {position:relative; top:auto; width:270px; height:auto; min-height:301px; margin-bottom:79px;}
 	.why-tit-area .why {height:auto; font-size:140px; letter-spacing:-1.4px; line-height:100px;}
-	.why-tit-area .name {height:auto; margin-top:31px; font-size:46px; letter-spacing:-0.46px; display:flex; align-items:center; min-height:100px; line-height:1.1; white-space:normal;}
-	.why-tit-area .sub {height:auto; margin-top:37px; font-size:18px; letter-spacing:-0.9px; line-height:26px;}
+	.why-tit-area .name {height:auto; margin-top:30px; font-size:46px; letter-spacing:-0.46px; display:flex; align-items:center; line-height:1.1; white-space:normal;}
+	.why-tit-area .sub {height:auto; margin-top:40px; font-size:18px; letter-spacing:-0.9px; line-height:26px;}
 	.why-tit-area .eng {height:auto; margin-top:40px; font-size:10px; letter-spacing:-0.1px; line-height:16px;}
 	.deco-built-medical {top:58px; left:137px; width:132.3px; height:52px;}
 	.deco-built-medical .letter-deco {width:130px; height:25px; filter:drop-shadow(0 1px 0.5px rgba(0, 0, 0, 0.25));}
@@ -473,6 +481,9 @@
 	.accordion-cont .txt {margin-bottom:30px; font-size:14px; letter-spacing:-0.7px; line-height:24px; white-space:normal;}
 	.accordion-cont .txt br {display:none;}
 	.accordion-cont .tag {padding:5px 14px; font-size:12px; letter-spacing:-0.6px; line-height:26px;}
+	@supports not (text-box-trim:trim-both) {
+		.accordion-cont .tag {line-height:0.72;}
+	}
 }
 
 /* responsive: 768px 미만 */
