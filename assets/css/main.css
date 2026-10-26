@@ -363,7 +363,7 @@
 	.about-badge-mo {display:block;}
 	.about-badge-mo-metadata {top:calc(var(--about-fs) * 0.5); left:calc(var(--about-fs) * 2.84);}
 	.about-badge-mo-powerlink {top:calc(var(--about-fs) * 0.5); right:calc(100% - var(--about-fs) * 0.22);}
-	.about-badge-mo-viral {top:calc(var(--about-fs) * 0.68); right:calc(var(--about-fs) * -0.34);}
+	.about-badge-mo-viral {top:calc(var(--about-fs) * 0.68); right:calc(var(--about-fs) * -0.15);}
 	.about-list {flex-direction:column; align-items:stretch; margin-top:100px;}
 	.about-item {width:100%; height:auto; min-height:189px; padding:0 0 50px;}
 	.about-item .line {width:100%;}
