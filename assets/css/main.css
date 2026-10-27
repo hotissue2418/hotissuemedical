@@ -421,9 +421,9 @@
 	.works-item .works-link .arrow-window {width:15px; height:14px;}
 	.works-item .works-link .arrow-window picture {display:block;}
 	.works-item .sub {width:auto; min-height:0; margin-top:18px; padding-bottom:0; font-size:16px; letter-spacing:-0.8px; line-height:26px;}
-	.works-item .txt {width:auto; margin-top:20px; font-size:14px; letter-spacing:-0.7px; line-height:24px;}
+	.works-item .txt {width:auto; margin-top:20px; margin-bottom:0;font-size:14px; letter-spacing:-0.7px; line-height:24px;}
 	.works-item .txt br {display:none;}
-	.works-item .tag-list {gap:10px; width:auto; height:auto; min-height:0; margin:40px 8.333% 0;}
+	.works-item .tag-list {gap:10px; width:auto; height:auto; min-height:0; margin:50px 8.333% 0;}
 	.works-item .tag {display:flex; align-items:center; justify-content:center; height:27px; padding:0 20px; font-size:16px; letter-spacing:-0.16px; line-height:1;}
 	.works-item .img-area {aspect-ratio:360 / 309; margin-top:60px; contain:none;}
 	.works-item .img-area .zoom {position:relative; display:block;}
