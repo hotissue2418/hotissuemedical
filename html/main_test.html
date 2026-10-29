@@ -9,11 +9,10 @@
 	<script src="../assets/js/plugin/lenis/lenis.min.js"></script>
 	<script src="../assets/js/common.js"></script>
 	<script src="../assets/js/main.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 	<style>
 		/* 커스텀 마우스 커서 (PC 전용) - 기본 검정, 배경에 따라 mix-blend-mode:difference 로 반전 */
-		.cursor-goo {display:none;}
+		.cursor-goo,
+		.cursor-ring {display:none;}
 		@media (min-width:1280px) and (hover:hover) and (pointer:fine) {
 			.cursor-goo {position:fixed; top:0; left:0; z-index:9999; display:block; width:0; height:0; opacity:0; pointer-events:none; filter:url('#goo'); mix-blend-mode:difference; transition:opacity 0.3s ease;}
 			.cursor-goo.on {opacity:1;}
@@ -21,32 +20,15 @@
 			.cursor-goo .blob:nth-child(2) {width:20px; height:20px; margin:-10px 0 0 -10px;}
 			.cursor-goo .blob:nth-child(3) {width:15px; height:15px; margin:-7.5px 0 0 -7.5px; animation:cursorMove2 0.3s forwards infinite;}
 			.cursor-goo .blob:nth-child(4) {width:12px; height:12px; margin:-6px 0 0 -6px; animation:cursorMove3 0.5s forwards infinite;}
-			html.cursor-on, html.cursor-on * {cursor:none;}
+			.cursor-goo.hover {opacity:0;}
+			/* 위치는 JS가 .cursor-ring 의 transform 으로 제어하고, 확대는 ::before 에서만 처리 (scale 이 위치값에 곱해지지 않도록 분리) */
+			.cursor-ring {position:fixed; top:0; left:0; z-index:9999; display:block; width:0; height:0; opacity:0; pointer-events:none; mix-blend-mode:difference; transition:opacity 0.2s ease;}
+			.cursor-ring::before {content:""; position:absolute; top:-15px; left:-15px; width:30px; height:30px; box-sizing:border-box; border:1.5px solid #fff; border-radius:100%; scale:1; transition:scale 0.25s ease;}
+			.cursor-ring.on.hover {opacity:1;}
+			.cursor-ring.on.hover::before {scale:1.5;}
 		}
 		@keyframes cursorMove2 {0% {left:5px; top:-5px;} 100% {left:-5px; top:5px;}}
 		@keyframes cursorMove3 {0% {left:5px; top:5px;} 100% {left:-5px; top:-5px;}}
-
-		/* sect-works 가로 스크롤: PC(1280px 이상)는 GSAP ScrollTrigger pin, 태블릿·모바일(1279px 이하)은 스와이프 */
-		.sect-works .works-list {flex-direction:row; flex-wrap:nowrap;}
-		.sect-works .works-item {flex:none; width:100%;}
-		@media screen and (min-width:1280px) {
-			.sect-works .inner-wide {display:flex; flex-direction:column; justify-content:center; min-height:100vh; min-height:100svh; padding-top:80px; overflow:hidden;}
-			.sect-works .works-list {gap:50px; will-change:transform;}
-		}
-		/* 화면 높이가 낮은 PC: pin 영역(타이틀+카드)이 한 화면에 들어오도록 카드 내부 여백 축소 */
-		@media screen and (min-width:1280px) and (max-height:960px) {
-			.sect-works .inner-wide {padding-top:70px;}
-			.sect-works .works-line {margin-top:30px;}
-			.sect-works .works-list {margin-top:30px;}
-			.sect-works .works-item .txt-area {margin-top:6%;}
-			.sect-works .works-item .txt {margin-bottom:40px;}
-			.sect-works .works-item .tag-list {margin-bottom:50px;}
-		}
-		@media screen and (max-width:1279px) {
-			.sect-works .works-list {gap:20px; margin-right:-3.846%; margin-left:-3.846%; padding:0 3.846%; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding:0 3.846%; scrollbar-width:none; -webkit-overflow-scrolling:touch;}
-			.sect-works .works-list::-webkit-scrollbar {display:none;}
-			.sect-works .works-item {width:86%; scroll-snap-align:start;}
-		}
 	</style>
 </head>
 <body>
@@ -558,6 +540,7 @@
 		<div class="blob"></div>
 		<div class="blob"></div>
 	</div>
+	<div class="cursor-ring" aria-hidden="true"></div>
 	<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;" aria-hidden="true" focusable="false">
 		<defs>
 			<filter id="goo">
@@ -570,79 +553,68 @@
 		/* 마우스 커서 팔로우 (PC 전용: 1280px 이상 + 마우스 환경) */
 		function cursorFollowAction(){
 			const $cursor = $(".cursor-goo"),
-				$html = $("html"),
-				mq = window.matchMedia("(min-width:1280px) and (hover:hover) and (pointer:fine)");
-			let started = false, enabled = false;
+				$ring = $(".cursor-ring"),
+				$blobs = $cursor.find(".blob"),
+				mq = window.matchMedia("(min-width:1280px) and (hover:hover) and (pointer:fine)"),
+				gooey = 0.8,
+				hoverSel = "a, button";
+			let mouse = {x:0, y:0}, rafId = null, started = false;
+			const items = $blobs.map(function(i, el){ return {el:el, ind:i, x:0, y:0}; }).get();
 
+			function mapRange(num, inMin, inMax, outMin, outMax){
+				return (num - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+			}
 			function onMove(e){
-				$cursor[0].style.transform = "translate(" + e.clientX + "px, " + e.clientY + "px)";
+				mouse.x = e.clientX;
+				mouse.y = e.clientY;
 				if(!started){
 					started = true;
-					$cursor.addClass("on");
+					items.forEach(function(o){ o.x = mouse.x; o.y = mouse.y; });
+					$cursor.add($ring).addClass("on");
 				}
 			}
+			function render(){
+				rafId = requestAnimationFrame(render);
+				if(!started) return;
+				items.forEach(function(o){
+					const distX = mouse.x - o.x,
+						distY = mouse.y - o.y;
+					o.x += distX / (10 + (o.ind * gooey));
+					o.y += distY / (10 + (o.ind * gooey));
+					const scale = Math.max(mapRange(Math.abs(distX / 8), 0, 100, 1, 2), mapRange(Math.abs(distY / 8), 0, 100, 1, 2));
+					o.el.style.transform = "translate(" + o.x + "px, " + o.y + "px) scale(" + scale + ")";
+				});
+				$ring[0].style.transform = "translate(" + items[0].x + "px, " + items[0].y + "px)";
+			}
 			function enable(){
-				if(enabled) return;
-				enabled = true;
-				$html.addClass("cursor-on");
+				if(rafId) return;
 				window.addEventListener("mousemove", onMove);
 				document.addEventListener("mouseleave", hide);
 				document.addEventListener("mouseenter", show);
+				$(document).on("mouseover.cursorHover", hoverSel, hoverOn).on("mouseout.cursorHover", hoverSel, hoverOff);
+				render();
 			}
 			function disable(){
-				enabled = false;
-				$html.removeClass("cursor-on");
-				$cursor.removeClass("on");
+				$cursor.add($ring).removeClass("on hover");
 				started = false;
 				window.removeEventListener("mousemove", onMove);
 				document.removeEventListener("mouseleave", hide);
 				document.removeEventListener("mouseenter", show);
+				$(document).off(".cursorHover");
+				if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
 			}
-			function hide(){ $cursor.removeClass("on"); }
-			function show(){ if(started) $cursor.addClass("on"); }
+			function hide(){ $cursor.add($ring).removeClass("on"); }
+			function show(){ if(started) $cursor.add($ring).addClass("on"); }
+			function hoverOn(){ $cursor.add($ring).addClass("hover"); }
+			function hoverOff(){ $cursor.add($ring).removeClass("hover"); }
 			function check(){ mq.matches ? enable() : disable(); }
 
 			if(!$cursor.length) return;
 			check();
 			mq.addEventListener("change", check);
 		}
-		/* works 가로 스크롤 (PC 전용): 세로 스크롤을 .works-list 의 가로 이동으로 변환, 섹션은 pin 고정 */
-		function worksHorizontalScroll(){
-			const $wrap = $(".sect-works .inner-wide"),
-				$list = $(".sect-works .works-list");
-
-			if(!$list.length || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
-
-			gsap.registerPlugin(ScrollTrigger);
-			if(lenis) lenis.on("scroll", ScrollTrigger.update);
-
-			function getDistance(){
-				return Math.max(0, $list[0].scrollWidth - $list[0].clientWidth);
-			}
-
-			gsap.matchMedia().add("(min-width:1280px)", function(){
-				gsap.to($list[0], {
-					x:function(){ return -getDistance(); },
-					ease:"none",
-					scrollTrigger:{
-						trigger:$wrap[0],
-						start:"top top",
-						end:function(){ return "+=" + getDistance(); },
-						pin:true,
-						scrub:1,
-						anticipatePin:1,
-						invalidateOnRefresh:true
-					}
-				});
-			});
-
-			$(window).on("load", function(){
-				ScrollTrigger.refresh();
-			});
-		}
 		$(function(){
 			cursorFollowAction();
-			worksHorizontalScroll();
 		});
 	</script>
 </body>
