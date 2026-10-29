@@ -556,7 +556,7 @@
 				$ring = $(".cursor-ring"),
 				$blobs = $cursor.find(".blob"),
 				mq = window.matchMedia("(min-width:1280px) and (hover:hover) and (pointer:fine)"),
-				gooey = 0.8,
+				gooey = 0.4,
 				hoverSel = "a, button";
 			let mouse = {x:0, y:0}, rafId = null, started = false;
 			const items = $blobs.map(function(i, el){ return {el:el, ind:i, x:0, y:0}; }).get();
@@ -579,8 +579,8 @@
 				items.forEach(function(o){
 					const distX = mouse.x - o.x,
 						distY = mouse.y - o.y;
-					o.x += distX / (10 + (o.ind * gooey));
-					o.y += distY / (10 + (o.ind * gooey));
+					o.x += distX / (5 + (o.ind * gooey));
+					o.y += distY / (5 + (o.ind * gooey));
 					const scale = Math.max(mapRange(Math.abs(distX / 8), 0, 100, 1, 2), mapRange(Math.abs(distY / 8), 0, 100, 1, 2));
 					o.el.style.transform = "translate(" + o.x + "px, " + o.y + "px) scale(" + scale + ")";
 				});
