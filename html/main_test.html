@@ -23,9 +23,9 @@
 			.cursor-goo.hover {opacity:0;}
 			/* 위치는 JS가 .cursor-ring 의 transform 으로 제어하고, 확대는 ::before 에서만 처리 (scale 이 위치값에 곱해지지 않도록 분리) */
 			.cursor-ring {position:fixed; top:0; left:0; z-index:9999; display:block; width:0; height:0; opacity:0; pointer-events:none; mix-blend-mode:difference; transition:opacity 0.2s ease;}
-			.cursor-ring::before {content:""; position:absolute; top:-15px; left:-15px; width:30px; height:30px; box-sizing:border-box; border:1.5px solid #fff; border-radius:100%; scale:1; transition:scale 0.25s ease;}
+			.cursor-ring::before {content:""; position:absolute; top:-15px; left:-15px; width:30px; height:30px; box-sizing:border-box; border:0.5px solid #fff; border-radius:100%; transition:top 0.25s ease, left 0.25s ease, width 0.25s ease, height 0.25s ease;}
 			.cursor-ring.on.hover {opacity:1;}
-			.cursor-ring.on.hover::before {scale:1.5;}
+			.cursor-ring.on.hover::before {top:-22.5px; left:-22.5px; width:45px; height:45px;}
 		}
 		@keyframes cursorMove2 {0% {left:5px; top:-5px;} 100% {left:-5px; top:5px;}}
 		@keyframes cursorMove3 {0% {left:5px; top:5px;} 100% {left:-5px; top:-5px;}}
@@ -584,7 +584,7 @@
 					const scale = Math.max(mapRange(Math.abs(distX / 8), 0, 100, 1, 2), mapRange(Math.abs(distY / 8), 0, 100, 1, 2));
 					o.el.style.transform = "translate(" + o.x + "px, " + o.y + "px) scale(" + scale + ")";
 				});
-				$ring[0].style.transform = "translate(" + items[0].x + "px, " + items[0].y + "px)";
+				$ring[0].style.transform = "translate(" + Math.round(items[0].x) + "px, " + Math.round(items[0].y) + "px)";
 			}
 			function enable(){
 				if(rafId) return;
