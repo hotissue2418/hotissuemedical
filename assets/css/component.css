@@ -887,3 +887,23 @@ i.ico-kakao {display:inline-block; width:13px; height:17px; margin-right:8px; ba
 	.search-field input {font-size:11px;}
 	.sel-field {width:100%; height:32px; font-size:12px;}
 }
+
+/* custom cursor (PC only: 1280px+ and mouse) - markup is created by cursorFollowAction() in common.js */
+.cursor-goo,
+.cursor-ring {display:none;}
+@media screen and (min-width:1280px) and (hover:hover) and (pointer:fine) {
+	.cursor-goo {position:fixed; top:0; left:0; z-index:9999; display:block; width:0; height:0; opacity:0; pointer-events:none; filter:url('#cursor-goo-filter'); mix-blend-mode:difference; transition:opacity 0.3s ease;}
+	.cursor-goo.on {opacity:1;}
+	.cursor-goo.hover {opacity:0;}
+	.cursor-goo .blob {position:absolute; top:50%; left:50%; width:30px; height:30px; margin:-15px 0 0 -15px; border-radius:100%; background:var(--color-white); pointer-events:none;}
+	.cursor-goo .blob:nth-child(2) {width:20px; height:20px; margin:-10px 0 0 -10px;}
+	.cursor-goo .blob:nth-child(3) {width:15px; height:15px; margin:-7.5px 0 0 -7.5px; animation:cursorMove2 0.3s forwards infinite;}
+	.cursor-goo .blob:nth-child(4) {width:12px; height:12px; margin:-6px 0 0 -6px; animation:cursorMove3 0.5s forwards infinite;}
+	/* ring: JS moves .cursor-ring (translate), only ::before is enlarged so the size change does not scale the position */
+	.cursor-ring {position:fixed; top:0; left:0; z-index:9999; display:block; width:0; height:0; opacity:0; pointer-events:none; mix-blend-mode:difference; transition:opacity 0.2s ease;}
+	.cursor-ring::before {content:""; position:absolute; top:-15px; left:-15px; width:30px; height:30px; box-sizing:border-box; border:0.5px solid var(--color-white); border-radius:100%; transition:top 0.25s ease, left 0.25s ease, width 0.25s ease, height 0.25s ease;}
+	.cursor-ring.on.hover {opacity:1;}
+	.cursor-ring.on.hover::before {top:-22.5px; left:-22.5px; width:45px; height:45px;}
+}
+@keyframes cursorMove2 {0% {left:5px; top:-5px;} 100% {left:-5px; top:5px;}}
+@keyframes cursorMove3 {0% {left:5px; top:5px;} 100% {left:-5px; top:-5px;}}

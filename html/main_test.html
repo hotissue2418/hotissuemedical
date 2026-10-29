@@ -9,27 +9,6 @@
 	<script src="../assets/js/plugin/lenis/lenis.min.js"></script>
 	<script src="../assets/js/common.js"></script>
 	<script src="../assets/js/main.js"></script>
-	<style>
-		/* 커스텀 마우스 커서 (PC 전용) - 기본 검정, 배경에 따라 mix-blend-mode:difference 로 반전 */
-		.cursor-goo,
-		.cursor-ring {display:none;}
-		@media (min-width:1280px) and (hover:hover) and (pointer:fine) {
-			.cursor-goo {position:fixed; top:0; left:0; z-index:9999; display:block; width:0; height:0; opacity:0; pointer-events:none; filter:url('#goo'); mix-blend-mode:difference; transition:opacity 0.3s ease;}
-			.cursor-goo.on {opacity:1;}
-			.cursor-goo .blob {position:absolute; top:50%; left:50%; width:30px; height:30px; margin:-15px 0 0 -15px; border-radius:100%; background:#fff; pointer-events:none;}
-			.cursor-goo .blob:nth-child(2) {width:20px; height:20px; margin:-10px 0 0 -10px;}
-			.cursor-goo .blob:nth-child(3) {width:15px; height:15px; margin:-7.5px 0 0 -7.5px; animation:cursorMove2 0.3s forwards infinite;}
-			.cursor-goo .blob:nth-child(4) {width:12px; height:12px; margin:-6px 0 0 -6px; animation:cursorMove3 0.5s forwards infinite;}
-			.cursor-goo.hover {opacity:0;}
-			/* 위치는 JS가 .cursor-ring 의 transform 으로 제어하고, 확대는 ::before 에서만 처리 (scale 이 위치값에 곱해지지 않도록 분리) */
-			.cursor-ring {position:fixed; top:0; left:0; z-index:9999; display:block; width:0; height:0; opacity:0; pointer-events:none; mix-blend-mode:difference; transition:opacity 0.2s ease;}
-			.cursor-ring::before {content:""; position:absolute; top:-15px; left:-15px; width:30px; height:30px; box-sizing:border-box; border:0.5px solid #fff; border-radius:100%; transition:top 0.25s ease, left 0.25s ease, width 0.25s ease, height 0.25s ease;}
-			.cursor-ring.on.hover {opacity:1;}
-			.cursor-ring.on.hover::before {top:-22.5px; left:-22.5px; width:45px; height:45px;}
-		}
-		@keyframes cursorMove2 {0% {left:5px; top:-5px;} 100% {left:-5px; top:5px;}}
-		@keyframes cursorMove3 {0% {left:5px; top:5px;} 100% {left:-5px; top:-5px;}}
-	</style>
 </head>
 <body>
 	<div id="skipMenu" class="skip-menu">
@@ -533,89 +512,5 @@
 		</div>
 		<button type="button" class="btn-quick-top"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_quick_top.svg"><img src="../assets/images/main/ico/ico_quick_top.svg" alt="맨 위로"></picture></button>
 	</div>
-
-	<div class="cursor-goo" aria-hidden="true">
-		<div class="blob"></div>
-		<div class="blob"></div>
-		<div class="blob"></div>
-		<div class="blob"></div>
-	</div>
-	<div class="cursor-ring" aria-hidden="true"></div>
-	<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;" aria-hidden="true" focusable="false">
-		<defs>
-			<filter id="goo">
-				<feGaussianBlur in="SourceGraphic" stdDeviation="10" result="my-blur" />
-				<feColorMatrix in="my-blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8" result="my-gooey" />
-			</filter>
-		</defs>
-	</svg>
-	<script>
-		/* 마우스 커서 팔로우 (PC 전용: 1280px 이상 + 마우스 환경) */
-		function cursorFollowAction(){
-			const $cursor = $(".cursor-goo"),
-				$ring = $(".cursor-ring"),
-				$blobs = $cursor.find(".blob"),
-				mq = window.matchMedia("(min-width:1280px) and (hover:hover) and (pointer:fine)"),
-				gooey = 0.4,
-				hoverSel = "a, button";
-			let mouse = {x:0, y:0}, rafId = null, started = false;
-			const items = $blobs.map(function(i, el){ return {el:el, ind:i, x:0, y:0}; }).get();
-
-			function mapRange(num, inMin, inMax, outMin, outMax){
-				return (num - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-			}
-			function onMove(e){
-				mouse.x = e.clientX;
-				mouse.y = e.clientY;
-				if(!started){
-					started = true;
-					items.forEach(function(o){ o.x = mouse.x; o.y = mouse.y; });
-					$cursor.add($ring).addClass("on");
-				}
-			}
-			function render(){
-				rafId = requestAnimationFrame(render);
-				if(!started) return;
-				items.forEach(function(o){
-					const distX = mouse.x - o.x,
-						distY = mouse.y - o.y;
-					o.x += distX / (5 + (o.ind * gooey));
-					o.y += distY / (5 + (o.ind * gooey));
-					const scale = Math.max(mapRange(Math.abs(distX / 8), 0, 100, 1, 2), mapRange(Math.abs(distY / 8), 0, 100, 1, 2));
-					o.el.style.transform = "translate(" + o.x + "px, " + o.y + "px) scale(" + scale + ")";
-				});
-				$ring[0].style.transform = "translate(" + Math.round(items[0].x) + "px, " + Math.round(items[0].y) + "px)";
-			}
-			function enable(){
-				if(rafId) return;
-				window.addEventListener("mousemove", onMove);
-				document.addEventListener("mouseleave", hide);
-				document.addEventListener("mouseenter", show);
-				$(document).on("mouseover.cursorHover", hoverSel, hoverOn).on("mouseout.cursorHover", hoverSel, hoverOff);
-				render();
-			}
-			function disable(){
-				$cursor.add($ring).removeClass("on hover");
-				started = false;
-				window.removeEventListener("mousemove", onMove);
-				document.removeEventListener("mouseleave", hide);
-				document.removeEventListener("mouseenter", show);
-				$(document).off(".cursorHover");
-				if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
-			}
-			function hide(){ $cursor.add($ring).removeClass("on"); }
-			function show(){ if(started) $cursor.add($ring).addClass("on"); }
-			function hoverOn(){ $cursor.add($ring).addClass("hover"); }
-			function hoverOff(){ $cursor.add($ring).removeClass("hover"); }
-			function check(){ mq.matches ? enable() : disable(); }
-
-			if(!$cursor.length) return;
-			check();
-			mq.addEventListener("change", check);
-		}
-		$(function(){
-			cursorFollowAction();
-		});
-	</script>
 </body>
 </html>
