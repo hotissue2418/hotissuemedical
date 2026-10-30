@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>핫이슈메디컬</title>
+	<meta name="viewport" id="meta_viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=no">
+	<link rel="stylesheet" href="../assets/style.css">
+	<link rel="stylesheet" href="../assets/css/main_.css">
+	<script src="../assets/js/jquery-3.7.1.js"></script>
+	<script src="../assets/js/plugin/lenis/lenis.min.js"></script>
+	<script src="../assets/js/common.js"></script>
+	<script src="../assets/js/main.js"></script>
+	<script src="../assets/js/main_.js"></script>
+</head>
+<body>
+	<div id="skipMenu" class="skip-menu">
+		<a href="#container">본문 바로가기</a>
+	</div>
+	<div id="wrapper" class="wrapper">
+		<header id="header" class="header">
+			<div class="header-wrap">
+				<h1 class="logo">
+					<a href="./main.html">
+						<img class="part1" src="../assets/images/main/ico/logo_part1.svg" alt="">
+						<img class="part2" src="../assets/images/main/ico/logo_part2.svg" alt="">
+						<img class="part3" src="../assets/images/main/ico/logo_part3.svg" alt="">
+						<span class="blind">핫이슈메디컬</span>
+					</a>
+				</h1>
+				<nav class="gnb" aria-label="주요 메뉴">
+					<ul class="gnb-menu">
+						<li class="gnb-menu-item"><a href="./main.html" class="gnb-menu-link trim">HOME</a></li>
+						<li class="gnb-menu-item"><a href="javascript:void(0);" class="gnb-menu-link trim">ABOUT</a></li>
+						<li class="gnb-menu-item" data-depth="1">
+							<a href="javascript:void(0);" class="gnb-menu-link trim">PLATFORM</a>
+						</li>
+						<li class="gnb-menu-item" data-depth="2">
+							<a href="javascript:void(0);" class="gnb-menu-link trim">MARKETING</a>
+						</li>
+						<li class="gnb-menu-item" data-depth="3">
+							<a href="javascript:void(0);" class="gnb-menu-link trim">PORTFOLIO</a>
+						</li>
+						<li class="gnb-menu-item" data-depth="4">
+							<a href="javascript:void(0);" class="gnb-menu-link trim">INQUIRY</a>
+						</li>
+					</ul>
+				</nav>
+				<a href="javascript:void(0);" class="btn-contact trim">CONTACT</a>
+					<button type="button" class="btn-menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="moMenu"><span></span><span></span></button>
+			</div>
+		</header>
+		<div class="gnb-depth-area">
+			<ul class="gnb-depth" data-depth="1">
+				<li><a href="javascript:void(0);">데일리뷰</a></li>
+				<li><a href="javascript:void(0);">올인스튜디오</a></li>
+				<li><a href="javascript:void(0);">마켓뷰티</a></li>
+			</ul>
+			<ul class="gnb-depth" data-depth="2">
+				<li><a href="javascript:void(0);">피부과마케팅</a></li>
+				<li><a href="javascript:void(0);">치과마케팅</a></li>
+				<li><a href="javascript:void(0);">병원광고</a></li>
+				<li><a href="javascript:void(0);">병원마케팅</a></li>
+				<li><a href="javascript:void(0);">병원마케팅회사</a></li>
+				<li><a href="javascript:void(0);">비용안내</a></li>
+			</ul>
+			<ul class="gnb-depth" data-depth="3">
+				<li><a href="javascript:void(0);">브랜드필름</a></li>
+				<li><a href="javascript:void(0);">홈페이지</a></li>
+				<li><a href="javascript:void(0);">SNS광고</a></li>
+				<li><a href="javascript:void(0);">브랜드블로그</a></li>
+				<li><a href="javascript:void(0);">이벤트비주얼</a></li>
+			</ul>
+		</div>
+
+		<nav id="moMenu" class="mo-menu" aria-label="모바일 메뉴" data-lenis-prevent>
+			<ul class="mo-menu-list">
+				<li class="mo-menu-item"><a href="./main.html" class="mo-menu-link trim">HOME</a></li>
+				<li class="mo-menu-item"><a href="javascript:void(0);" class="mo-menu-link trim">ABOUT</a></li>
+				<li class="mo-menu-item">
+					<button type="button" class="mo-menu-btn" aria-expanded="false"><span class="tit trim">PLATFORM</span><span class="icon"></span></button>
+					<ul class="mo-submenu">
+						<li><a href="javascript:void(0);">데일리뷰</a></li>
+						<li><a href="javascript:void(0);">올인스튜디오</a></li>
+						<li><a href="javascript:void(0);">마켓뷰티</a></li>
+					</ul>
+				</li>
+				<li class="mo-menu-item">
+					<button type="button" class="mo-menu-btn" aria-expanded="false"><span class="tit trim">MARKETING</span><span class="icon"></span></button>
+					<ul class="mo-submenu">
+						<li><a href="javascript:void(0);">피부과마케팅</a></li>
+						<li><a href="javascript:void(0);">치과마케팅</a></li>
+						<li><a href="javascript:void(0);">병원광고</a></li>
+						<li><a href="javascript:void(0);">병원마케팅</a></li>
+						<li><a href="javascript:void(0);">병원마케팅회사</a></li>
+						<li><a href="javascript:void(0);">비용안내</a></li>
+					</ul>
+				</li>
+				<li class="mo-menu-item">
+					<button type="button" class="mo-menu-btn" aria-expanded="false"><span class="tit trim">PORTFOLIO</span><span class="icon"></span></button>
+					<ul class="mo-submenu">
+						<li><a href="javascript:void(0);">브랜드필름</a></li>
+						<li><a href="javascript:void(0);">홈페이지</a></li>
+						<li><a href="javascript:void(0);">SNS광고</a></li>
+						<li><a href="javascript:void(0);">브랜드블로그</a></li>
+						<li><a href="javascript:void(0);">이벤트비주얼</a></li>
+					</ul>
+				</li>
+				<li class="mo-menu-item"><a href="javascript:void(0);" class="mo-menu-link trim">INQUIRY</a></li>
+			</ul>
+			<a href="javascript:void(0);" class="mo-menu-contact trim">CONTACT</a>
+		</nav>
+
+		<main id="container" class="container main">
+			<section class="sect sect-visual">
+				<div class="visual-slider">
+					<ul class="visual-list">
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide01.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide02.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide03.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide04.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide05.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide01.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide02.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide03.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide04.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide05.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide01.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide02.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide03.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide04.jpg" alt=""></li>
+						<li class="visual-item"><img src="../assets/images/main/hero/img_slide05.jpg" alt=""></li>
+					</ul>
+				</div>
+				<p class="visual-tit visual-tit-hotissue trim" aria-hidden="true">HOTISSUE</p>
+				<p class="visual-tit visual-tit-medical trim" aria-hidden="true">MEDICAL</p>
+				<div class="visual-focus" aria-hidden="true">
+					<span class="corner corner-lt"></span>
+					<span class="corner corner-rt"></span>
+					<span class="corner corner-lb"></span>
+					<span class="corner corner-rb"></span>
+					<span class="plus"></span>
+				</div>
+				<div class="letter-deco-area deco-visual-edge" aria-hidden="true">
+					<div class="letter-deco">
+						<span class="img"><img src="../assets/images/main/hero/img_tape_visual_edge.png" alt=""></span>
+						<span class="txt">VISUAL EDGE</span>
+					</div>
+				</div>
+				<div class="letter-deco-area deco-brand-builder" aria-hidden="true">
+					<div class="letter-deco">
+						<span class="img"><img src="../assets/images/main/hero/img_tape_brand_builder.png" alt=""></span>
+						<span class="txt">BRAND BUILDER</span>
+					</div>
+				</div>
+			</section>
+
+			<section class="sect sect-about">
+				<div class="inner inner-wide">
+					<div class="about-area">
+						<p class="about-lead trim">정체된 결과에는 반드시 원인이 존재하며,<br><em>핫이슈메디컬</em>은 그 데이터를 해체해 <br class="br-mo">가장 완벽한 해답을 제시합니다.</p>
+						<h2 class="about-tit about-tit-pc" aria-label="Marketing without results is ultimately nothing but an unnecessary expense.">
+							<span class="eng-line eng-line-1" aria-hidden="true"><span class="gray trim">MARKETING WITHOUT RESULTS</span><span class="fill"><span class="white trim">MARKETING WITHOUT RESULTS</span></span></span>
+							<span class="eng-line eng-line-2" aria-hidden="true"><span class="gray trim">IS</span><span class="fill"><span class="white trim">IS</span></span></span>
+							<span class="eng-line eng-line-3" aria-hidden="true"><span class="gray trim">ULTIMATELY NOTHING BUT</span><span class="fill"><span class="white trim">ULTIMATELY NOTHING BUT</span></span></span>
+							<span class="eng-line eng-line-4" aria-hidden="true"><span class="gray trim">AN UNNECESSARY EXPENSE.</span><span class="fill"><span class="white trim">AN UNNECESSARY EXPENSE.</span></span></span>
+						</h2>
+						<h2 class="about-tit about-tit-mo" aria-label="Marketing without results is ultimately nothing but an unnecessary expense.">
+							<span class="eng-row eng-row-start"><span class="eng-word"><span class="eng-line" aria-hidden="true"><span class="gray trim">MARKETING</span><span class="fill"><span class="white trim">MARKETING</span></span></span><span class="about-badge about-badge-mo about-badge-mo-metadata trim">METADATA</span></span></span>
+							<span class="eng-row eng-row-between"><span class="eng-line" aria-hidden="true"><span class="gray trim">WITHOUT RESULTS</span><span class="fill"><span class="white trim">WITHOUT RESULTS</span></span></span><span class="eng-line" aria-hidden="true"><span class="gray trim">IS</span><span class="fill"><span class="white trim">IS</span></span></span></span>
+							<span class="eng-row eng-row-center"><span class="eng-word"><span class="eng-line" aria-hidden="true"><span class="gray trim">ULTIMATELY</span><span class="fill"><span class="white trim">ULTIMATELY</span></span></span><span class="about-badge about-badge-mo about-badge-mo-powerlink trim">POWER LINK</span></span></span>
+							<span class="eng-row eng-row-between"><span class="eng-line" aria-hidden="true"><span class="gray trim">NOTHING BUT</span><span class="fill"><span class="white trim">NOTHING BUT</span></span></span><span class="eng-line" aria-hidden="true"><span class="gray trim">AN</span><span class="fill"><span class="white trim">AN</span></span></span></span>
+							<span class="eng-row eng-row-end"><span class="eng-word eng-word-wrap"><span class="eng-line" aria-hidden="true"><span class="gray trim">UNNECESSARY</span><span class="fill"><span class="white trim">UNNECESSARY</span></span></span><span class="eng-tail"><span class="eng-line" aria-hidden="true"><span class="gray trim">EXPENSE.</span><span class="fill"><span class="white trim">EXPENSE.</span></span></span><span class="about-badge about-badge-mo about-badge-mo-viral trim">VIRAL MARKETING</span></span></span></span>
+						</h2>
+						<span class="about-badge about-badge-pc about-badge-metadata trim">METADATA</span>
+						<span class="about-badge about-badge-pc about-badge-powerlink trim">POWER LINK</span>
+						<span class="about-badge about-badge-pc about-badge-viral trim">VIRAL MARKETING</span>
+						<ul class="about-list">
+							<li class="about-item ani-slide-top">
+								<span class="line"></span>
+								<div class="tit-area"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_coin.svg"><img src="../assets/images/main/ico/ico_coin.svg" alt=""></picture><p class="tit">No Results, Just Expense</p></div>
+								<p class="txt">핫이슈메디컬은 '보기 좋은 느낌'이 아니라 '찍히는 숫자'만 취급합니다. <br>트래픽과 전환율로 증명하지 못하는 마케팅은 기획이 아니라 무의미한 <br>지출입니다.</p>
+							</li>
+							<li class="about-item ani-slide-top">
+								<span class="line"></span>
+								<div class="tit-area"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_medal.svg"><img src="../assets/images/main/ico/ico_medal.svg" alt=""></picture><p class="tit">1st &amp; 1,000+</p></div>
+								<p class="txt">네이버 1호 공식 대행사의 타이틀은 요행으로 얻어지지 않습니다. <br>수많은 시장의 변수를 해부하며 쌓아 올린 촘촘한 데이터를 바탕으로, <br>브랜드에 오차 없는 성장을 세팅합니다.</p>
+							</li>
+							<li class="about-item ani-slide-top">
+								<span class="line"></span>
+								<div class="tit-area"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_rocket.svg"><img src="../assets/images/main/ico/ico_rocket.svg" alt=""></picture><p class="tit">Cost down, Patient up</p></div>
+								<p class="txt">그래프가 멈춰 있다면 구조부터 틀린 겁니다. <br>불필요한 누수는 끊어내고 확실한 타격점에만 예산을 집중합니다. <br>실패하는 이유를 부수고, 판도를 뒤집는 결과물만 남깁니다.</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="partner-area">
+					<div class="partner-slider partner-slider-first">
+						<ul class="partner-list">
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner01.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner02.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner03.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner04.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner05.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner06.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner07.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner08.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner09.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner10.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner01.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner02.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner03.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner04.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner05.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner06.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner07.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner08.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner09.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner10.png" alt=""></li>
+						</ul>
+					</div>
+					<div class="partner-slider partner-slider-second">
+						<ul class="partner-list">
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner11.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner12.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner13.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner14.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner15.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner16.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner17.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner18.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner19.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner11.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner12.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner13.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner14.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner15.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner16.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner17.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner18.png" alt=""></li>
+							<li class="partner-item"><img src="../assets/images/main/partner/img_partner19.png" alt=""></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section class="sect sect-intro">
+				<video class="intro-video" autoplay muted loop playsinline poster="../assets/images/main/intro/img_intro_bg.png" aria-hidden="true">
+					<source src="../assets/videos/intro_bg.mp4" type="video/mp4">
+				</video>
+				<div class="intro-area">
+					<p class="sub ani-slide-top">왜 병원 마케팅을 해야 하는가.</p>
+					<h2 class="tit trim ani-slide-top">NO MARKETING, <br class="br-mo">NO PATIENTS.</h2>
+					<p class="txt ani-slide-top">같은 방식으로는 다른 결과를 만들 수 없습니다.<br>병원을 알고, 환자를 이해하고, 차이를 만드는 마케팅.<br>결과는 결국 디테일에서 갈립니다.</p>
+				</div>
+			</section>
+
+			<section class="sect sect-works">
+				<div class="marquee-area" aria-hidden="true">
+					<div class="marquee marquee-dark">
+						<div class="marquee-track"><p>HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   </p><p>HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   </p><p>HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   </p><p>HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   </p></div>
+					</div>
+					<div class="marquee marquee-white">
+						<div class="marquee-track"><p>HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   </p><p>HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   </p><p>HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   </p><p>HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   HOTISSUE MEDICAL’s  VISUAL ARCHIVES   ·   </p></div>
+					</div>
+				</div>
+				<div class="inner inner-wide">
+					<h2 class="works-tit-area" aria-label="Our selected works">
+						<span class="our trim" aria-hidden="true">OUR</span>
+						<span class="selected-works" aria-hidden="true">
+							<span class="selected"><span class="bracket bracket-l trim">[</span><span class="word trim">SELECTED</span><span class="bracket bracket-r trim">]</span></span>
+							<span class="works trim">WORKS</span>
+						</span>
+					</h2>
+					<img class="works-line" src="../assets/images/main/ico/line_gray.svg" alt="">
+					<ul class="works-list">
+				<li class="works-item works-item-01 ani-slide-top">
+					<div class="img-area"><span class="zoom"><img src="../assets/images/main/works/img_work01.jpg" alt="BRAND FILM 작업 이미지"></span></div>
+					<div class="txt-area">
+						<a href="javascript:void(0);" class="works-link"><span class="tit">BRAND FILM</span><span class="arrow-window"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_arrow_window.svg"><img src="../assets/images/main/ico/ico_arrow_window.svg" alt=""></picture></span><span class="blind">바로가기</span></a>
+						<p class="sub">말보다 강렬한 비주얼로 브랜드의 독창성과 가치를 증명합니다.</p>
+						<p class="txt">단순한 홍보 영상을 넘어, 브랜드의 독보적인 존재감을 확실하게 각인시키는 영상 프로젝트입니다. <br>정교한 톤앤매너 설정과 독보적인 연출을 통해, 브랜드의 정체성과 가치를 깊이 있게 전달할 수 있습니다.</p>
+					</div>
+					<ul class="tag-list">
+						<li class="tag">HeroFilm</li>
+						<li class="tag">VisualMood</li>
+						<li class="tag">BrandStory</li>
+						<li class="tag">FirstImpression</li>
+						<li class="tag">Cinematic</li>
+					</ul>
+				</li>
+				<li class="works-item works-item-02 ani-slide-top">
+					<div class="img-area"><span class="zoom"><img src="../assets/images/main/works/img_work02.jpg" alt="HOMEPAGE 작업 이미지"></span></div>
+					<div class="txt-area">
+						<a href="javascript:void(0);" class="works-link"><span class="tit">HOMEPAGE</span><span class="arrow-window"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_arrow_window.svg"><img src="../assets/images/main/ico/ico_arrow_window.svg" alt=""></picture></span><span class="blind">바로가기</span></a>
+						<p class="sub">브랜드가 가진 고유한 가치와 콘텐츠를 화면 구조로 재구성합니다.</p>
+						<p class="txt">브랜드 본연의 톤앤매너를 반영한 비주얼 디테일을 더해, 스크린 너머에서도 단단한 신뢰감을 전달합니다. <br>단순한 정보의 나열을 넘어, 브랜드의 정체성과 메시지가 유기적으로 연결되는 정교한 구조를 완성합니다.</p>
+					</div>
+					<ul class="tag-list">
+						<li class="tag">WebSite</li>
+						<li class="tag">UI/UX</li>
+						<li class="tag">BrandIdentity</li>
+						<li class="tag">UserNarrative</li>
+						<li class="tag">Mobile</li>
+					</ul>
+				</li>
+				<li class="works-item works-item-03 ani-slide-top">
+					<div class="img-area"><span class="zoom"><img src="../assets/images/main/works/img_work03.jpg" alt="SOCIAL ADS 작업 이미지"></span></div>
+					<div class="txt-area">
+						<a href="javascript:void(0);" class="works-link"><span class="tit">SOCIAL ADS</span><span class="arrow-window"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_arrow_window.svg"><img src="../assets/images/main/ico/ico_arrow_window.svg" alt=""></picture></span><span class="blind">바로가기</span></a>
+						<p class="sub">소셜 미디어 환경에서 타겟의 반응을 이끌어내는 퍼포먼스 광고를 기획합니다.</p>
+						<p class="txt">단순 노출을 넘어 유의미한 타겟 유입과 브랜드 가치를 동시에 전달하는 SNS 광고를 기획합니다. <br>소셜 미디어 환경에서 브랜드의 결을 유지하면서도, 메타 환경에 최적화된 비주얼 소재를 제작합니다.</p>
+					</div>
+					<ul class="tag-list">
+						<li class="tag">MetadataAds</li>
+						<li class="tag">AdCreative</li>
+						<li class="tag">Targeting</li>
+						<li class="tag">Performance</li>
+						<li class="tag">SocialFeed</li>
+					</ul>
+				</li>
+				<li class="works-item works-item-04 ani-slide-top">
+					<div class="img-area"><span class="zoom"><img src="../assets/images/main/works/img_work04.jpg" alt="BRAND BLOG 작업 이미지"></span></div>
+					<div class="txt-area">
+						<a href="javascript:void(0);" class="works-link"><span class="tit">BRAND BLOG</span><span class="arrow-window"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_arrow_window.svg"><img src="../assets/images/main/ico/ico_arrow_window.svg" alt=""></picture></span><span class="blind">바로가기</span></a>
+						<p class="sub">브랜드의 전문성과 신뢰를 단단하게 쌓아올리는 깊이 있는 콘텐츠를 기록합니다.</p>
+						<p class="txt">자극적인 양산형 글을 배제하고, 읽는 이에게 실질적인 가치를 제공하는 고품질 포스팅을 지속적으로 기획합니다. <br>검색 엔진 알고리즘에 최적화된 로직과 키워드 설계를 적용하여 타겟 사용자의 자연스러운 유입을 이끌어냅니다.</p>
+					</div>
+					<ul class="tag-list">
+						<li class="tag">SearchSEO</li>
+						<li class="tag">Storytelling</li>
+						<li class="tag">BrandColumn</li>
+						<li class="tag">UsefulContent</li>
+						<li class="tag">Information</li>
+					</ul>
+				</li>
+				<li class="works-item works-item-05 ani-slide-top">
+					<div class="img-area"><span class="zoom"><img src="../assets/images/main/works/img_work05.jpg" alt="EVENT VISUAL 작업 이미지"></span></div>
+					<div class="txt-area">
+						<a href="javascript:void(0);" class="works-link"><span class="tit">EVENT VISUAL</span><span class="arrow-window"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_arrow_window.svg"><img src="../assets/images/main/ico/ico_arrow_window.svg" alt=""></picture></span><span class="blind">바로가기</span></a>
+						<p class="sub">시선을 단번에 사로잡는 키비주얼로 브랜드의 특별한 순간을 선명하게 각인시킵니다.</p>
+						<p class="txt">프로모션과 캠페인의 목적에 최적화된 비주얼 연출로 타겟의 관심과 참여를 이끌어냅니다. <br>메인 배너, 랜딩페이지 상단, 소셜 미디어 등 다양한 매체와 규격에 유연하게 대응하는 디자인 요소를 구축합니다.</p>
+					</div>
+					<ul class="tag-list">
+						<li class="tag">KeyVisual</li>
+						<li class="tag">EventGraphic</li>
+						<li class="tag">CampaignDesign</li>
+						<li class="tag">BrandMoment</li>
+						<li class="tag">ActionTrigger</li>
+					</ul>
+				</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="sect sect-process">
+				<div class="inner inner-wide">
+					<div class="process-tit-area">
+						<h2 class="main-tit trim ani-slide-top">TURNING DEEP INSIGHTS<br>INTO MEASURABLE <br class="br-mo">IMPACT.</h2>
+						<div class="sub-area ani-slide-top">
+							<p class="sub-tit trim">잘 되는 마케팅에는<br>설계된 흐름이 있습니다.</p>
+							<p class="sub-txt trim">병원을 이해하는 시작부터, 결과를 바꾸는 개선까지.<br>각각의 실행을 하나의 전략으로 연결합니다.</p>
+						</div>
+					</div>
+					<ul class="process-list process-scroll">
+					<li class="process-item">
+						<span class="line"></span>
+						<div class="num-area">
+							<p class="num trim">01</p>
+							<picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/process/ico_arrow_down_right.svg"><img class="arrow" src="../assets/images/main/process/ico_arrow_down_right.svg" alt=""></picture>
+						</div>
+						<div class="cont-area">
+							<p class="tit trim">ANALYZE</p>
+							<p class="sub trim">병원을 깊이 이해하고.</p>
+							<p class="txt trim">브랜드만의 데이터 속에서 진짜 경쟁력과 <br>무의미했던 지출의 원인을 명확히 추적합니다.</p>
+							<span class="tag">Research &amp; Insight</span>
+						</div>
+					</li>
+					<li class="process-item">
+						<span class="line"></span>
+						<div class="num-area">
+							<p class="num trim">02</p>
+							<picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/process/ico_arrow_down_right.svg"><img class="arrow" src="../assets/images/main/process/ico_arrow_down_right.svg" alt=""></picture>
+						</div>
+						<div class="cont-area">
+							<p class="tit trim">STRATEGIZE</p>
+							<p class="sub trim">가야 할 방향을 세우고.</p>
+							<p class="txt trim">입지와 상권의 흐름을 분석하여 수많은 경쟁자 속에서 <br>우리가 나아가야 할 영역을 명확히 설정합니다.</p>
+							<span class="tag">Positioning &amp; Planning</span>
+						</div>
+					</li>
+					<li class="process-item">
+						<span class="line"></span>
+						<div class="num-area">
+							<p class="num trim">03</p>
+							<picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/process/ico_arrow_down_right.svg"><img class="arrow" src="../assets/images/main/process/ico_arrow_down_right.svg" alt=""></picture>
+						</div>
+						<div class="cont-area">
+							<p class="tit trim">ACTIVATE</p>
+							<p class="sub trim">눈에 보이는 경험으로.</p>
+							<p class="txt trim">브랜드의 강점과 시장의 수요가 만나는 접점에서 <br>핵심 솔루션을 정의해 타깃의 신뢰를 확보합니다.</p>
+							<span class="tag">Core &amp; Selection</span>
+						</div>
+					</li>
+					<li class="process-item">
+						<span class="line"></span>
+						<div class="num-area">
+							<p class="num trim">04</p>
+							<picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/process/ico_arrow_down_right_last.svg"><img class="arrow arrow-last" src="../assets/images/main/process/ico_arrow_down_right_last.svg" alt=""></picture>
+						</div>
+						<div class="cont-area">
+							<p class="tit trim">OPTIMIZE</p>
+							<p class="sub trim">결과를 읽고, 더 나아가고.</p>
+							<p class="txt trim">유입과 이탈 경로를 정교하게 추적하여 불필요한 <br>예산 낭비를 차단하고 선명한 성과를 완성합니다.</p>
+							<span class="tag">Measure &amp; Improve</span>
+						</div>
+					</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="sect sect-why">
+				<div class="inner inner-wide">
+					<div class="why-tit-area">
+						<h2 class="why trim">WHY</h2>
+						<p class="name trim">HOTISSUE MEDICAL</p>
+						<p class="sub trim">병원을 아는 시선,<br>반응을 만드는 감각.</p>
+						<p class="eng trim">MEDICAL INSIGHT. CREATIVE THINKING.<br>ONE CONNECTED TEAM.</p>
+						<div class="letter-deco-area deco-built-medical" aria-hidden="true">
+							<div class="letter-deco">
+								<span class="img"><img src="../assets/images/main/why/img_tape_built_for_medical.png" alt=""></span>
+								<span class="txt">BUILT FOR MEDICAL</span>
+							</div>
+						</div>
+					</div>
+					<ul class="accordion-list ani-group">
+					<li class="accordion-item ani-up on">
+						<button type="button" class="accordion-btn" aria-expanded="true">
+							<span class="accordion-head">
+								<span class="meta"><em class="num trim">01</em><span class="label trim">DATA &amp; STORY</span></span>
+								<span class="icon"></span>
+							</span>
+							<strong class="tit trim">뻔한 홍보 대신, 병원의 본질을 들여다봅니다.</strong>
+						</button>
+						<div class="accordion-cont">
+							<div class="accordion-inner">
+								<p class="txt">남들과 똑같이 보이는 과장된 콘텐츠를 배제하고, <br>데이터를 통해 브랜드만이 가진 진짜 강점과 유입의 흔적을 발굴합니다.</p>
+								<span class="tag trim">병원 고유의 데이터 분석</span>
+							</div>
+						</div>
+					</li>
+					<li class="accordion-item ani-up">
+						<button type="button" class="accordion-btn" aria-expanded="false">
+							<span class="accordion-head">
+								<span class="meta"><em class="num trim">02</em><span class="label trim">TRUST &amp; COMPLIANCE</span></span>
+								<span class="icon"></span>
+							</span>
+							<strong class="tit trim">의료법을 준수하며, 환자가 원하는 신뢰를 전합니다.</strong>
+						</button>
+						<div class="accordion-cont">
+							<div class="accordion-inner">
+								<p class="txt">자극적인 문구 없이도 의료 규정을 철저히 준수하며, <br>환자가 진짜 궁금해하는 지점을 명확한 언어로 전해 자연스러운 상담을 이끌어냅니다.</p>
+								<span class="tag trim">환자가 진짜 알고 싶은 정보</span>
+							</div>
+						</div>
+					</li>
+					<li class="accordion-item ani-up">
+						<button type="button" class="accordion-btn" aria-expanded="false">
+							<span class="accordion-head">
+								<span class="meta"><em class="num trim">03</em><span class="label trim">REAL INVESTMENT</span></span>
+								<span class="icon"></span>
+							</span>
+							<strong class="tit trim">마케팅이 '비용'이 아닌 '투자'가 되는 성과를 증명합니다.</strong>
+						</button>
+						<div class="accordion-cont">
+							<div class="accordion-inner">
+								<p class="txt">불필요한 예산 낭비를 끊어내고 실제 유입과 환자 증대로 연결하여, <br>단순한 화려함을 넘어 원장님이 체감하는 확실한 변화를 완성합니다.</p>
+								<span class="tag trim">결과로 보여주는 브랜드 변화</span>
+							</div>
+						</div>
+					</li>
+					</ul>
+				</div>
+			</section>
+		</main>
+
+		<footer id="footer" class="footer">
+			<div class="inner inner-wide">
+				<div class="footer-area">
+					<div class="footer-tit">
+						<p class="tit trim">HOT<br>ISSUE<br>MEDICAL</p>
+						<p class="copy">© 2026 Hotissue-medical. All Rights Reserved.</p>
+					</div>
+					<div class="footer-txt">
+						<a href="https://hotissuemedical.com/data/file/config/5d1ef0591698f4536eb8da9277d54f29_UkdZfQEo_d2fd67064d3707cd9753b0d0bb7b5df5d5bef48a.pdf" class="footer-download"><span>회사소개서</span><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_download.svg"><img src="../assets/images/main/ico/ico_download.svg" alt=""></picture></a>
+						<div class="footer-wrap">
+							<div class="footer-info">
+								<div class="footer-info-block">
+									<p class="tit">COMPANY</p>
+									<p class="txt"><span class="name">주식회사 핫이슈메디컬</span><br>대표 : 홍봉기<br>사업자등록번호 : 475-81-02711<br>핫이슈메디컬(법인) : 서울특별시 구로구 디지털로34길 55, 304호<br>데이뷰마케팅그룹(법인) : 서울특별시 구로구 디지털로34길 55, 305호</p>
+								</div>
+								<div class="footer-info-block">
+									<p class="tit">CONTACT</p>
+									<p class="txt">대표번호 : 02-862-9236<br>이메일 : hotissue8254@naver.com</p>
+								</div>
+							</div>
+							<a href="javascript:void(0);" class="footer-contact">
+								<picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/btn_contact_circle.svg"><img src="../assets/images/main/ico/btn_contact_circle.svg" alt=""></picture>
+								<span class="txt trim">프로젝트 문의하기</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<div class="quick-menu">
+			<ul class="quick-menu-list">
+				<li><a href="tel:02-862-9236" class="quick-menu-link"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_quick_tel.svg"><img src="../assets/images/main/ico/ico_quick_tel.svg" alt="전화 문의"></picture></a></li>
+				<li><a href="https://pf.kakao.com/_lxdCVK" class="quick-menu-link quick-menu-kakao"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_quick_kakao.svg"><img src="../assets/images/main/ico/ico_quick_kakao.svg" alt="카카오톡 문의"></picture></a></li>
+			</ul>
+			<button type="button" class="btn-quick-toggle" aria-expanded="false" aria-label="빠른 문의 열기"><img src="../assets/images/main/mo/ico/ico_quick_close.svg" alt=""></button>
+		</div>
+		<button type="button" class="btn-quick-top"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_quick_top.svg"><img src="../assets/images/main/ico/ico_quick_top.svg" alt="맨 위로"></picture></button>
+	</div>
+</body>
+</html>
