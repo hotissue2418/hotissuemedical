@@ -1,0 +1,273 @@
+@charset "utf-8";
+
+/* =========================================================
+   about (ALLIN STUDIO) — figma-values-about-pc.md 기준
+   PC 1920 기준값을 calc(N * var(--px))로 작성 → 1920 이상은 1px, 1280~1919는 화면 폭 비율로 함께 축소
+   1279px 이하는 MO 시안이 없어 기존 main 반응형 규칙(여백 3.846%, 타이틀 clamp 등)에 맞춰 세로 배치
+   ========================================================= */
+.studio {--px:min(1px, calc(100vw / 1920));}
+.studio .inner-wide {max-width:1920px; padding:0 calc(150 * var(--px));}
+
+/* reveal: 마스크 안에서 텍스트가 아래→위로 올라옴 (.reveal-area 에 .on) */
+.reveal-mask {display:flex; align-items:center; overflow:hidden;}
+.reveal-txt {display:block; transform:translateY(130%); transition:transform 0.3s ease;}
+.reveal-area.on .reveal-txt {transform:translateY(0); transition:transform 1s cubic-bezier(0.22, 1, 0.36, 1);}
+.reveal-area.on .reveal-mask:nth-child(2) .reveal-txt {transition-delay:0.15s;}
+.reveal-area.on > .reveal-mask .reveal-txt {transition-delay:0.4s;}
+
+/* focus frame: 모서리 4개 (크기는 --corner) */
+.focus-frame {display:grid; grid-template-columns:100%; grid-template-rows:100%; pointer-events:none;}
+.focus-frame .corner {grid-area:1 / 1; width:var(--corner); height:var(--corner); border:0 solid var(--color-black);}
+.focus-frame .corner-lt {border-top-width:2px; border-left-width:2px;}
+.focus-frame .corner-rt {justify-self:end; border-top-width:2px; border-right-width:2px;}
+.focus-frame .corner-lb {align-self:end; border-bottom-width:2px; border-left-width:2px;}
+.focus-frame .corner-rb {justify-self:end; align-self:end; border-right-width:2px; border-bottom-width:2px;}
+
+/* sect-studio-visual */
+/* main 의 sect-visual 처럼 화면에 고정(sticky) → 다음 섹션(sect-studio-compare)이 위로 덮으며 올라오는 모션
+   --visual-top: 섹션이 화면보다 높으면 바닥까지 본 뒤 고정되도록 sub.js 에서 계산 (화면높이 - 섹션높이, 최대 0) */
+.sect-studio-visual {position:sticky; top:var(--visual-top, 0px); height:calc(1080 * var(--px)); overflow:hidden; background-color:var(--color-white);}
+/* inner 안에서 타이틀·갤러리·문구를 같은 grid 칸(1 / 1)에 겹치고 margin으로 Figma 좌표에 배치 (기준점: 타이틀 시작 150,170) */
+.sect-studio-visual .inner-wide {display:grid; grid-template-columns:100%; grid-template-rows:auto; align-items:start; justify-items:start; height:100%; padding-top:calc(170 * var(--px));}
+.sect-studio-visual .inner-wide::after {display:none;}
+.studio-visual-tit {grid-area:1 / 1; z-index:2; display:flex; flex-direction:column; align-items:flex-start; gap:calc(30 * var(--px));}
+.studio-visual-tit .tit {display:flex; flex-direction:column; gap:calc(20 * var(--px)); font-family:var(--font-family-bebas); font-size:calc(200 * var(--px)); font-weight:400; letter-spacing:-0.01em; line-height:normal; white-space:nowrap;}
+.studio-visual-tit .tit .reveal-mask {height:0.72em;}
+.studio-visual-tit .sub {height:29px; font-size:20px; font-weight:500; letter-spacing:-1px; line-height:normal; white-space:nowrap;}
+/* gallery: Figma (385,221) 1210x718 영역 → 타이틀 기준 (235,51). 내부도 grid 1칸에 겹쳐 margin으로 배치, 값은 --g(=영역 폭/1210) 기준 */
+.studio-visual-gallery {--g:var(--px); display:grid; grid-template-columns:100%; grid-template-rows:100%; align-items:start; justify-items:start; grid-area:1 / 1; width:calc(1210 * var(--g)); height:calc(718 * var(--g)); margin:calc(51 * var(--px)) 0 0 calc(235 * var(--px));}
+.studio-visual-gallery > * {grid-area:1 / 1;}
+/* 이미지 3장은 물결 효과(jquery.ripples)용 background-image (경로는 HTML style 속성) */
+.studio-visual-gallery .img {display:block; overflow:hidden; background-repeat:no-repeat; background-position:center; background-size:cover;}
+.studio-visual-gallery .img-01 {width:calc(450 * var(--g)); height:calc(600 * var(--g)); margin:calc(60 * var(--g)) 0 0 calc(350 * var(--g));}
+.studio-visual-gallery .img-02 {width:calc(280 * var(--g)); height:calc(360 * var(--g)); margin:calc(358 * var(--g)) 0 0;}
+.studio-visual-gallery .img-03 {width:calc(340 * var(--g)); height:calc(450 * var(--g)); margin:0 0 0 calc(870 * var(--g));}
+.studio-visual-gallery .focus-frame {z-index:1; --corner:calc(40 * var(--g)); width:calc(490 * var(--g)); height:calc(640 * var(--g)); margin:calc(40 * var(--g)) 0 0 calc(330 * var(--g));}
+/* 문구: 오른쪽 끝 x1595(= inner 오른쪽에서 175), 세로 중심 y692.5(= 타이틀 기준 522.5) */
+.studio-visual-copy {grid-area:1 / 1; justify-self:end; margin:calc(522.5 * var(--px)) calc(175 * var(--px)) 0 0; color:var(--font-color-black); font-size:18px; letter-spacing:-0.18px; line-height:normal; text-transform:uppercase; white-space:nowrap; transform:translateY(-50%);}
+/* 테이프: main.css 의 .letter-deco-area(absolute) 를 grid 배치로 전환 */
+.studio-visual-gallery .deco-ai-visual-lab {position:static; z-index:3; width:calc(165.569 * var(--g)); height:calc(92.055 * var(--g)); margin:calc(248 * var(--g)) 0 0 calc(253 * var(--g));}
+.deco-ai-visual-lab .letter-deco {width:calc(162 * var(--g)); height:calc(39 * var(--g)); transform:rotate(20deg); filter:drop-shadow(0 1px 0.5px rgba(0, 0, 0, 0.25));}
+.deco-ai-visual-lab .img {position:static; width:100%; height:calc(38 * var(--g));}
+.deco-ai-visual-lab .img img {position:static; width:calc(231.255 * var(--g)); height:calc(155.648 * var(--g)); margin:calc(-60.488 * var(--g)) 0 0 calc(-38.232 * var(--g));}
+.deco-ai-visual-lab .txt {justify-self:center; margin:calc(9 * var(--g)) 0 0; font-size:calc(30 * var(--g)); transform:none;}
+
+/* sect-studio-compare */
+.sect-studio-compare {overflow:hidden; padding:calc(200 * var(--px)) 0 calc(150 * var(--px)); border-radius:calc(50 * var(--px)) calc(50 * var(--px)) 0 0; background-color:var(--color-black); color:var(--font-color-white);}
+.compare-lead {font-size:calc(30 * var(--px)); font-weight:600; letter-spacing:calc(-1.5 * var(--px)); line-height:calc(50 * var(--px)); white-space:nowrap;}
+.compare-lead em {font-size:calc(36 * var(--px)); font-style:normal;}
+.compare-wrap {display:flex; align-items:flex-end; gap:calc(100 * var(--px)); margin-top:calc(57 * var(--px));}
+/* 비교 슬라이더: 이미지 2장과 바를 grid 1칸에 겹침. 바는 margin-left 로 --pos 위치에 이동 (선 중심이 경계) */
+.compare-slider {--pos:50%; display:grid; grid-template-columns:100%; grid-template-rows:100%; flex-shrink:0; width:calc(810 * var(--px)); aspect-ratio:810 / 620; overflow:hidden; cursor:ew-resize; touch-action:pan-y; user-select:none; -webkit-user-select:none;}
+.compare-slider > * {grid-area:1 / 1;}
+.compare-slider .img {display:block; min-height:0;}
+.compare-slider .img img {display:block; width:100%; height:100%; object-fit:cover; pointer-events:none;}
+.compare-slider .img-after {clip-path:inset(0 0 0 var(--pos));}
+/* 바 51px: 화살표 15 + 10 + 선 1 + 10 + 화살표 15 */
+.compare-bar {z-index:1; display:flex; align-items:center; justify-self:start; gap:10px; width:51px; margin-left:calc(var(--pos) - 25px); outline:0;}
+.compare-bar .line {display:block; flex-shrink:0; align-self:stretch; width:1px; height:100%;}
+.compare-bar .arrow {display:flex; flex-shrink:0; align-items:center; justify-content:center; width:15px; height:15px;}
+.compare-bar .arrow img {display:block; flex:none;}
+.compare-bar:focus-visible .line {box-shadow:0 0 0 2px var(--color-white);}
+.compare-tit-area {display:flex; flex:0 1 calc(500 * var(--px)); flex-direction:column; gap:calc(60 * var(--px)); min-width:0;}
+.compare-tit-area .tit {font-family:var(--font-family-bebas); font-size:calc(100 * var(--px)); font-weight:400; letter-spacing:-0.01em; line-height:1; text-transform:uppercase; white-space:nowrap;}
+.compare-tit-area .sub-area {display:flex; flex-direction:column; gap:calc(40 * var(--px)); padding:2px 0;}
+.compare-tit-area .sub-tit {font-size:calc(30 * var(--px)); font-weight:600; letter-spacing:-0.05em; line-height:calc(40 * var(--px));}
+.compare-tit-area .sub-txt {font-size:max(14px, calc(18 * var(--px))); letter-spacing:-0.05em; line-height:1.5556;}
+.point-list {display:flex; align-items:flex-start; gap:calc(40 * var(--px)); margin-top:calc(100 * var(--px));}
+.point-item {display:flex; flex:1 0 0; flex-direction:column; gap:calc(30 * var(--px)); min-width:0; padding:calc(50 * var(--px)) calc(20 * var(--px)); border-top:1px solid var(--font-color-on-dark-primary);}
+.point-item.ani-slide-top.on:nth-child(2) {transition-delay:0.1s;}
+.point-item.ani-slide-top.on:nth-child(3) {transition-delay:0.2s;}
+.point-item .tit-area {display:flex; align-items:flex-start; justify-content:space-between; gap:10px; padding-bottom:10px;}
+.point-item .tit {display:flex; align-items:center; gap:10px; min-width:0; text-transform:uppercase;}
+.point-item .num {flex-shrink:0; width:30px; color:var(--font-color-on-dark-secondary); font-size:20px; letter-spacing:-1px; line-height:34px;}
+.point-item .tit-txt {font-size:calc(28 * var(--px)); font-weight:600; letter-spacing:-0.05em; line-height:34px;}
+.point-item .icon {display:block; flex-shrink:0; width:15px; height:15px;}
+.point-item .txt {padding:0 40px; font-size:max(14px, calc(18 * var(--px))); letter-spacing:-0.05em; line-height:1.5556; text-transform:uppercase;}
+
+/* sect-studio-standard */
+.sect-studio-standard {padding:calc(200 * var(--px)) 0 calc(302 * var(--px)); background-color:var(--color-white); color:var(--font-color-black);}
+.standard-wrap {display:grid; grid-template-columns:calc(810 * var(--px)) calc(670 * var(--px)); column-gap:calc(140 * var(--px));}
+.standard-left {display:flex; flex-direction:column; min-width:0;}
+.standard-tit-area {display:flex; flex-direction:column; gap:calc(80 * var(--px));}
+.standard-tit-area .tit {font-family:var(--font-family-bebas); font-size:calc(100 * var(--px)); font-weight:400; letter-spacing:-0.01em; line-height:1; text-transform:uppercase; white-space:nowrap;}
+.standard-tit-area .tit .line {display:block;}
+.standard-tit-area .tit .line-indent {margin-left:2.5em;}
+.standard-tit-area .sub-area {display:flex; flex-direction:column; gap:calc(40 * var(--px));}
+.standard-tit-area .sub-tit {font-size:calc(36 * var(--px)); font-weight:600; letter-spacing:-0.05em; line-height:calc(50 * var(--px));}
+.standard-tit-area .sub-txt {font-size:max(14px, calc(18 * var(--px))); letter-spacing:-0.05em; line-height:1.5556;}
+/* 리스트는 이미지 영역 하단에서 114px 위에 붙음 (Figma: 이미지 영역 기준 세로 중앙) */
+.standard-list-area {margin-top:auto; margin-bottom:calc(114 * var(--px)); padding-top:calc(60 * var(--px));}
+.standard-list-head {display:flex; align-items:center; padding:calc(20 * var(--px)) 0; border-bottom:1px solid var(--color-black); font-size:16px; letter-spacing:-0.01em; line-height:normal; white-space:nowrap;}
+.standard-list-head .before {color:var(--font-color-on-dark-primary);}
+.standard-list .before,
+.standard-list-head .before {flex-shrink:0; width:calc(350 * var(--px));}
+.standard-item {display:flex; align-items:center; padding:calc(50 * var(--px)) 0; border-bottom:1px solid var(--border-color-on-light-primary);}
+.standard-item .before {color:var(--font-color-on-dark-primary); font-size:calc(24 * var(--px)); letter-spacing:-0.05em; line-height:normal;}
+.standard-item .after {display:flex; align-items:center; gap:calc(30 * var(--px)); min-width:0; font-size:calc(24 * var(--px)); font-weight:600; letter-spacing:-0.05em; line-height:normal;}
+.standard-item .after img {display:block; flex-shrink:0; width:25px; height:10px;}
+/* 등장 모션: 타이틀·컨텐츠(ani-slide-top 아래→위) → 이미지(ani-fade-in 페이드 인) 순으로 시간차 */
+.standard-list-area.ani-slide-top.on {transition-delay:0.15s;}
+.standard-img-area.ani-fade-in.on {transition-delay:0.3s;}
+/* 이미지 영역: Figma 670x635, grid 1칸에 겹쳐 margin으로 배치, 값은 --g(=영역 폭/670) 기준 */
+.standard-img-area {--g:var(--px); display:grid; grid-template-columns:100%; grid-template-rows:100%; align-items:start; justify-items:start; width:calc(670 * var(--g)); height:calc(635 * var(--g)); margin-top:calc(316 * var(--px));}
+.standard-img-area > * {grid-area:1 / 1;}
+.standard-img-area .label {font-size:14px; letter-spacing:-0.01em; line-height:normal; white-space:nowrap;}
+.standard-img-area .img {display:block; overflow:hidden;}
+.standard-img-area .img img {display:block; width:100%; height:100%; object-fit:cover;}
+.standard-img-area .img-main {width:calc(420 * var(--g)); height:calc(520 * var(--g)); margin-top:calc(25 * var(--g));}
+.standard-img-area .focus-frame {--corner:calc(30 * var(--g)); width:calc(340 * var(--g)); height:calc(410 * var(--g)); margin:calc(225 * var(--g)) 0 0 calc(330 * var(--g));}
+.standard-img-area .img-sub {width:calc(300 * var(--g)); height:calc(370 * var(--g)); margin:calc(245 * var(--g)) 0 0 calc(350 * var(--g)); border:1px solid var(--color-white);}
+
+/* sect-studio-detail */
+.sect-studio-detail {padding:calc(200 * var(--px)) 0; background-color:var(--color-black); color:var(--font-color-white);}
+.detail-tit-area {display:flex; align-items:flex-end; gap:calc(120 * var(--px));}
+.detail-tit-area .tit {flex-shrink:0; font-family:var(--font-family-bebas); font-size:calc(100 * var(--px)); font-weight:400; letter-spacing:-0.01em; line-height:1; text-transform:uppercase; white-space:nowrap;}
+.detail-tit-area .sub-area {display:flex; flex-direction:column; gap:calc(40 * var(--px)); width:calc(443 * var(--px));}
+.detail-tit-area .sub-tit {font-size:calc(30 * var(--px)); font-weight:600; letter-spacing:calc(-1.5 * var(--px)); line-height:calc(50 * var(--px)); white-space:nowrap;}
+.detail-tit-area .sub-tit em {font-size:calc(36 * var(--px)); font-style:normal;}
+.detail-tit-area .sub-txt {font-size:max(14px, calc(18 * var(--px))); letter-spacing:-0.05em; line-height:1.5556;}
+.detail-list {margin-top:calc(80 * var(--px));}
+.detail-item {display:flex; align-items:center; gap:calc(80 * var(--px)); padding:calc(60 * var(--px)) calc(50 * var(--px)); border-bottom:1px solid var(--font-color-on-dark-primary);}
+.detail-item:first-child {border-top:1px solid var(--font-color-on-dark-primary);}
+.detail-item .num {flex-shrink:0; width:calc(80 * var(--px)); margin-right:calc(-30 * var(--px)); font-family:var(--font-family-bebas); font-size:calc(80 * var(--px)); letter-spacing:-0.01em; line-height:normal;}
+.detail-item .tit {flex-shrink:0; font-family:var(--font-family-bebas); font-size:calc(100 * var(--px)); letter-spacing:-0.01em; line-height:normal; white-space:nowrap;}
+/* 크롭 이미지: .img-area(보이는 창, 너비가 변함) > .img-inner(300x220 고정) > img
+   img 는 flex + margin 으로 크롭 (margin % 는 가로폭 기준이라 top 은 Figma값 x 220/300 으로 환산) */
+.detail-item .img-area {display:flex; flex-shrink:0; align-items:center; width:calc(300 * var(--px)); height:calc(220 * var(--px)); overflow:hidden;}
+.detail-item .img-inner {display:flex; flex:none; width:calc(300 * var(--px)); height:calc(220 * var(--px)); overflow:hidden;}
+.detail-item .img-area img {display:block; flex:none; max-width:none;}
+.detail-item-01 .img-area img {width:213.79%; height:356.32%; margin:-79.823% 0 0 -102.02%;}
+.detail-item-02 .img-area img {width:114.51%; height:190.85%; margin:-17.138% 0 0 0.16%;}
+.detail-item-03 .img-area img {width:116.65%; height:194.41%; margin:-3.329% 0 0 -8.46%;}
+.detail-item .txt-area {display:flex; flex-direction:column; gap:calc(30 * var(--px)); min-width:0;}
+.detail-item .txt-area .sub {font-size:calc(24 * var(--px)); font-weight:600; letter-spacing:-0.01em; line-height:normal;}
+.detail-item .txt-area .txt {font-size:max(14px, calc(18 * var(--px))); letter-spacing:-0.05em; line-height:1.6667;}
+/* 02: 번호 + 이미지 → 텍스트 → 영문(오른쪽 정렬) 순서 */
+.detail-item-02 .tit {flex:1 0 0; order:1; min-width:0; text-align:right;}
+.detail-caption {margin-top:20px; color:var(--font-color-on-dark-secondary); font-size:16px; letter-spacing:-0.01em; line-height:normal; text-align:right;}
+/* detail-list hover (참고: ipartners.co.kr Solutions 목록 .mt-100.md:mt-50)
+   - 이미지 영역은 평소 너비·높이 0 → 행에 마우스를 올리면 300x220 까지 늘어남 (참고: grid-cols 0fr → 1fr)
+     가로: .img-area 너비 0 → 300 (왼쪽 기준으로 오른쪽으로)
+     세로: .img-inner clip-path 로 가운데에서 위아래로 0 → 220 (영역 높이 220 은 유지 → 행 높이 341 고정, 아래 행이 밀리지 않음)
+     너비 0 일 때 양쪽 gap(80)이 겹치지 않도록 margin-right:-80 → 펼쳐지면 0
+   - 목록에 마우스를 올리면 나머지 행은 흐리게(0.2) / 올린 행은 선명 + 밑줄 흰색
+   - 0.4s ease-out (참고 사이트 duration-400 ease-out), 마우스 환경 PC 레이아웃(1280px 이상)에서만 적용 */
+@media (hover:hover) and (min-width:1280px) {
+	.detail-item > * {transition:opacity 0.4s ease-out;}
+	.detail-list:hover .detail-item:not(:hover) > * {opacity:0.2;}
+	.detail-item.ani-slide-top.on {transition:opacity 0.75s ease, transform 0.75s ease, border-color 0.4s ease-out;}
+	.detail-item:hover {border-bottom-color:var(--color-white);}
+	.detail-item .img-area {width:0; margin-right:calc(-80 * var(--px)); transition:opacity 0.4s ease-out, width 0.3s ease-out, margin 0.3s ease-out;}
+	.detail-item:hover .img-area {width:calc(300 * var(--px)); margin-right:0;}
+	.detail-item .img-inner {clip-path:inset(50% 0 50% 0); transition:clip-path 0.3s ease-out;}
+	.detail-item:hover .img-inner {clip-path:inset(0 0 0 0);}
+}
+
+/* sect-studio-cta */
+.sect-studio-cta {padding:calc(250 * var(--px)) 0 calc(249 * var(--px)); background-color:var(--color-white); color:var(--font-color-black);}
+.cta-area {display:flex; align-items:flex-end; gap:calc(140 * var(--px));}
+.cta-area .tit {flex-shrink:0; font-family:var(--font-family-bebas); font-size:calc(220 * var(--px)); font-weight:400; letter-spacing:-0.01em; line-height:calc(200 * var(--px)); text-transform:uppercase; white-space:nowrap;}
+.cta-txt-area {display:flex; flex-direction:column; align-items:flex-start; width:calc(360 * var(--px)); min-width:280px;}
+.cta-txt-area.ani-slide-top.on {transition-delay:0.1s;}
+.cta-txt-area .sub {font-size:calc(28 * var(--px)); font-weight:500; letter-spacing:-0.05em; line-height:calc(40 * var(--px)); white-space:nowrap;}
+/* 바로가기 버튼 hover: Figma shortcut btn 컴포넌트 "속성 1=hover" (배경 #000 → #646464, 글자·화살표 흰색 그대로)
+   전환은 Figma 인터랙션 ON_HOVER · SMART_ANIMATE · EASE_IN 0.2s */
+.btn-shortcut {display:flex; align-items:center; justify-content:space-between; gap:20px; width:100%; margin-top:calc(50 * var(--px)); padding:20px 30px; background-color:var(--color-black); color:var(--font-color-white); font-size:20px; font-weight:500; letter-spacing:-1px; line-height:30px; transition:background-color 0.2s ease-in;}
+.btn-shortcut img {display:block; flex-shrink:0;}
+.btn-shortcut:hover,
+.btn-shortcut:focus-visible {background-color:var(--font-color-on-dark-primary);}
+.cta-txt-area .eng {margin-top:21px; color:var(--font-color-on-dark-primary); font-size:14px; letter-spacing:-0.01em; line-height:normal;}
+
+/* responsive: 태블릿·모바일 (1279px 이하) — MO 시안 없음, main 반응형 규칙 기준 */
+@media screen and (max-width:1279px) {
+	.studio .inner-wide {padding:0 3.846%;}
+
+	/* sect-studio-visual */
+	.sect-studio-visual {height:auto;}
+	.sect-studio-visual .inner-wide {display:block; height:auto; padding-top:130px; padding-bottom:110px;}
+	.studio-visual-tit {gap:20px;}
+	.studio-visual-tit .tit {gap:10px; font-size:clamp(80px, 20vw, 200px);}
+	.studio-visual-tit .sub {height:24px; font-size:16px; letter-spacing:-0.8px;}
+	.studio-visual-gallery {--g:calc(100cqw / 1210); width:100%; height:auto; aspect-ratio:1210 / 718; margin:60px 0 0; container-type:inline-size;}
+	.studio-visual-copy {margin:20px 0 0; font-size:12px; letter-spacing:-0.12px; text-align:right; transform:none;}
+
+	/* sect-studio-compare */
+	.sect-studio-compare {padding:120px 0 100px; border-radius:30px 30px 0 0;}
+	.compare-lead {font-size:20px; letter-spacing:-1px; line-height:32px; white-space:normal;}
+	.compare-lead em {font-size:24px;}
+	.compare-wrap {flex-direction:column; align-items:stretch; gap:60px; margin-top:40px;}
+	.compare-slider {width:100%;}
+	.compare-tit-area {flex:none; gap:40px;}
+	.compare-tit-area .tit {font-size:clamp(50px, 8vw, 100px);}
+	.compare-tit-area .sub-area {gap:24px; padding:0;}
+	.compare-tit-area .sub-tit {font-size:20px; letter-spacing:-1px; line-height:30px;}
+	.compare-tit-area .sub-txt {font-size:14px; letter-spacing:-0.7px; line-height:24px;}
+	.point-list {flex-direction:column; align-items:stretch; gap:0; margin-top:80px;}
+	.point-item {gap:20px; padding:30px 0;}
+	.point-item .num {font-size:16px; letter-spacing:-0.8px; line-height:26px;}
+	.point-item .tit-txt {font-size:18px; letter-spacing:-0.9px; line-height:26px;}
+	.point-item .txt {padding:0 0 0 40px; font-size:14px; letter-spacing:-0.7px; line-height:24px;}
+
+	/* sect-studio-standard */
+	.sect-studio-standard {padding:120px 0;}
+	.standard-wrap {grid-template-columns:100%; row-gap:60px;}
+	.standard-tit-area {gap:40px;}
+	.standard-tit-area .tit {font-size:clamp(46px, 8vw, 100px); white-space:normal;}
+	.standard-tit-area .tit .line-indent {margin-left:1.5em;}
+	.standard-tit-area .sub-area {gap:24px;}
+	.standard-tit-area .sub-tit {font-size:22px; letter-spacing:-1.1px; line-height:32px;}
+	.standard-tit-area .sub-txt {font-size:14px; letter-spacing:-0.7px; line-height:24px;}
+	.standard-list-area {margin:0; padding-top:60px;}
+	.standard-list-head {padding:16px 0; font-size:13px;}
+	.standard-list .before,
+	.standard-list-head .before {width:40%;}
+	.standard-item {padding:24px 0;}
+	.standard-item .before,
+	.standard-item .after {font-size:16px; letter-spacing:-0.8px;}
+	.standard-item .after {gap:12px;}
+	.standard-img-area {--g:calc(100cqw / 670); width:100%; max-width:670px; height:auto; aspect-ratio:670 / 635; margin-top:0; container-type:inline-size;}
+	.standard-img-area .label {font-size:12px;}
+
+	/* sect-studio-detail */
+	.sect-studio-detail {padding:120px 0;}
+	.detail-tit-area {flex-direction:column; align-items:flex-start; gap:40px;}
+	.detail-tit-area .tit {font-size:clamp(50px, 8vw, 100px);}
+	.detail-tit-area .sub-area {gap:24px; width:auto;}
+	.detail-tit-area .sub-tit {font-size:20px; letter-spacing:-1px; line-height:32px; white-space:normal;}
+	.detail-tit-area .sub-tit em {font-size:24px;}
+	.detail-tit-area .sub-txt {font-size:14px; letter-spacing:-0.7px; line-height:24px;}
+	.detail-list {margin-top:60px;}
+	.detail-item {display:grid; grid-template-columns:auto 1fr; grid-template-areas:"num tit" "img img" "txt txt"; align-items:center; gap:24px 16px; padding:40px 0;}
+	.detail-item .num {grid-area:num; width:auto; margin:0; font-size:40px;}
+	.detail-item .tit {grid-area:tit; font-size:clamp(40px, 7vw, 70px); white-space:normal;}
+	.detail-item-02 .tit {text-align:left;}
+	.detail-item .img-area {grid-area:img; width:100%; max-width:600px; height:auto; aspect-ratio:300 / 220;}
+	.detail-item .img-inner {width:100%; height:100%;}
+	.detail-item .txt-area {grid-area:txt; gap:16px;}
+	.detail-item .txt-area .sub {font-size:18px; letter-spacing:-0.18px;}
+	.detail-item .txt-area .txt {font-size:14px; letter-spacing:-0.7px; line-height:24px;}
+	.detail-caption {font-size:12px;}
+
+	/* sect-studio-cta */
+	.sect-studio-cta {padding:120px 0;}
+	.cta-area {flex-direction:column; align-items:flex-start; gap:50px;}
+	.cta-area .tit {font-size:clamp(64px, 15vw, 150px); line-height:0.91;}
+	.cta-txt-area {width:100%; max-width:360px; min-width:0;}
+	.cta-txt-area .sub {font-size:20px; letter-spacing:-1px; line-height:30px;}
+	.btn-shortcut {margin-top:40px; padding:16px 24px; font-size:16px; letter-spacing:-0.8px; line-height:24px;}
+	.cta-txt-area .eng {margin-top:20px; font-size:12px;}
+}
+
+/* responsive: 768px 미만 */
+@media screen and (max-width:767px) {
+	.compare-lead br,
+	.point-item .txt br,
+	.detail-item .txt-area .txt br {display:none;}
+	.standard-list-head .before,
+	.standard-list .before {width:38%;}
+	.standard-item .before,
+	.standard-item .after {font-size:14px; letter-spacing:-0.7px;}
+	.standard-item .after {gap:8px;}
+	.standard-item .after img {width:18px; height:auto;}
+}

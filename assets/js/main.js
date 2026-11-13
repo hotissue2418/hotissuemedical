@@ -56,11 +56,11 @@ function introVideoLoop(){
     });
 }
 
-/* 화면에 보일 때 .ani-slide-top(아래→위), .ani-slide-left(왼쪽→오른쪽) 요소에 .on을 붙임
+/* 화면에 보일 때 .ani-slide-top(아래→위), .ani-slide-left(왼쪽→오른쪽), .ani-fade-in(페이드 인) 요소에 .on을 붙임
    요소가 화면 아래로 완전히 벗어나면(스크롤을 위로 올리면) .on을 떼서 처음 상태로 되돌림
    .ani-group 안의 요소는 그룹이 보일 때 한꺼번에 시작 */
 function aniSlideScrollActive(){
-    const aniSel = ".ani-slide-top, .ani-slide-left, .ani-up",
+    const aniSel = ".ani-slide-top, .ani-slide-left, .ani-fade-in, .ani-up",
         $groups = $(".ani-group"),
         $targets = $(aniSel).not($groups.find(aniSel));
 

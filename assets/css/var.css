@@ -48,6 +48,9 @@
 	--font-color-on-dark-primary:#646464;
 	--font-color-on-dark-secondary:#A2A2A2;
 
+	/* border */
+	--border-color-on-light-primary:#D8D8D8;
+
 	/* dim */
 	--dim-color-black:rgba(0,0,0,0.5);
 	--dim-color-medium:rgba(0,0,0,0.6);

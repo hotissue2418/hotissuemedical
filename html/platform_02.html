@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>올인스튜디오 | 핫이슈메디컬</title>
+	<meta name="viewport" id="meta_viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=no">
+	<link rel="stylesheet" href="../assets/style.css">
+	<script src="../assets/js/jquery-3.7.1.js"></script>
+	<script src="../assets/js/plugin/lenis/lenis.min.js"></script>
+	<script src="../assets/js/plugin/ripples/jquery.ripples.min.js"></script>
+	<script src="../assets/js/common.js"></script>
+	<script src="../assets/js/main.js"></script>
+	<script src="../assets/js/sub.js"></script>
+</head>
+<body>
+	<div id="skipMenu" class="skip-menu">
+		<a href="#container">본문 바로가기</a>
+	</div>
+	<div id="wrapper" class="wrapper">
+		<header id="header" class="header">
+			<div class="header-wrap">
+				<h1 class="logo">
+					<a href="./main.html">
+						<img class="part1" src="../assets/images/main/ico/logo_part1.svg" alt="">
+						<img class="part2" src="../assets/images/main/ico/logo_part2.svg" alt="">
+						<img class="part3" src="../assets/images/main/ico/logo_part3.svg" alt="">
+						<span class="blind">핫이슈메디컬</span>
+					</a>
+				</h1>
+				<nav class="gnb" aria-label="주요 메뉴">
+					<ul class="gnb-menu">
+						<li class="gnb-menu-item"><a href="./main.html" class="gnb-menu-link trim">HOME</a></li>
+						<li class="gnb-menu-item"><a href="javascript:void(0);" class="gnb-menu-link trim">ABOUT</a></li>
+						<li class="gnb-menu-item" data-depth="1">
+							<a href="javascript:void(0);" class="gnb-menu-link trim">PLATFORM</a>
+						</li>
+						<li class="gnb-menu-item" data-depth="2">
+							<a href="javascript:void(0);" class="gnb-menu-link trim">MARKETING</a>
+						</li>
+						<li class="gnb-menu-item" data-depth="3">
+							<a href="javascript:void(0);" class="gnb-menu-link trim">PORTFOLIO</a>
+						</li>
+						<li class="gnb-menu-item" data-depth="4">
+							<a href="javascript:void(0);" class="gnb-menu-link trim">INQUIRY</a>
+						</li>
+					</ul>
+				</nav>
+				<a href="javascript:void(0);" class="btn-contact trim">CONTACT</a>
+				<button type="button" class="btn-menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="moMenu"><span></span><span></span></button>
+			</div>
+		</header>
+		<div class="gnb-depth-area">
+			<ul class="gnb-depth" data-depth="1">
+				<li><a href="javascript:void(0);">데일리뷰</a></li>
+				<li><a href="./platform_02.html" aria-current="page">올인스튜디오</a></li>
+				<li><a href="javascript:void(0);">마켓뷰티</a></li>
+			</ul>
+			<ul class="gnb-depth" data-depth="2">
+				<li><a href="javascript:void(0);">피부과마케팅</a></li>
+				<li><a href="javascript:void(0);">치과마케팅</a></li>
+				<li><a href="javascript:void(0);">병원광고</a></li>
+				<li><a href="javascript:void(0);">병원마케팅</a></li>
+				<li><a href="javascript:void(0);">병원마케팅회사</a></li>
+				<li><a href="javascript:void(0);">비용안내</a></li>
+			</ul>
+			<ul class="gnb-depth" data-depth="3">
+				<li><a href="javascript:void(0);">브랜드필름</a></li>
+				<li><a href="javascript:void(0);">홈페이지</a></li>
+				<li><a href="javascript:void(0);">SNS광고</a></li>
+				<li><a href="javascript:void(0);">브랜드블로그</a></li>
+				<li><a href="javascript:void(0);">이벤트비주얼</a></li>
+			</ul>
+		</div>
+
+		<nav id="moMenu" class="mo-menu" aria-label="모바일 메뉴" data-lenis-prevent>
+			<ul class="mo-menu-list">
+				<li class="mo-menu-item"><a href="./main.html" class="mo-menu-link trim">HOME</a></li>
+				<li class="mo-menu-item"><a href="javascript:void(0);" class="mo-menu-link trim">ABOUT</a></li>
+				<li class="mo-menu-item">
+					<button type="button" class="mo-menu-btn" aria-expanded="false"><span class="tit trim">PLATFORM</span><span class="icon"></span></button>
+					<ul class="mo-submenu">
+						<li><a href="javascript:void(0);">데일리뷰</a></li>
+						<li><a href="./platform_02.html" aria-current="page">올인스튜디오</a></li>
+						<li><a href="javascript:void(0);">마켓뷰티</a></li>
+					</ul>
+				</li>
+				<li class="mo-menu-item">
+					<button type="button" class="mo-menu-btn" aria-expanded="false"><span class="tit trim">MARKETING</span><span class="icon"></span></button>
+					<ul class="mo-submenu">
+						<li><a href="javascript:void(0);">피부과마케팅</a></li>
+						<li><a href="javascript:void(0);">치과마케팅</a></li>
+						<li><a href="javascript:void(0);">병원광고</a></li>
+						<li><a href="javascript:void(0);">병원마케팅</a></li>
+						<li><a href="javascript:void(0);">병원마케팅회사</a></li>
+						<li><a href="javascript:void(0);">비용안내</a></li>
+					</ul>
+				</li>
+				<li class="mo-menu-item">
+					<button type="button" class="mo-menu-btn" aria-expanded="false"><span class="tit trim">PORTFOLIO</span><span class="icon"></span></button>
+					<ul class="mo-submenu">
+						<li><a href="javascript:void(0);">브랜드필름</a></li>
+						<li><a href="javascript:void(0);">홈페이지</a></li>
+						<li><a href="javascript:void(0);">SNS광고</a></li>
+						<li><a href="javascript:void(0);">브랜드블로그</a></li>
+						<li><a href="javascript:void(0);">이벤트비주얼</a></li>
+					</ul>
+				</li>
+				<li class="mo-menu-item"><a href="javascript:void(0);" class="mo-menu-link trim">INQUIRY</a></li>
+			</ul>
+			<a href="javascript:void(0);" class="mo-menu-contact trim">CONTACT</a>
+		</nav>
+
+		<main id="container" class="container studio">
+			<!-- 01. visual -->
+			<section class="sect sect-studio-visual">
+				<div class="inner inner-wide">
+					<div class="studio-visual-tit reveal-area">
+						<h2 class="tit" aria-label="ALLIN STUDIO">
+							<span class="reveal-mask" aria-hidden="true"><span class="reveal-txt trim">ALLIN</span></span>
+							<span class="reveal-mask" aria-hidden="true"><span class="reveal-txt trim">STUDIO</span></span>
+						</h2>
+						<p class="sub reveal-mask"><span class="reveal-txt">디테일이 다른 AI 이미지 플랫폼, 올인스튜디오.</span></p>
+					</div>
+					<div class="studio-visual-gallery">
+						<!-- 물결 효과(jquery.ripples)는 background-image 요소에만 적용되므로 img 대신 배경으로 지정 -->
+						<span class="img img-01 ripple-img" role="img" aria-label="올인스튜디오 AI 인물 이미지" style="background-image:url(../assets/images/platform/visual/img_visual01.png);"></span>
+						<span class="img img-02 ripple-img" aria-hidden="true" style="background-image:url(../assets/images/platform/visual/img_visual02.png);"></span>
+						<span class="img img-03 ripple-img" aria-hidden="true" style="background-image:url(../assets/images/platform/visual/img_visual03.jpg);"></span>
+						<div class="focus-frame" aria-hidden="true">
+							<span class="corner corner-lt"></span>
+							<span class="corner corner-rt"></span>
+							<span class="corner corner-lb"></span>
+							<span class="corner corner-rb"></span>
+						</div>
+						<div class="letter-deco-area deco-ai-visual-lab" aria-hidden="true">
+							<div class="letter-deco">
+								<span class="img"><img src="../assets/images/main/hero/img_tape_visual_edge.png" alt=""></span>
+								<span class="txt trim">AI VISUAL LAB</span>
+							</div>
+						</div>
+					</div>
+					<p class="studio-visual-copy trim">selected to stand out.</p>
+				</div>
+			</section>
+
+			<!-- 02. compare -->
+			<section class="sect sect-studio-compare">
+				<div class="inner inner-wide">
+					<p class="compare-lead trim">AI 이미지가 범람하는 시대, <br>그럼에도 <em>'선택받는 이미지'</em>의 본질은 같습니다.</p>
+					<div class="compare-wrap">
+						<div class="compare-slider">
+							<span class="img img-before"><img src="../assets/images/platform/compare/img_compare_before.png" alt="보정 전 이미지"></span>
+							<span class="img img-after"><img src="../assets/images/platform/compare/img_compare_after.png" alt="올인스튜디오 보정 후 이미지"></span>
+							<div class="compare-bar" role="slider" tabindex="0" aria-label="보정 전후 비교" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+								<span class="arrow arrow-prev"><img src="../assets/images/platform/ico/ico_compare_prev.svg" alt=""></span>
+								<img class="line" src="../assets/images/platform/ico/line_compare_bar.svg" alt="">
+								<span class="arrow arrow-next"><img src="../assets/images/platform/ico/ico_compare_next.svg" alt=""></span>
+							</div>
+						</div>
+						<div class="compare-tit-area ani-slide-top">
+							<h2 class="tit trim">LESS SEARCH.<br>MORE CREATIVE.</h2>
+							<div class="sub-area">
+								<p class="sub-tit trim">제작이 빨라졌다고,<br>빠르게 선택받는 건 아닙니다.</p>
+								<p class="sub-txt trim">상품은 같아도, 사고 싶어지는 순간은 다릅니다.<br>무엇을 보여줄지, 어떻게 전할지.<br>올인스튜디오는 그 순간을 설계합니다.</p>
+							</div>
+						</div>
+					</div>
+					<ul class="point-list ani-group">
+						<li class="point-item ani-slide-top">
+							<div class="tit-area">
+								<p class="tit"><span class="num trim">01</span><span class="tit-txt trim">고르는 시간은 짧게, 기준은 높게.</span></p>
+								<img class="icon" src="../assets/images/platform/ico/ico_plus.svg" alt="">
+							</div>
+							<p class="txt trim">수많은 이미지 속에서 헤맬 필요 없이, <br>완성도 높은 선택지만 골라보세요.</p>
+						</li>
+						<li class="point-item ani-slide-top">
+							<div class="tit-area">
+								<p class="tit"><span class="num trim">02</span><span class="tit-txt trim">첫인상부터 남다르게.</span></p>
+								<img class="icon" src="../assets/images/platform/ico/ico_plus.svg" alt="">
+							</div>
+							<p class="txt trim">한눈에 시선을 사로잡는 무드와 디테일. <br>브랜드의 존재감을 이미지에 담아보세요.</p>
+						</li>
+						<li class="point-item ani-slide-top">
+							<div class="tit-area">
+								<p class="tit"><span class="num trim">03</span><span class="tit-txt trim">이미지는 시작일 뿐.</span></p>
+								<img class="icon" src="../assets/images/platform/ico/ico_plus.svg" alt="">
+							</div>
+							<p class="txt trim">좋은 이미지에서 시작되는 새로운 아이디어. <br>이제 다음 크리에이티브에 집중하세요.</p>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- 03. standard -->
+			<section class="sect sect-studio-standard">
+				<div class="inner inner-wide">
+					<div class="standard-wrap">
+						<div class="standard-left">
+							<div class="standard-tit-area ani-slide-top">
+								<h2 class="tit trim"><span class="line">A DIFFERENT EYE.</span><span class="line line-indent">A DIFFERENT STANDARD.</span></h2>
+								<div class="sub-area">
+									<p class="sub-tit trim">이미지의 가치는 쓰임에서 완성됩니다.</p>
+									<p class="sub-txt trim">첫인상을 만드는 광고부터 브랜드의 다음 장면까지.<br>비주얼의 가능성을 더 넓게 바라봅니다.</p>
+								</div>
+							</div>
+							<div class="standard-list-area ani-slide-top">
+								<div class="standard-list-head">
+									<p class="before trim">THE FIRST LOOK</p>
+									<p class="after trim">THE ALLIN STANDARD</p>
+								</div>
+								<ul class="standard-list">
+									<li class="standard-item">
+										<p class="before trim">눈길을 끄는 이미지</p>
+										<p class="after"><img src="../assets/images/platform/ico/ico_arrow_right.svg" alt=""><span class="trim">메세지로 이어지는 시선의 흐름</span></p>
+									</li>
+									<li class="standard-item">
+										<p class="before trim">보기 좋은 분위기</p>
+										<p class="after"><img src="../assets/images/platform/ico/ico_arrow_right.svg" alt=""><span class="trim">브랜드와 어울리는 색감과 구도</span></p>
+									</li>
+									<li class="standard-item">
+										<p class="before trim">선명한 화면</p>
+										<p class="after"><img src="../assets/images/platform/ico/ico_arrow_right.svg" alt=""><span class="trim">확대해도 자연스러운 질감</span></p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="standard-img-area ani-fade-in">
+							<p class="label trim">GOOD IMAGES BEGIN WITH CONTEXT.</p>
+							<span class="img img-main"><img src="../assets/images/platform/standard/img_standard01.png" alt="올인스튜디오 AI 뷰티 이미지"></span>
+							<div class="focus-frame" aria-hidden="true">
+								<span class="corner corner-lt"></span>
+								<span class="corner corner-rt"></span>
+								<span class="corner corner-lb"></span>
+								<span class="corner corner-rb"></span>
+							</div>
+							<span class="img img-sub"><img src="../assets/images/platform/standard/img_standard02.png" alt=""></span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 04. detail -->
+			<section class="sect sect-studio-detail">
+				<div class="inner inner-wide">
+					<div class="detail-tit-area ani-slide-top">
+						<h2 class="tit trim">THE REAL DIFFERENCE<br>LIES IN THE DETAILS.</h2>
+						<div class="sub-area">
+							<p class="sub-tit trim"><em>'보기 좋다'</em>를 넘어,<br><em>'이것이어야만 한다'</em>는 확신이 들도록.</p>
+							<p class="sub-txt trim">AI 툴이 흔해진 시대, 차이를 만드는 건<br>프롬프트가 아니라 마케팅 감각입니다.</p>
+						</div>
+					</div>
+					<ul class="detail-list">
+						<li class="detail-item detail-item-01 ani-slide-top">
+							<p class="num trim">01</p>
+							<p class="tit trim">REAL DETAIL</p>
+							<div class="img-area"><span class="img-inner"><img src="../assets/images/platform/detail/img_detail01.png" alt="피부결이 드러나는 클로즈업 이미지"></span></div>
+							<div class="txt-area">
+								<p class="sub trim">확대할수록 드러나는 완성도.</p>
+								<p class="txt trim">피부결부터 빛과 질감까지. <br>작은 디테일이 이미지의 완성도를 결정합니다.</p>
+							</div>
+						</li>
+						<li class="detail-item detail-item-02 ani-slide-top">
+							<p class="num trim">02</p>
+							<p class="tit trim">DISTINCTIVE MOOD</p>
+							<div class="img-area"><span class="img-inner"><img src="../assets/images/platform/detail/img_detail02.jpg" alt="독특한 무드의 연출 이미지"></span></div>
+							<div class="txt-area">
+								<p class="sub trim">익숙한 장면도, 낯설게 매력적으로.</p>
+								<p class="txt trim">구도와 색감, 시선의 흐름까지. <br>남다른 감각으로 브랜드의 인상을 완성합니다.</p>
+							</div>
+						</li>
+						<li class="detail-item detail-item-03 ani-slide-top">
+							<p class="num trim">03</p>
+							<p class="tit trim">MARKETING SENSE</p>
+							<div class="img-area"><span class="img-inner"><img src="../assets/images/platform/detail/img_detail03.jpg" alt="메시지를 담은 광고 이미지"></span></div>
+							<div class="txt-area">
+								<p class="sub trim">시선이 머문 뒤, 메세지가 남도록.</p>
+								<p class="txt trim">시선을 끄는 것만으로는 부족하니까. <br>이미지가 쓰일 순간까지 생각합니다.</p>
+							</div>
+						</li>
+					</ul>
+					<p class="detail-caption trim">DETAIL. MOOD. PURPOSE.</p>
+				</div>
+			</section>
+
+			<!-- 05. cta -->
+			<section class="sect sect-studio-cta">
+				<div class="inner inner-wide">
+					<div class="cta-area">
+						<h2 class="tit trim ani-slide-top">FIND YOUR<br>NEXT IMAGE.</h2>
+						<div class="cta-txt-area ani-slide-top">
+							<p class="sub trim">매출로 증명하는 한 장의 차이,<br>올인스튜디오.</p>
+							<a href="https://allinstudio.kr/" class="btn-shortcut"><span class="trim">올인스튜디오 바로가기</span><img src="../assets/images/platform/ico/ico_arrow_shortcut.svg" alt=""></a>
+							<p class="eng trim">ALLIN STUDIO / AI VISUAL LAB.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer id="footer" class="footer">
+			<div class="inner inner-wide">
+				<div class="footer-area">
+					<div class="footer-tit">
+						<p class="tit trim">HOT<br>ISSUE<br>MEDICAL</p>
+						<p class="copy">© 2026 Hotissue-medical. All Rights Reserved.</p>
+					</div>
+					<div class="footer-txt">
+						<a href="https://hotissuemedical.com/data/file/config/5d1ef0591698f4536eb8da9277d54f29_UkdZfQEo_d2fd67064d3707cd9753b0d0bb7b5df5d5bef48a.pdf" class="footer-download"><span>회사소개서</span><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_download.svg"><img src="../assets/images/main/ico/ico_download.svg" alt=""></picture></a>
+						<div class="footer-wrap">
+							<div class="footer-info">
+								<div class="footer-info-block">
+									<p class="tit">COMPANY</p>
+									<p class="txt"><span class="name">주식회사 핫이슈메디컬</span><br>대표 : 홍봉기<br>사업자등록번호 : 475-81-02711<br>핫이슈메디컬(법인) : 서울특별시 구로구 디지털로34길 55, 304호<br>데이뷰마케팅그룹(법인) : 서울특별시 구로구 디지털로34길 55, 305호</p>
+								</div>
+								<div class="footer-info-block">
+									<p class="tit">CONTACT</p>
+									<p class="txt">대표번호 : 02-862-9236<br>이메일 : hotissue8254@naver.com</p>
+								</div>
+							</div>
+							<a href="javascript:void(0);" class="footer-contact">
+								<picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/btn_contact_circle.svg"><img src="../assets/images/main/ico/btn_contact_circle.svg" alt=""></picture>
+								<span class="txt trim">프로젝트 문의하기</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<div class="quick-menu">
+			<ul class="quick-menu-list">
+				<li><a href="tel:02-862-9236" class="quick-menu-link"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_quick_tel.svg"><img src="../assets/images/main/ico/ico_quick_tel.svg" alt="전화 문의"></picture></a></li>
+				<li><a href="https://pf.kakao.com/_lxdCVK" class="quick-menu-link quick-menu-kakao"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_quick_kakao.svg"><img src="../assets/images/main/ico/ico_quick_kakao.svg" alt="카카오톡 문의"></picture></a></li>
+			</ul>
+			<button type="button" class="btn-quick-toggle" aria-expanded="false" aria-label="빠른 문의 열기"><img src="../assets/images/main/mo/ico/ico_quick_close.svg" alt=""></button>
+		</div>
+		<button type="button" class="btn-quick-top"><picture><source media="(max-width:1279px)" srcset="../assets/images/main/mo/ico/ico_quick_top.svg"><img src="../assets/images/main/ico/ico_quick_top.svg" alt="맨 위로"></picture></button>
+	</div>
+</body>
+</html>
