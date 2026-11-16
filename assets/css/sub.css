@@ -12,8 +12,9 @@
 .reveal-mask {display:flex; align-items:center; overflow:hidden;}
 .reveal-txt {display:block; transform:translateY(130%); transition:transform 0.3s ease;}
 .reveal-area.on .reveal-txt {transform:translateY(0); transition:transform 1s cubic-bezier(0.22, 1, 0.36, 1);}
-.reveal-area.on .reveal-mask:nth-child(2) .reveal-txt {transition-delay:0.15s;}
-.reveal-area.on > .reveal-mask .reveal-txt {transition-delay:0.4s;}
+/* 줄 순서대로 시간차: 타이틀 1줄 → 타이틀 2줄(0.3s) → 서브 문구(0.75s) */
+.reveal-area.on > * > .reveal-mask:nth-child(2) .reveal-txt {transition-delay:0.3s;}
+.reveal-area.on > .reveal-mask .reveal-txt {transition-delay:0.75s;}
 
 /* focus frame: 모서리 4개 (크기는 --corner) */
 .focus-frame {display:grid; grid-template-columns:100%; grid-template-rows:100%; pointer-events:none;}
@@ -106,9 +107,13 @@
 .standard-item .before {color:var(--font-color-on-dark-primary); font-size:calc(24 * var(--px)); letter-spacing:-0.05em; line-height:normal;}
 .standard-item .after {display:flex; align-items:center; gap:calc(30 * var(--px)); min-width:0; font-size:calc(24 * var(--px)); font-weight:600; letter-spacing:-0.05em; line-height:normal;}
 .standard-item .after img {display:block; flex-shrink:0; width:25px; height:10px;}
-/* 등장 모션: 타이틀·컨텐츠(ani-slide-top 아래→위) → 이미지(ani-fade-in 페이드 인) 순으로 시간차 */
+/* 등장 모션: 타이틀·컨텐츠(ani-slide-top 아래→위) → 이미지 영역(ani-group, 각 요소 ani-fade-in)
+   이미지 영역은 라벨·메인 이미지 → 서브 이미지 → 포커스 프레임 순으로 하나씩 시간차 */
 .standard-list-area.ani-slide-top.on {transition-delay:0.15s;}
-.standard-img-area.ani-fade-in.on {transition-delay:0.3s;}
+.standard-img-area .label.ani-fade-in.on,
+.standard-img-area .img-main.ani-fade-in.on {transition-delay:0.3s;}
+.standard-img-area .img-sub.ani-fade-in.on {transition-delay:0.8s;}
+.standard-img-area .focus-frame.ani-fade-in.on {transition-delay:1.2s;}
 /* 이미지 영역: Figma 670x635, grid 1칸에 겹쳐 margin으로 배치, 값은 --g(=영역 폭/670) 기준 */
 .standard-img-area {--g:var(--px); display:grid; grid-template-columns:100%; grid-template-rows:100%; align-items:start; justify-items:start; width:calc(670 * var(--g)); height:calc(635 * var(--g)); margin-top:calc(316 * var(--px));}
 .standard-img-area > * {grid-area:1 / 1;}
@@ -169,7 +174,13 @@
 .cta-area {display:flex; align-items:flex-end; gap:calc(140 * var(--px));}
 .cta-area .tit {flex-shrink:0; font-family:var(--font-family-bebas); font-size:calc(220 * var(--px)); font-weight:400; letter-spacing:-0.01em; line-height:calc(200 * var(--px)); text-transform:uppercase; white-space:nowrap;}
 .cta-txt-area {display:flex; flex-direction:column; align-items:flex-start; width:calc(360 * var(--px)); min-width:280px;}
-.cta-txt-area.ani-slide-top.on {transition-delay:0.1s;}
+.cta-area .tit .line {display:block;}
+/* 등장 모션(ani-group): 타이틀 1줄 → 2줄 → 서브 문구 → 버튼 → 영문 순으로 한 줄씩 시간차 */
+.cta-area .tit .line.ani-slide-top.on:nth-child(2) {transition-delay:0.2s;}
+.cta-txt-area .sub.ani-slide-top.on {transition-delay:0.4s;}
+/* 버튼은 hover 배경 전환(0.2s)이 등장 transition에 덮이지 않도록 속성별로 지정 */
+.cta-txt-area .btn-shortcut.ani-slide-top.on {transition:opacity 0.75s ease 0.6s, transform 0.75s ease 0.6s, background-color 0.2s ease-in;}
+.cta-txt-area .eng.ani-slide-top.on {transition-delay:0.8s;}
 .cta-txt-area .sub {font-size:calc(28 * var(--px)); font-weight:500; letter-spacing:-0.05em; line-height:calc(40 * var(--px)); white-space:nowrap;}
 /* 바로가기 버튼 hover: Figma shortcut btn 컴포넌트 "속성 1=hover" (배경 #000 → #646464, 글자·화살표 흰색 그대로)
    전환은 Figma 인터랙션 ON_HOVER · SMART_ANIMATE · EASE_IN 0.2s */
