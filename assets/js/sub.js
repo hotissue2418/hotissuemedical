@@ -3,7 +3,35 @@ $(function() {
     compareSliderAction();
     visualRippleAction();
     visualStickyTop();
+    detailImgAction();
 });
+
+/* .detail-item: 항목이 화면 아래에서 1/3 지점에 닿으면 .active → 1279px 이하에서 이미지 영역 0 → 150x110 (sub.css)
+   rootMargin 하단 -33.333% → 화면 아래 1/3 을 제외한 영역과 겹칠 때 감지, 다시 그 아래로 내려가면 처음 상태로 되돌림 */
+function detailImgAction(){
+    const $items = $(".detail-item");
+
+    if(!$items.length) return;
+
+    if(!("IntersectionObserver" in window)){
+        $items.addClass("active");
+        return;
+    }
+
+    const observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+            if(entry.isIntersecting){
+                $(entry.target).addClass("active");
+            }else if(entry.boundingClientRect.top > entry.rootBounds.bottom){
+                $(entry.target).removeClass("active");
+            }
+        });
+    }, {rootMargin:"0px 0px -33.333% 0px"});
+
+    $items.each(function(){
+        observer.observe(this);
+    });
+}
 
 /* sect-studio-visual sticky 기준점: 섹션이 화면보다 높으면 top 을 (화면높이 - 섹션높이)로 올려
    섹션 바닥까지 스크롤된 뒤 고정 → 다음 섹션이 그 위로 덮으며 올라옴 */
