@@ -360,6 +360,8 @@ function companyTeamAction(){
             }
         }
         prevTop = top;
+        /* 고정이 시작되면 제목을 숨기고, 위로 벗어나면 다시 표시 (sub.css) */
+        $sect.toggleClass("on", top >= start - 1);
 
         /* 휠·스와이프·탭으로 이동 중에는 슬라이드가 이미 움직이고 있으므로 스크롤 위치를 반영하지 않음 */
         if(now < lockTime) return;
@@ -463,7 +465,10 @@ function companyTeamAction(){
         teamSwiper.allowTouchMove = !pinned;
         $sect.toggleClass("active", pinned);
 
-        if(!pinned) return;
+        if(!pinned){
+            $sect.removeClass("on");
+            return;
+        }
 
         const teamH = $team.outerHeight();
 

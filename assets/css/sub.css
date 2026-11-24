@@ -415,6 +415,7 @@
 .company-visual-area .sub {height:calc(29 * var(--g)); font-size:calc(24 * var(--g)); font-weight:500; letter-spacing:-0.05em; line-height:normal; white-space:nowrap;}
 .company-visual-area .sub-02 {margin:calc(425 * var(--g)) 0 0 calc(1491 * var(--g));}
 .company-visual-area .rotating-txt {width:calc(300 * var(--g)); height:calc(300 * var(--g)); margin:calc(502 * var(--g)) 0 0 calc(409 * var(--g)); animation:companyRotate 20s linear infinite;}
+.company-visual-area .rotating-txt picture,
 .company-visual-area .rotating-txt img {display:block; width:100%; height:100%;}
 .company-visual-area .visual-video {z-index:1; display:flex; align-items:center; width:calc(450 * var(--g)); height:calc(600 * var(--g)); margin:calc(112 * var(--g)) 0 0 calc(585 * var(--g)); background-color:var(--color-surface-gray);}
 .company-visual-area .visual-video > * {display:block; width:100%; height:auto; aspect-ratio:1 / 1; object-fit:cover;}
@@ -524,6 +525,9 @@
 /* 가로 스크롤 구간: .inner 를 고정하고 ::after 로 스크롤 길이를 확보 (.active, --team-top, --team-distance 는 sub.js companyTeamAction) */
 .sect-company-team.active > .inner {position:sticky; top:var(--team-top, 0px);}
 .sect-company-team.active::after {content:""; display:block; height:var(--team-distance, 0px);}
+/* 고정되는 동안 제목 숨김 (.on 은 sub.js companyTeamAction) */
+.sect-company-team .company-tit-area {transition:opacity 0.4s ease;}
+.sect-company-team.on .company-tit-area {opacity:0;}
 /* 등장: 화면 아래에서 1/3 지점에 닿으면 .active (sub.js detailImgAction), 감지 위치가 밀리지 않도록 이동은 하위 요소에 적용 */
 .team-area {margin-top:calc(102 * var(--px)); border-top:1px solid var(--border-color-on-light-primary); opacity:0; transition:opacity 0.2s ease;}
 .team-area > * {transform:translateY(100px); transition:transform 0.2s ease;}
@@ -623,9 +627,9 @@
 	.company-tit-area .sub-tit {font-size:20px; line-height:30px; white-space:normal;}
 	.company-tit-area .sub-txt {font-size:16px; line-height:24px; white-space:normal;}
 
-	/* visual (390x844): 원점 (15,92), 360x634. --m 은 폭과 높이 기준 중 작은 값 */
+	/* visual (390x844): 원점 (15,92), 360x634. --m 은 폭 기준 최대 2배 (sect-studio-visual 과 동일, 높이 기준은 767px 이하에서만) */
 	.sect-company-visual {height:auto; min-height:100vh; min-height:100svh; container-type:inline-size;}
-	.sect-company-visual .inner-wide {--m:min(calc(100cqw / 390), calc((100svh - 116px) / 634), 2px); display:flex; justify-content:center; padding:58px 0;}
+	.sect-company-visual .inner-wide {--m:min(calc(100cqw / 390), 2px); display:flex; justify-content:center; padding:58px 0;}
 	.sect-company-visual .inner-wide::after {display:none;}
 	.company-visual-area {--g:var(--m); width:calc(360 * var(--g)); height:calc(634 * var(--g)); margin-top:0;}
 	.company-visual-area .tit {font-size:calc(90 * var(--g));}
@@ -731,8 +735,12 @@
 	.synergy-item img {height:100px;}
 }
 
-/* responsive: 모바일 (767px 이하) — 팀 영역 고정 중에는 화면 높이에 맞춰 여백·이미지를 축소 (--team-fit 은 sub.js companyTeamAction, 합계 530 = fitH) */
+/* responsive: 모바일 (767px 이하) */
 @media screen and (max-width:767px) {
+	/* visual: sect-studio-visual 과 같이 --m 을 폭 기준(390)과 높이 기준 중 작은 값으로 → 내용 높이(634) + 위아래 여백(58x2)이 화면 안에 다 들어옴 */
+	.sect-company-visual .inner-wide {--m:min(calc(100cqw / 390), calc((100svh - 116px) / 634), 2px);}
+
+	/* team: 고정 중에는 화면 높이에 맞춰 여백·이미지를 축소 (--team-fit 은 sub.js companyTeamAction, 합계 530 = fitH) */
 	.sect-company-team.active .team-item {padding:calc(60px * var(--team-fit, 1)) 0;}
 	.sect-company-team.active .team-item .tit,
 	.sect-company-team.active .team-item .sub {margin-top:calc(20px * var(--team-fit, 1));}
