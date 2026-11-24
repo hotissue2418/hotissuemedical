@@ -414,7 +414,7 @@
 .company-visual-area.reveal-area.on .reveal-mask.sub-02 .reveal-txt {transition-delay:0.3s;}
 .company-visual-area .sub {height:calc(29 * var(--g)); font-size:calc(24 * var(--g)); font-weight:500; letter-spacing:-0.05em; line-height:normal; white-space:nowrap;}
 .company-visual-area .sub-02 {margin:calc(425 * var(--g)) 0 0 calc(1491 * var(--g));}
-.company-visual-area .rotating-txt {width:calc(300 * var(--g)); height:calc(300 * var(--g)); margin:calc(502 * var(--g)) 0 0 calc(409 * var(--g)); animation:companyRotate 20s linear infinite;}
+.company-visual-area .rotating-txt {width:calc(300 * var(--g)); height:calc(300 * var(--g)); margin:calc(502 * var(--g)) 0 0 calc(409 * var(--g)); animation:companyRotate 10s linear infinite;}
 .company-visual-area .rotating-txt picture,
 .company-visual-area .rotating-txt img {display:block; width:100%; height:100%;}
 .company-visual-area .visual-video {z-index:1; display:flex; align-items:center; width:calc(450 * var(--g)); height:calc(600 * var(--g)); margin:calc(112 * var(--g)) 0 0 calc(585 * var(--g)); background-color:var(--color-surface-gray);}
@@ -533,6 +533,8 @@
 .team-area > * {transform:translateY(100px); transition:transform 0.2s ease;}
 .team-area.active {opacity:1; transition-duration:0.5s;}
 .team-area.active > * {transform:translateY(0); transition-duration:0.5s;}
+/* 좌우로 이동하는 팀이 화면 양 끝까지 보이도록 함 (화면 밖은 .wrapper 의 overflow:clip 으로 잘림) */
+.team-area .team-slider {overflow:visible;}
 .team-item {display:flex; align-items:center; justify-content:space-between; height:auto; padding:calc(120 * var(--px)) 0;}
 .team-item .txt-area {min-width:0;}
 .team-item .label-area {display:flex; align-items:center; gap:calc(20 * var(--px));}

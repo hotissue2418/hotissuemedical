@@ -291,9 +291,14 @@ function companyTeamAction(){
         $list.stop().animate({scrollLeft:$btn[0].getBoundingClientRect().left - $list[0].getBoundingClientRect().left + $list.scrollLeft()}, 300);
     }
 
+    /* 팀 사이 간격: 정지 상태에서 옆 팀이 보이지 않도록 슬라이더 바깥 여백보다 넓게 (1920px 보다 넓은 화면) */
+    function slideGap(){
+        return Math.max(300, Math.ceil($slider.offset().left) + 20);
+    }
+
     const teamSwiper = new Swiper($slider[0], {
         speed:600,
-        spaceBetween:300,
+        spaceBetween:slideGap(),
         breakpoints:{
             1279:{spaceBetween:80}
         },
@@ -446,6 +451,12 @@ function companyTeamAction(){
 
     /* 고정 위치·길이 계산: 팀 영역이 화면 세로 중앙에 오도록 고정 (중앙이 헤더와 겹치면 헤더 아래, 화면보다 크면 하단 탭이 보이는 위치) */
     function pinUpdate(){
+        if(mq.matches && teamSwiper.params.spaceBetween !== slideGap()){
+            teamSwiper.params.spaceBetween = teamSwiper.originalParams.spaceBetween = slideGap();
+            teamSwiper.update();
+            teamSwiper.slideTo(tabIdx, 0);
+        }
+
         /* 모바일 주소창이 접히고 펼쳐져도 값이 바뀌지 않도록 100svh 높이를 기준으로 함 */
         const winH = $screen.outerHeight() || window.innerHeight,
             headerH = $(".header").outerHeight(),
