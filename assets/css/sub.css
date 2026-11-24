@@ -379,3 +379,372 @@
 @media screen and (max-width:389px) {
 	.compare-lead {white-space:normal;}
 }
+
+/* =========================================================
+   about (회사소개, html/about.html) — figma-values-about-pc.md / figma-values-about-mo.md 기준
+   main.css 에 about-* 클래스가 있어 company-* 이름 사용. 단위 규칙(--px)은 .studio 와 동일
+   ========================================================= */
+.company {--px:min(1px, calc(100vw / 1920));}
+.company .inner-wide {max-width:1920px; padding:0 calc(150 * var(--px));}
+
+/* 공통 제목 행 (strength / team / partner) */
+.company-tit-area {display:flex; align-items:flex-end; gap:calc(160 * var(--px));}
+.company-tit-strength {gap:calc(120 * var(--px));}
+.company-tit-area .tit {flex-shrink:0; font-family:var(--font-family-bebas); font-size:calc(100 * var(--px)); font-weight:400; letter-spacing:-0.01em; line-height:1; text-transform:uppercase; white-space:nowrap;}
+.company-tit-area .sub-area {display:flex; flex-direction:column; gap:calc(40 * var(--px)); padding:calc(3 * var(--px)) 0 calc(2 * var(--px));}
+.company-tit-area .sub-tit {font-size:calc(30 * var(--px)); font-weight:600; letter-spacing:-0.05em; line-height:calc(40 * var(--px)); white-space:nowrap;}
+.company-tit-area .sub-txt {font-size:max(14px, calc(18 * var(--px))); letter-spacing:-0.05em; line-height:1.5556; white-space:nowrap;}
+.company-tit-area .sub-area.ani-slide-top.on {transition-delay:0.15s;}
+
+/* sect-company-visual: sticky 고정 → strength 섹션이 덮으며 올라옴 (--visual-top 은 sub.js visualStickyTop)
+   Figma (150,153) 1620x802 영역을 grid 1칸에 겹치고 margin 으로 배치, 값은 --g 기준 */
+.sect-company-visual {position:sticky; top:var(--visual-top, 0px); display:flex; flex-direction:column; justify-content:center; height:100vh; min-height:calc(900 * var(--px)); overflow:hidden; background-color:var(--color-white);}
+.company-visual-area {--g:var(--px); display:grid; grid-template-columns:100%; grid-template-rows:100%; align-items:start; justify-items:start; height:calc(802 * var(--g)); margin-top:calc(28 * var(--g));}
+.company-visual-area > *,
+.company-visual-area .tit > * {grid-area:1 / 1;}
+.company-visual-area .tit {display:contents; font-family:var(--font-family-bebas); font-size:calc(200 * var(--g)); font-weight:400; letter-spacing:-0.01em; line-height:normal; white-space:nowrap;}
+.company-visual-area .reveal-mask {z-index:4;}
+.company-visual-area .tit .reveal-mask {height:0.72em;}
+.company-visual-area .line-01 {margin:calc(48 * var(--g)) 0 0;}
+.company-visual-area .line-02 {margin:calc(48 * var(--g)) 0 0 calc(882 * var(--g));}
+.company-visual-area .line-03 {margin:calc(257 * var(--g)) 0 0 calc(1218 * var(--g));}
+/* 공통 reveal 시간차(0.3s, 0.75s) 해제 → 동시에 등장, VALUE. 와 "날카로운 감각." 만 0.3s 뒤에 등장 */
+.company-visual-area.reveal-area.on .reveal-mask .reveal-txt {transition-delay:0s;}
+.company-visual-area.reveal-area.on .reveal-mask.line-03 .reveal-txt,
+.company-visual-area.reveal-area.on .reveal-mask.sub-02 .reveal-txt {transition-delay:0.3s;}
+.company-visual-area .sub {height:calc(29 * var(--g)); font-size:calc(24 * var(--g)); font-weight:500; letter-spacing:-0.05em; line-height:normal; white-space:nowrap;}
+.company-visual-area .sub-02 {margin:calc(425 * var(--g)) 0 0 calc(1491 * var(--g));}
+.company-visual-area .rotating-txt {width:calc(300 * var(--g)); height:calc(300 * var(--g)); margin:calc(502 * var(--g)) 0 0 calc(409 * var(--g)); animation:companyRotate 20s linear infinite;}
+.company-visual-area .rotating-txt img {display:block; width:100%; height:100%;}
+.company-visual-area .visual-video {z-index:1; display:flex; align-items:center; width:calc(450 * var(--g)); height:calc(600 * var(--g)); margin:calc(112 * var(--g)) 0 0 calc(585 * var(--g)); background-color:var(--color-surface-gray);}
+.company-visual-area .visual-video > * {display:block; width:100%; height:auto; aspect-ratio:1 / 1; object-fit:cover;}
+.company-visual-area .focus-frame {--corner:calc(40 * var(--g)); z-index:2; width:calc(490 * var(--g)); height:calc(640 * var(--g)); margin:calc(92 * var(--g)) 0 0 calc(565 * var(--g));}
+.company-visual-area .deco-more-than-hype {position:static; z-index:3; width:calc(204.504 * var(--g)); height:calc(90.66 * var(--g)); margin:calc(316 * var(--g)) 0 0 calc(933 * var(--g));}
+.deco-more-than-hype .letter-deco {width:calc(201 * var(--g)); height:calc(40 * var(--g)); transform:rotate(15deg); filter:drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));}
+.deco-more-than-hype .img {position:relative; height:calc(38.365 * var(--g));}
+.deco-more-than-hype .img img {position:absolute; top:-45.4%; left:-5.3%; width:110.68%; height:192.28%; margin:0;}
+.deco-more-than-hype .txt {position:relative; justify-self:center; margin:calc(10 * var(--g)) 0 0; font-size:calc(30 * var(--g)); transform:none;}
+@keyframes companyRotate {
+	0% {transform:rotate(0deg);}
+	100% {transform:rotate(-360deg);}
+}
+@media (prefers-reduced-motion:reduce) {
+	.company-visual-area .rotating-txt {animation:none;}
+}
+
+/* sect-company-strength */
+.sect-company-strength {overflow:hidden; padding:calc(200 * var(--px)) 0; border-radius:calc(50 * var(--px)) calc(50 * var(--px)) 0 0; background-color:var(--color-black); color:var(--font-color-white);}
+.strength-list {display:flex; margin-top:calc(100 * var(--px));}
+.strength-item {display:flex; flex:1 0 0; flex-direction:column; align-items:flex-start; min-width:0; padding:calc(50 * var(--px)) calc(40 * var(--px)); border-top:1px solid var(--font-color-on-dark-primary); border-right:1px solid var(--font-color-on-dark-primary);}
+.strength-item:last-child {border-right:0;}
+.strength-item:nth-child(2) {--d:0.1s;}
+.strength-item:nth-child(3) {--d:0.2s;}
+.strength-item:nth-child(4) {--d:0.3s;}
+.strength-item .num-area {display:flex; align-items:flex-start; justify-content:space-between; width:100%; padding-bottom:calc(30 * var(--px));}
+.strength-item .num {display:block; font-family:var(--font-family-bebas); font-size:calc(80 * var(--px)); letter-spacing:-0.01em; line-height:1.5;}
+.strength-item .icon {display:block; width:15px; height:15px;}
+.strength-item .icon img {display:block; width:100%; height:100%;}
+/* 아이콘: 01~03 은 프레임과 거의 같은 크기, 04 는 92x85.372 로 프레임보다 큼 (--i = 프레임 크기) */
+.strength-icon {--i:calc(82 * var(--px)); display:flex; align-items:center; justify-content:center; width:var(--i); height:var(--i); margin-top:calc(30 * var(--px));}
+.strength-icon img {display:block; flex:none; max-width:none; width:calc(var(--i) * 0.995); height:calc(var(--i) * 0.995);}
+/* 아이콘 01: 가운데 점(.dot)이 원으로 커지며 바깥 원과 겹쳐질 때까지 퍼지고, 다시 점이 생기며 반복 (01번 카드 hover 중에만 재생 → 아래 strength-item hover)
+   .dot 은 바깥 원과 같은 크기(r 40)를 축소해 점으로 표시 → scale 0.04 + 선 두께 = 시안의 점 크기(지름 4.8)
+   색은 currentColor → 카드 hover 색 전환을 그대로 따라감, 선 두께는 PC·MO 모두 1.6px */
+.strength-icon svg {display:block; flex:none; width:calc(var(--i) * 0.995); height:calc(var(--i) * 0.995); overflow:visible;}
+.strength-icon .line,
+.strength-icon-01 .dot {stroke:currentColor; stroke-width:1.6px; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke;}
+.strength-icon-01 .dot {fill:currentColor; transform:scale(0.04); transform-origin:40.8px 40.8px;}
+@keyframes strengthDotGrow {
+	0%, 12% {opacity:1; fill-opacity:1; transform:scale(0.04);}
+	35% {fill-opacity:0;}
+	75% {opacity:1; fill-opacity:0; transform:scale(1);}
+	75.01% {opacity:0; fill-opacity:1; transform:scale(0);}
+	85% {opacity:0; transform:scale(0);}
+	100% {opacity:1; fill-opacity:1; transform:scale(0.04);}
+}
+/* 아이콘 02: 중앙의 작은 사각형(line-03)부터 바깥쪽 순서로 왼쪽 → 오른쪽으로 살짝 움직임 (02번 카드 hover 중에만 재생)
+   --move 이동 폭, --delay 시작 시간차 */
+.strength-icon-02 .line-01 {--move:6px; --delay:0.3s;}
+.strength-icon-02 .line-02 {--move:8px; --delay:0.15s;}
+.strength-icon-02 .line-03 {--move:10px; --delay:0s;}
+@keyframes strengthLineSway {
+	0% {transform:translateX(0);}
+	25% {transform:translateX(calc(var(--move) * -1));}
+	60% {transform:translateX(var(--move));}
+	85%, 100% {transform:translateX(0);}
+}
+/* 아이콘 04: 타원 2개가 중심을 축으로 하나는 왼쪽(반시계), 하나는 오른쪽(시계)으로 회전 (04번 카드 hover 중에만 재생)
+   크기는 시안의 92x85.372 로 프레임(82)보다 큼 */
+.strength-icon-04 svg {width:calc(var(--i) * 1.122); height:calc(var(--i) * 1.0411);}
+.strength-icon-04 .line {transform-origin:46px 42.686px;}
+.strength-icon-04 .line-01 {--turn:-360deg;}
+.strength-icon-04 .line-02 {--turn:360deg;}
+@keyframes strengthLineTurn {
+	0% {transform:rotate(0deg);}
+	100% {transform:rotate(var(--turn));}
+}
+.strength-item .txt-area {display:flex; flex-direction:column; gap:calc(30 * var(--px)); margin-top:calc(30 * var(--px));}
+.strength-item .tit {font-size:max(16px, calc(22 * var(--px))); font-weight:500; letter-spacing:-0.05em; line-height:1.3636;}
+.strength-item .txt {font-size:max(13px, calc(16 * var(--px))); letter-spacing:-0.05em; line-height:1.5;}
+.strength-item .tag {margin-top:calc(40 * var(--px)); padding:0 15px; border:1px solid var(--color-white); border-radius:100px; font-size:max(12px, calc(14 * var(--px))); letter-spacing:-0.05em; line-height:1.4286;}
+/* strength-item hover: Figma strength 컴포넌트 "속성 1=hover" (배경·선 #fff, 글자·아이콘·태그 #000, + 는 #a2a2a2 그대로)
+   전환은 Figma 인터랙션 ON_HOVER · SMART_ANIMATE · EASE_OUT 0.35s, 마우스 환경 PC 레이아웃(1280px 이상)에서만 적용
+   등장 시간차(--d)는 opacity·transform 에만 걸어 hover 가 늦게 시작되지 않도록 함 */
+.strength-item.ani-slide-top.on {transition:opacity 0.75s ease var(--d, 0s), transform 0.75s ease var(--d, 0s), background-color 0.35s ease-out, border-color 0.35s ease-out, color 0.35s ease-out;}
+.strength-item .strength-icon img {transition:filter 0.35s ease-out;}
+.strength-item .tag {transition:border-color 0.35s ease-out;}
+@media (hover:hover) and (min-width:1280px) {
+	.strength-item:hover {border-color:var(--color-white); background-color:var(--color-white); color:var(--font-color-black);}
+	.strength-item:hover .strength-icon img {filter:invert(1);}
+	.strength-item:hover .tag {border-color:var(--color-black);}
+	.strength-item:hover .strength-icon-01 .dot {animation:strengthDotGrow 1.8s ease-in-out infinite;}
+	.strength-item:hover .strength-icon-02 .line {animation:strengthLineSway 2s ease-in-out var(--delay) infinite;}
+	.strength-item:hover .strength-icon-04 .line {animation:strengthLineTurn 3s linear infinite;}
+}
+/* 1279px 이하: 터치·마우스 오버 시 .active (sub.js strengthTouchAction) → PC hover 와 같은 효과 */
+@media screen and (max-width:1279px) {
+	.strength-item.active {border-color:var(--color-white); background-color:var(--color-white); color:var(--font-color-black);}
+	.strength-item.active .strength-icon img {filter:invert(1);}
+	.strength-item.active .tag {border-color:var(--color-black);}
+	.strength-item.active .strength-icon-01 .dot {animation:strengthDotGrow 1.8s ease-in-out infinite;}
+	.strength-item.active .strength-icon-02 .line {animation:strengthLineSway 2s ease-in-out var(--delay) infinite;}
+	.strength-item.active .strength-icon-04 .line {animation:strengthLineTurn 3s linear infinite;}
+}
+@media (prefers-reduced-motion:reduce) {
+	.strength-item:hover .strength-icon-01 .dot,
+	.strength-item:hover .strength-icon-02 .line,
+	.strength-item:hover .strength-icon-04 .line,
+	.strength-item.active .strength-icon-01 .dot,
+	.strength-item.active .strength-icon-02 .line,
+	.strength-item.active .strength-icon-04 .line {animation:none;}
+}
+
+/* sect-company-team */
+.sect-company-team {padding:calc(200 * var(--px)) 0; background-color:var(--color-white); color:var(--font-color-black);}
+/* 가로 스크롤 구간: .inner 를 고정하고 ::after 로 스크롤 길이를 확보 (.active, --team-top, --team-distance 는 sub.js companyTeamAction) */
+.sect-company-team.active > .inner {position:sticky; top:var(--team-top, 0px);}
+.sect-company-team.active::after {content:""; display:block; height:var(--team-distance, 0px);}
+/* 등장: 화면 아래에서 1/3 지점에 닿으면 .active (sub.js detailImgAction), 감지 위치가 밀리지 않도록 이동은 하위 요소에 적용 */
+.team-area {margin-top:calc(102 * var(--px)); border-top:1px solid var(--border-color-on-light-primary); opacity:0; transition:opacity 0.2s ease;}
+.team-area > * {transform:translateY(100px); transition:transform 0.2s ease;}
+.team-area.active {opacity:1; transition-duration:0.5s;}
+.team-area.active > * {transform:translateY(0); transition-duration:0.5s;}
+.team-item {display:flex; align-items:center; justify-content:space-between; height:auto; padding:calc(120 * var(--px)) 0;}
+.team-item .txt-area {min-width:0;}
+.team-item .label-area {display:flex; align-items:center; gap:calc(20 * var(--px));}
+.team-item .page {display:flex; align-items:center; justify-content:center; gap:2px; width:70px; padding:5px 0; background-color:var(--color-black); color:var(--font-color-white); font-size:14px; letter-spacing:-0.05em; line-height:normal;}
+.team-item .page > span,
+.team-item .label {display:block;}
+.team-item .page .total {color:var(--font-color-on-dark-secondary);}
+.team-item .label {font-size:max(13px, calc(16 * var(--px))); letter-spacing:-0.01em; line-height:normal; text-transform:uppercase; white-space:nowrap;}
+.team-item .tit {margin-top:calc(40 * var(--px)); font-family:var(--font-family-bebas); font-size:calc(160 * var(--px)); font-weight:400; letter-spacing:-0.01em; line-height:1; white-space:nowrap;}
+.team-item .sub {margin-top:calc(40 * var(--px)); font-size:calc(32 * var(--px)); font-weight:500; letter-spacing:-0.05em; line-height:1;}
+.team-item .txt {margin-top:calc(60 * var(--px)); color:var(--font-color-on-dark-primary); font-size:max(14px, calc(18 * var(--px))); letter-spacing:-0.05em; line-height:1.5556;}
+.team-item .work {margin-top:calc(60 * var(--px)); font-size:max(14px, calc(20 * var(--px))); letter-spacing:-0.01em; line-height:1.5; text-transform:uppercase;}
+/* 이미지 영역: Figma 522x422, 값은 --g 기준. GIF 크기·위치는 항목별 --w/--h/--x/--y */
+.team-item .img-area {--g:var(--px); position:relative; flex-shrink:0; width:calc(522 * var(--g)); height:calc(422 * var(--g));}
+.team-item .img-area img {position:absolute; top:calc(var(--y) * var(--g)); left:calc(var(--x) * var(--g)); display:block; max-width:none; width:calc(var(--w) * var(--g)); height:calc(var(--h) * var(--g)); object-fit:cover;}
+.team-item-01 {--w:438; --h:400; --x:42; --y:11;}
+.team-item-02 {--w:357; --h:400; --x:69; --y:21;}
+.team-item-03 {--w:400; --h:400; --x:61; --y:14;}
+.team-item-04 {--w:400; --h:326; --x:61; --y:49;}
+.team-item-05 {--w:400; --h:355; --x:61; --y:33;}
+.team-item .plus {--s:21px; --c:var(--font-color-on-dark-secondary); position:absolute; width:var(--s); height:var(--s); background:linear-gradient(var(--c), var(--c)) center/1px 100% no-repeat, linear-gradient(var(--c), var(--c)) center/100% 1px no-repeat;}
+.team-item .plus-lt {top:0; left:0;}
+.team-item .plus-rt {top:0; right:0;}
+.team-item .plus-lb {bottom:0; left:0;}
+.team-item .plus-rb {bottom:0; right:0;}
+.team-tab-list {display:flex;}
+.team-tab-item {flex:1 0 0; min-width:0;}
+/* 활성 탭 검정 막대: 첫 탭에 겹쳐 두고 탭 순번(--tab-idx, sub.js companyTeamAction)만큼 탭 너비씩 이동 */
+.team-tab-item:first-child {position:relative;}
+.team-tab-item:first-child::after {content:""; position:absolute; top:0; left:0; z-index:1; width:100%; height:1px; background-color:var(--color-black); pointer-events:none; transform:translateX(calc(var(--tab-idx, 0) * 100%)); transition:transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);}
+.team-tab-btn {display:flex; flex-direction:column; align-items:flex-start; gap:calc(20 * var(--px)); width:100%; padding:calc(50 * var(--px)) 0; border:0; border-top:1px solid var(--border-color-on-light-primary); background:none; color:var(--font-color-on-dark-primary); text-align:left; transition:color 0.3s ease;}
+.team-tab-btn.on {color:var(--font-color-black);}
+.team-tab-btn .tit {display:flex; align-items:flex-start; gap:calc(15 * var(--px));}
+.team-tab-btn .num {display:block; flex-shrink:0; width:20px; font-size:max(12px, calc(16 * var(--px))); font-weight:500; letter-spacing:-0.05em; line-height:1;}
+.team-tab-btn .eng {display:block; font-family:var(--font-family-bebas); font-size:calc(42 * var(--px)); letter-spacing:-0.01em; line-height:1; white-space:nowrap;}
+.team-tab-btn .kr {display:block; padding-left:calc(20px + 15 * var(--px)); font-size:max(13px, calc(18 * var(--px))); font-weight:500; letter-spacing:-0.05em; line-height:1;}
+
+/* sect-company-growth */
+.sect-company-growth {padding:calc(200 * var(--px)) 0; background-color:var(--color-black); color:var(--font-color-white);}
+.growth-wrap {display:flex; align-items:flex-start; justify-content:space-between;}
+.growth-tit-area {display:flex; flex-direction:column; gap:calc(50 * var(--px)); padding-top:calc(2 * var(--px));}
+/* 1줄(GROWTH)이 2줄보다 커서 .trim 이 2줄 글자 높이 기준으로 윗선을 자름 → 대문자 높이 차(0.7 x 20px) 보정 */
+.growth-tit-area .tit {margin-top:0.14em; font-family:var(--font-family-bebas); font-size:calc(100 * var(--px)); font-weight:400; letter-spacing:-0.01em; line-height:calc(100 * var(--px)); text-transform:uppercase; white-space:nowrap;}
+.growth-tit-area .tit em {font-size:1.2em; font-style:normal;}
+/* 등장 순서(ani-group): GROWTH → THAT MATTERS. → 소제목 → 설명 */
+.growth-tit-area .tit .line {display:inline-block;}
+.growth-tit-area .tit .line.ani-slide-top.on:last-child {transition-delay:0.25s;}
+.growth-tit-area .sub-tit.ani-slide-top.on {transition-delay:0.5s;}
+.growth-tit-area .sub-txt.ani-slide-top.on {transition-delay:0.75s;}
+.growth-tit-area .sub-area {display:flex; flex-direction:column; gap:calc(40 * var(--px));}
+.growth-tit-area .sub-tit {font-size:calc(28 * var(--px)); font-weight:600; letter-spacing:-0.05em; line-height:calc(40 * var(--px));}
+.growth-tit-area .sub-txt {font-size:max(14px, calc(16 * var(--px))); letter-spacing:-0.05em; line-height:1.5;}
+/* 등장: 화면 아래에서 1/3 지점에 닿으면 .active (sub.js detailImgAction), 이동은 하위 요소에 적용 */
+.growth-list {width:calc(900 * var(--px)); opacity:0; transition:opacity 0.2s ease;}
+.growth-list > * {transform:translateY(100px); transition:transform 0.2s ease;}
+.growth-list.active {opacity:1; transition-duration:0.5s;}
+.growth-list.active > * {transform:translateY(0); transition-duration:0.5s;}
+.growth-item {display:flex; align-items:center; gap:calc(30 * var(--px)); padding:calc(60 * var(--px)) calc(40 * var(--px)); border-bottom:1px solid var(--font-color-on-dark-primary);}
+.growth-item:first-child {border-top:1px solid var(--font-color-on-dark-primary);}
+.growth-item .txt-area {display:flex; flex:1 0 0; flex-direction:column; gap:calc(30 * var(--px)); min-width:0;}
+.growth-item .label-area {display:flex; align-items:flex-start; gap:calc(15 * var(--px));}
+.growth-item .num {display:block; width:30px; font-size:max(16px, calc(20 * var(--px))); letter-spacing:-0.01em; line-height:1.2;}
+.growth-item .label {display:block; font-size:max(12px, calc(14 * var(--px))); letter-spacing:-0.01em; line-height:1.2;}
+.growth-item .tit {font-size:calc(32 * var(--px)); font-weight:500; letter-spacing:-0.05em; line-height:1;}
+.growth-item .txt {font-size:max(14px, calc(20 * var(--px))); letter-spacing:-0.05em; line-height:1.5;}
+.growth-item .icon {position:relative; display:flex; flex-shrink:0; align-items:center; width:calc(160 * var(--px)); height:calc(126 * var(--px));}
+.growth-item .icon img {display:block; width:100%; height:auto;}
+/* 라인 이미지 위에 겹친 움직이는 점·막대 (경로·속도는 about.html 의 animate, animateMotion) */
+.growth-item .icon-dot {position:absolute; top:50%; left:0; display:block; width:100%; height:auto; overflow:visible; transform:translateY(-50%);}
+
+/* sect-company-partner: 로고 grid */
+.sect-company-partner {padding:calc(200 * var(--px)) 0; background-color:var(--color-white); color:var(--font-color-black);}
+/* 등장 순서(ani-group): 소제목 → 설명 */
+.sect-company-partner .sub-tit.ani-slide-top.on {transition-delay:0.15s;}
+.sect-company-partner .sub-txt.ani-slide-top.on {transition-delay:0.4s;}
+/* 등장: .synergy-area 가 화면 아래에서 1/3 지점에 닿으면 .active (sub.js detailImgAction) → 로고 목록 전체가 한 번에 올라옴 */
+.synergy-list {display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); margin-top:calc(100 * var(--px)); border-top:1px solid var(--color-black); border-bottom:1px solid var(--color-black); opacity:0; transform:translateY(100px); transition:opacity 0.2s ease, transform 0.2s ease;}
+.synergy-area.active .synergy-list {opacity:1; transform:translateY(0); transition-duration:0.5s;}
+.synergy-item {padding:0 calc(50 * var(--px)); border-top:1px solid var(--border-color-on-light-primary); border-right:1px solid var(--border-color-on-light-primary);}
+.synergy-item img {display:block; width:100%; height:calc(100 * var(--px)); object-fit:contain;}
+.synergy-item:nth-child(6n) {border-right:0;}
+.synergy-item:nth-child(-n+6) {border-top:0;}
+
+/* responsive: 태블릿·모바일 (1279px 이하) — figma-values-about-mo.md (390 기준) */
+@media screen and (max-width:1279px) {
+	.company {word-break:keep-all;}
+	.company .inner-wide {padding:0 3.846%;}
+
+	.company-tit-area {flex-direction:column; align-items:flex-start; gap:50px;}
+	.company-tit-area .tit {font-size:clamp(50px, 8vw, 100px); line-height:1.1;}
+	.company-tit-area .sub-area {gap:30px; padding:2px 0;}
+	.company-tit-area .sub-tit {font-size:20px; line-height:30px; white-space:normal;}
+	.company-tit-area .sub-txt {font-size:16px; line-height:24px; white-space:normal;}
+
+	/* visual (390x844): 원점 (15,92), 360x634. --m 은 폭과 높이 기준 중 작은 값 */
+	.sect-company-visual {height:auto; min-height:100vh; min-height:100svh; container-type:inline-size;}
+	.sect-company-visual .inner-wide {--m:min(calc(100cqw / 390), calc((100svh - 116px) / 634), 2px); display:flex; justify-content:center; padding:58px 0;}
+	.sect-company-visual .inner-wide::after {display:none;}
+	.company-visual-area {--g:var(--m); width:calc(360 * var(--g)); height:calc(634 * var(--g)); margin-top:0;}
+	.company-visual-area .tit {font-size:calc(90 * var(--g));}
+	/* 등장 순서: 브랜드의 궤적을 바꾸는·REDEFINE → YOUR BRAND(0.3s) → VALUE.·날카로운 감각.(0.6s) */
+	.company-visual-area.reveal-area.on .reveal-mask.line-02 .reveal-txt {transition-delay:0.3s;}
+	.company-visual-area.reveal-area.on .reveal-mask.line-03 .reveal-txt,
+	.company-visual-area.reveal-area.on .reveal-mask.sub-02 .reveal-txt {transition-delay:0.6s;}
+	.company-visual-area .line-01 {margin:calc(41.6 * var(--g)) 0 0 calc(-2 * var(--g));}
+	.company-visual-area .line-02 {margin:calc(124.6 * var(--g)) 0 0 calc(30 * var(--g));}
+	.company-visual-area .line-03 {margin:calc(527.6 * var(--g)) 0 0 calc(182 * var(--g));}
+	.company-visual-area .sub {font-size:calc(18 * var(--g));}
+	.company-visual-area .sub-02 {margin:calc(605 * var(--g)) 0 0 calc(264 * var(--g));}
+	.company-visual-area .rotating-txt {width:calc(168.75 * var(--g)); height:calc(168.75 * var(--g)); margin:calc(455 * var(--g)) 0 0 calc(-39 * var(--g));}
+	.company-visual-area .visual-video {width:calc(270 * var(--g)); height:calc(360 * var(--g)); margin:calc(179 * var(--g)) 0 0 calc(45 * var(--g));}
+	.company-visual-area .focus-frame {--corner:calc(30 * var(--g)); width:calc(310 * var(--g)); height:calc(400 * var(--g)); margin:calc(159 * var(--g)) 0 0 calc(25 * var(--g));}
+	.company-visual-area .deco-more-than-hype {width:calc(138.095 * var(--g)); height:calc(60.313 * var(--g)); margin:calc(259 * var(--g)) 0 0 calc(229 * var(--g));}
+	.deco-more-than-hype .letter-deco {width:calc(136 * var(--g)); height:calc(26 * var(--g));}
+	.deco-more-than-hype .img {height:100%;}
+	.deco-more-than-hype .txt {margin:calc(6 * var(--g)) 0 0; font-size:calc(20 * var(--g));}
+
+	/* strength (390x1418): 2 x 2 */
+	.sect-company-strength {padding:150px 0; border-radius:30px 30px 0 0;}
+	.strength-list {flex-wrap:wrap; margin-top:88px;}
+	.strength-item {flex:0 0 50%; padding:40px 15px;}
+	.strength-item:nth-child(2n) {border-right:0;}
+	.strength-item .num-area {padding-bottom:10px;}
+	.strength-item .num {font-size:60px;}
+	.strength-icon {--i:60px; margin-top:30px;}
+	.strength-item .txt-area {gap:20px; margin-top:30px;}
+	.strength-item .tit {font-size:18px; line-height:24px;}
+	.strength-item .txt {font-size:12px; line-height:18px;}
+	.strength-item .tag {margin-top:auto; font-size:12px; line-height:18px;}
+	.strength-item .txt-area {padding-bottom:30px;}
+	.strength-item:nth-child(2n) .txt-area {padding-bottom:14px;}
+
+	/* team (390x1401) */
+	.sect-company-team {padding:140px 0 150px;}
+	.team-area {margin-top:80px;}
+	.team-item {flex-direction:column; align-items:stretch; padding:60px 0;}
+	.team-item .label-area {gap:10px;}
+	.team-item .page {width:64px; font-size:12px;}
+	.team-item .label {font-size:12px;}
+	.team-item .tit {margin-top:20px; font-size:80px;}
+	.team-item .sub {margin-top:20px; font-size:24px;}
+	.team-item .txt {margin-top:40px; font-size:14px; line-height:22px;}
+	.team-item .work {margin-top:40px; font-size:16px; line-height:24px;}
+	.team-item .work .dot {display:none;}
+	.team-item .img-area {--g:1px; align-self:flex-end; width:260px; height:240px; margin-top:50px;}
+	.team-item .img-area img {top:50%; left:50%; transform:translate(-50%,-50%);}
+	.team-item-01 {--w:240; --h:219;}
+	.team-item-02 {--w:214; --h:240;}
+	.team-item-03 {--w:240; --h:240;}
+	.team-item-04 {--w:240; --h:196;}
+	.team-item-05 {--w:240; --h:213;}
+	.team-item .plus {--s:15px;}
+	.team-tab-list {overflow-x:auto; scrollbar-width:none;}
+	.team-tab-list::-webkit-scrollbar {display:none;}
+	.team-tab-item {flex:1 0 200px;}
+	.team-tab-btn {gap:10px; padding:25px 0;}
+	.team-tab-btn .tit {gap:5px;}
+	.team-tab-btn .num {font-size:12px;}
+	.team-tab-btn .eng {font-size:24px;}
+	.team-tab-btn .kr {padding-left:25px; font-size:14px;}
+
+	/* growth (390x1669) */
+	.sect-company-growth {padding:150px 0;}
+	.growth-wrap {flex-direction:column; align-items:stretch; gap:80px;}
+	.growth-tit-area {gap:40px; padding-top:0;}
+	.growth-tit-area .tit {margin-top:0.2333em; font-size:60px; letter-spacing:-1px; line-height:62px;}
+	.growth-tit-area .tit em {font-size:80px;}
+	.growth-tit-area .sub-area {gap:30px;}
+	.growth-tit-area .sub-tit {font-size:18px; line-height:26px;}
+	.growth-tit-area .sub-txt {color:var(--color-surface-light); font-size:14px; letter-spacing:-0.01em; line-height:20px;}
+	.growth-list {width:100%;}
+	.growth-item {flex-direction:column; align-items:stretch; gap:25px; padding:50px 15px; border-top:1px solid var(--font-color-on-dark-primary);}
+	.growth-item .txt-area {flex:none; gap:25px; padding-bottom:2px;}
+	.growth-item .label-area {gap:15px;}
+	.growth-item .num {width:20px; font-size:16px;}
+	.growth-item .label {font-size:12px;}
+	.growth-item .tit {margin-top:2px; font-size:24px;}
+	.growth-item .txt {font-size:16px; line-height:24px;}
+	.growth-item .icon {align-self:flex-end; width:127px; height:100px;}
+
+	/* partner (390x1111): 3열, 빈 칸 없음 */
+	.sect-company-partner {padding:150px 0 200px;}
+	.synergy-list {grid-template-columns:repeat(3, minmax(0, 1fr)); margin-top:80px;}
+	.synergy-item {padding:0 20px;}
+	.synergy-item img {height:70px;}
+	.synergy-item:nth-child(3n) {border-right:0;}
+	.synergy-item:nth-child(4),
+	.synergy-item:nth-child(5),
+	.synergy-item:nth-child(6) {border-top:1px solid var(--border-color-on-light-primary);}
+}
+
+/* responsive: 태블릿 (768~1279px) — 팀 슬라이드는 텍스트·이미지를 좌우로 배치 */
+@media screen and (min-width:768px) and (max-width:1279px) {
+	.strength-item .br-mo,
+	.team-item .txt-area .br-mo {display:none;}
+	.strength-item:nth-child(2n) .txt-area {padding-bottom:30px;}
+	.team-item {flex-direction:row; align-items:center; gap:30px;}
+	.team-item .work .dot {display:inline;}
+	.team-item .img-area {align-self:center; margin-top:0;}
+	.synergy-item img {height:100px;}
+}
+
+/* responsive: 모바일 (767px 이하) — 팀 영역 고정 중에는 화면 높이에 맞춰 여백·이미지를 축소 (--team-fit 은 sub.js companyTeamAction, 합계 530 = fitH) */
+@media screen and (max-width:767px) {
+	.sect-company-team.active .team-item {padding:calc(60px * var(--team-fit, 1)) 0;}
+	.sect-company-team.active .team-item .tit,
+	.sect-company-team.active .team-item .sub {margin-top:calc(20px * var(--team-fit, 1));}
+	.sect-company-team.active .team-item .txt,
+	.sect-company-team.active .team-item .work {margin-top:calc(40px * var(--team-fit, 1));}
+	.sect-company-team.active .team-item .img-area {--g:calc(1px * var(--team-fit, 1)); width:calc(260 * var(--g)); height:calc(240 * var(--g)); margin-top:calc(50 * var(--g));}
+}
+
+/* responsive: 390px 미만 — 영문 대형 글자와 카드 본문이 칸을 넘지 않도록 축소 */
+@media screen and (max-width:389px) {
+	.company-tit-area .tit {font-size:12.8vw;}
+	.strength-item {padding:40px 10px;}
+	.strength-item .tit {font-size:16px;}
+	.team-item .tit {font-size:20.5vw;}
+}

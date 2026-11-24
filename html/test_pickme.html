@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>슬라이더 테스트 | 핫이슈메디컬</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/style.css">
+	<script src="../assets/js/jquery-3.7.1.js"></script>
+	<script src="../assets/js/plugin/swiper/swiper.min.js"></script>
+	<style>
+		/* 테스트 전용: 스크롤하면 넘어가는 슬라이더 (Swiper 4.0.7 vertical)
+		   섹션 높이 = 슬라이드 수 × 화면 높이, 그 안에서 슬라이더를 화면에 고정(sticky)하고 스크롤 위치에 따라 한 장씩 넘김 */
+		.pickme-sect {--pickme-count:4; position:relative; height:calc(var(--pickme-count) * 100vh);}
+		.pickme-sticky {position:sticky; top:0; height:100vh; padding:20px 36px;}
+		/* 슬라이드가 작아질 때 뒤로 보이는 배경색은 background-color 로 조정 */
+		.pickme-wrap {--pickme-ease:cubic-bezier(0.77, 0, 0.175, 1); position:relative; height:100%; overflow:hidden; background-color:#ffffff;}
+
+		.pickme-slider {width:100%; height:100%;}
+		/* 넘김 효과: 다음 슬라이드는 아래에서 올라와 덮고, 나가는 슬라이드는 제자리에서 작아짐(transform 은 JS에서 지정)
+		   두 움직임이 어긋나지 않도록 wrapper 와 slide 에 같은 easing 을 씀 */
+		.pickme-slider .swiper-wrapper {transition-timing-function:var(--pickme-ease);}
+		.pickme-item {display:flex; align-items:center; justify-content:center; overflow:hidden; background-repeat:no-repeat; background-position:center; background-size:cover; transform-origin:center; transition-property:transform; transition-timing-function:var(--pickme-ease); will-change:transform;}
+		/* 이미지가 없을 때 넘어가는 모습을 구분하기 위한 임시 배경·번호 (실제 이미지 적용 시 삭제) */
+		.pickme-item.dummy-01 {background-color:#777777;}
+		.pickme-item.dummy-02 {background-color:#5f6a73;}
+		.pickme-item.dummy-03 {background-color:#7a6e63;}
+		.pickme-item.dummy-04 {background-color:#636d62;}
+		.pickme-item .dummy {color:rgba(255,255,255,0.25); font-size:120px; font-weight:700; letter-spacing:-0.02em;}
+
+		/* 상단 가운데 카운터: 01 / 04 + 공간 이름 */
+		.pickme-count {position:absolute; top:36px; left:50%; z-index:2; display:flex; align-items:center; gap:12px; height:42px; padding:0 18px; border-radius:999px; background-color:rgba(0,0,0,0.2); color:#ffffff; font-size:14px; line-height:1; white-space:nowrap; transform:translateX(-50%); pointer-events:none;}
+		.pickme-count .num {display:flex; gap:4px; font-variant-numeric:tabular-nums;}
+		.pickme-count .num .total {color:rgba(255,255,255,0.5);}
+
+		/* 슬라이더가 끝난 뒤 스크롤이 이어지는지 확인하기 위한 임시 영역 */
+		.pickme-dummy {display:flex; align-items:center; justify-content:center; height:100vh; color:#999999; font-size:14px;}
+
+		@media (max-width:767px){
+			.pickme-sticky {padding:16px;}
+			.pickme-count {top:20px; height:36px; padding:0 14px; gap:10px; font-size:13px;}
+			.pickme-item .dummy {font-size:64px;}
+		}
+	</style>
+</head>
+<body>
+	<section class="pickme-sect">
+		<div class="pickme-sticky">
+			<div class="pickme-wrap">
+				<div class="swiper-container pickme-slider">
+					<ul class="swiper-wrapper pickme-list">
+						<!-- 실제 이미지는 style="background-image:url(...)" 로 넣고 .dummy 는 삭제 -->
+						<li class="swiper-slide pickme-item dummy-01" data-name="로비"><span class="dummy" aria-hidden="true">01</span></li>
+						<li class="swiper-slide pickme-item dummy-02" data-name="공간 02"><span class="dummy" aria-hidden="true">02</span></li>
+						<li class="swiper-slide pickme-item dummy-03" data-name="공간 03"><span class="dummy" aria-hidden="true">03</span></li>
+						<li class="swiper-slide pickme-item dummy-04" data-name="공간 04"><span class="dummy" aria-hidden="true">04</span></li>
+					</ul>
+				</div>
+				<p class="pickme-count" aria-live="polite">
+					<span class="num"><span class="current">01</span><span class="total">/ 04</span></span>
+					<span class="name">로비</span>
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<div class="pickme-dummy">슬라이더 이후 영역 (테스트용)</div>
+
+	<script>
+		$(function(){
+			pickmeSliderAction();
+		});
+
+		/* .pickme-slider: 스크롤하면 한 장씩 넘어감
+		   나가는 슬라이드는 제자리에서 작아지고, 다음 슬라이드가 아래에서 올라와 덮음 (위로 스크롤하면 반대로)
+		   상단 카운터(.pickme-count)에 현재 번호와 슬라이드의 data-name 을 표시 */
+		function pickmeSliderAction(){
+			const $sect = $(".pickme-sect"),
+				$slider = $sect.find(".pickme-slider");
+
+			if(!$slider.length) return;
+
+			const $win = $(window),
+				$count = $sect.find(".pickme-count"),
+				$current = $count.find(".current"),
+				$total = $count.find(".total"),
+				$name = $count.find(".name"),
+				$items = $slider.find(".pickme-item"),
+				total = $items.length,
+				scaleMin = 0.8; /* 나가는 슬라이드가 줄어드는 최종 크기(1 = 원래 크기) */
+			let swiper = null;
+
+			function pad(num){
+				return num < 10 ? "0" + num : String(num);
+			}
+
+			function countSet(index){
+				$current.text(pad(index + 1));
+				$name.text($items.eq(index).data("name"));
+			}
+
+			/* slide.progress: 현재 슬라이드 0, 위로 지나간 슬라이드는 양수(1 = 한 장 지나감)
+			   지나가는 슬라이드(0~1)는 올라간 만큼 아래로 되돌려 제자리에 두고 크기만 줄임 → 다음 슬라이드가 그 위를 덮음
+			   1 초과는 숨기고, 딱 1(현재 슬라이드 바로 뒤)은 직전 상태를 유지
+			   → 나가는 슬라이드는 보이고, 위로 스크롤할 때 뒤에서 내려오는 슬라이드는 숨긴 채로 둠 */
+			function slideCoverSet(){
+				for(let i = 0; i < swiper.slides.length; i++){
+					const slide = swiper.slides[i],
+						progress = Math.min(Math.max(slide.progress, 0), 1),
+						scale = 1 - (1 - scaleMin) * progress;
+
+					slide.style.transform = "translate3d(0, " + (progress * swiper.size) + "px, 0) scale(" + scale + ")";
+
+					if(slide.progress > 1.01) slide.style.visibility = "hidden";
+					else if(slide.progress < 0.99) slide.style.visibility = "";
+				}
+			}
+
+			function slideTransitionSet(duration){
+				for(let i = 0; i < swiper.slides.length; i++){
+					swiper.slides[i].style.transitionDuration = duration + "ms";
+				}
+			}
+
+			/* 섹션 안에서 스크롤한 비율로 보여줄 슬라이드 번호를 정하고, 넘김 중이 아닐 때 한 장씩 따라감
+			   (빠르게 스크롤해도 여러 장을 건너뛰지 않고 transitionEnd 에서 다시 확인해 차례로 넘어감) */
+			function scrollSlideSet(){
+				if(!swiper || swiper.animating) return;
+
+				const range = $sect.outerHeight() - $win.height(),
+					rate = range > 0 ? Math.min(Math.max(($win.scrollTop() - $sect.offset().top) / range, 0), 1) : 0,
+					target = Math.min(Math.floor(rate * total), total - 1);
+
+				if(target > swiper.activeIndex) swiper.slideNext();
+				else if(target < swiper.activeIndex) swiper.slidePrev();
+			}
+
+			$sect[0].style.setProperty("--pickme-count", total);
+			$total.text("/ " + pad(total));
+			countSet(0);
+
+			swiper = new Swiper($slider[0], {
+				direction:"vertical",
+				speed:1000,
+				allowTouchMove:false,
+				watchSlidesProgress:true,
+				on:{
+					progress:function(){
+						if(swiper) slideCoverSet();
+					},
+					setTransition:function(duration){
+						if(swiper) slideTransitionSet(duration);
+					},
+					slideChange:function(){
+						countSet(this.activeIndex);
+					},
+					transitionEnd:function(){
+						scrollSlideSet();
+					}
+				}
+			});
+
+			slideCoverSet();
+			$win.on("scroll resize", scrollSlideSet);
+			scrollSlideSet();
+		}
+	</script>
+</body>
+</html>
