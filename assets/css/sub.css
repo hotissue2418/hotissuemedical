@@ -526,15 +526,20 @@
 .sect-company-team.active > .inner {position:sticky; top:var(--team-top, 0px);}
 .sect-company-team.active::after {content:""; display:block; height:var(--team-distance, 0px);}
 /* 고정되는 동안 제목 숨김 (.on 은 sub.js companyTeamAction) */
-.sect-company-team .company-tit-area {transition:opacity 0.4s ease;}
+.sect-company-team .company-tit-area {padding-bottom:calc(102 * var(--px)); border-bottom:1px solid var(--border-color-on-light-primary); transition:opacity 0.4s ease;}
 .sect-company-team.on .company-tit-area {opacity:0;}
 /* 등장: 화면 아래에서 1/3 지점에 닿으면 .active (sub.js detailImgAction), 감지 위치가 밀리지 않도록 이동은 하위 요소에 적용 */
-.team-area {margin-top:calc(102 * var(--px)); border-top:1px solid var(--border-color-on-light-primary); opacity:0; transition:opacity 0.2s ease;}
+.team-area {opacity:0; transition:opacity 0.2s ease;}
 .team-area > * {transform:translateY(100px); transition:transform 0.2s ease;}
 .team-area.active {opacity:1; transition-duration:0.5s;}
 .team-area.active > * {transform:translateY(0); transition-duration:0.5s;}
 /* 좌우로 이동하는 팀이 화면 양 끝까지 보이도록 함 (화면 밖은 .wrapper 의 overflow:clip 으로 잘림) */
 .team-area .team-slider {overflow:visible;}
+/* 고정되는 동안 팀 영역을 헤더 아래 화면 높이만큼 채워 탭 목록을 화면 하단에 붙임 (--team-height 는 sub.js companyTeamAction) */
+.sect-company-team.active .team-area {display:flex; flex-direction:column; min-height:var(--team-height, 0px);}
+.sect-company-team.active .team-slider {width:100%; margin:auto 0;}
+/* 모바일 주소창이 접혀 화면이 길어진 만큼 탭 목록을 내림 */
+.sect-company-team.active .team-area.active .team-tab-list {transform:translateY(calc(100dvh - 100svh));}
 .team-item {display:flex; align-items:center; justify-content:space-between; height:auto; padding:calc(120 * var(--px)) 0;}
 .team-item .txt-area {min-width:0;}
 .team-item .label-area {display:flex; align-items:center; gap:calc(20 * var(--px));}
@@ -669,7 +674,7 @@
 
 	/* team (390x1401) */
 	.sect-company-team {padding:140px 0 150px;}
-	.team-area {margin-top:80px;}
+	.sect-company-team .company-tit-area {padding-bottom:80px;}
 	.team-item {flex-direction:column; align-items:stretch; padding:60px 0;}
 	.team-item .label-area {gap:10px;}
 	.team-item .page {width:64px; font-size:12px;}

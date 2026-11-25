@@ -449,7 +449,7 @@ function companyTeamAction(){
         }
     }
 
-    /* 고정 위치·길이 계산: 팀 영역이 화면 세로 중앙에 오도록 고정 (중앙이 헤더와 겹치면 헤더 아래, 화면보다 크면 하단 탭이 보이는 위치) */
+    /* 고정 위치·길이 계산: 팀 영역의 하단 탭이 화면 하단에 붙도록 고정 */
     function pinUpdate(){
         if(mq.matches && teamSwiper.params.spaceBetween !== slideGap()){
             teamSwiper.params.spaceBetween = teamSwiper.originalParams.spaceBetween = slideGap();
@@ -464,6 +464,7 @@ function companyTeamAction(){
 
         $sect.addClass("active");
         $sect[0].style.setProperty("--team-fit", 1);
+        $sect[0].style.setProperty("--team-height", "0px");
 
         /* 767px 이하: 화면보다 길면 여백·이미지(합계 fitH)를 줄여 한 화면에 맞춤 */
         if(mqMo.matches){
@@ -480,6 +481,9 @@ function companyTeamAction(){
             $sect.removeClass("on");
             return;
         }
+
+        /* 화면보다 짧으면 헤더 아래 높이를 채워 탭 목록을 화면 하단에 붙임 */
+        $sect[0].style.setProperty("--team-height", winH - headerH + "px");
 
         const teamH = $team.outerHeight();
 
