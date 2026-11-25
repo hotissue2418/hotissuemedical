@@ -565,6 +565,8 @@
 .team-item .plus-rt {top:0; right:0;}
 .team-item .plus-lb {bottom:0; left:0;}
 .team-item .plus-rb {bottom:0; right:0;}
+/* 이미지 없는 버전(about_.html): .img-area 자리를 빈 공간으로 유지해 글·탭 위치를 about.html 과 같게 함 */
+.team-area-text .team-item::after {--g:var(--px); content:""; flex-shrink:0; width:calc(522 * var(--g)); height:calc(422 * var(--g));}
 .team-tab-list {display:flex;}
 .team-tab-item {flex:1 0 0; min-width:0;}
 /* 활성 탭 검정 막대: 첫 탭에 겹쳐 두고 탭 순번(--tab-idx, sub.js companyTeamAction)만큼 탭 너비씩 이동 */
@@ -685,6 +687,7 @@
 	.team-item .work {margin-top:40px; font-size:16px; line-height:24px;}
 	.team-item .work .dot {display:none;}
 	.team-item .img-area {--g:1px; align-self:flex-end; width:260px; height:240px; margin-top:50px;}
+	.team-area-text .team-item::after {--g:1px; align-self:flex-end; width:260px; height:240px; margin-top:50px;}
 	.team-item .img-area img {top:50%; left:50%; transform:translate(-50%,-50%);}
 	.team-item-01 {--w:240; --h:219;}
 	.team-item-02 {--w:214; --h:240;}
@@ -739,6 +742,7 @@
 	.team-item {flex-direction:row; align-items:center; gap:30px;}
 	.team-item .work .dot {display:inline;}
 	.team-item .img-area {align-self:center; margin-top:0;}
+	.team-area-text .team-item::after {align-self:center; margin-top:0;}
 	.synergy-item img {height:100px;}
 }
 
@@ -754,6 +758,7 @@
 	.sect-company-team.active .team-item .txt,
 	.sect-company-team.active .team-item .work {margin-top:calc(40px * var(--team-fit, 1));}
 	.sect-company-team.active .team-item .img-area {--g:calc(1px * var(--team-fit, 1)); width:calc(260 * var(--g)); height:calc(240 * var(--g)); margin-top:calc(50 * var(--g));}
+	.sect-company-team.active .team-area-text .team-item::after {--g:calc(1px * var(--team-fit, 1)); width:calc(260 * var(--g)); height:calc(240 * var(--g)); margin-top:calc(50 * var(--g));}
 }
 
 /* responsive: 390px 미만 — 영문 대형 글자와 카드 본문이 칸을 넘지 않도록 축소 */
