@@ -768,3 +768,307 @@
 	.strength-item .tit {font-size:16px;}
 	.team-item .tit {font-size:20.5vw;}
 }
+
+/* =========================================================
+   marketing_01 (병원광고, html/marketing_01.html) — figma-values-medical-ads-pc.md 기준
+   단위 규칙(--px)은 .studio 와 동일. MO 시안 없음 → 1279px 이하는 about 의 반응형 방식에 맞춰 작성
+   ========================================================= */
+.medical {--px:min(1px, calc(100vw / 1920)); padding-bottom:calc(200 * var(--px)); background-color:var(--color-white); color:var(--font-color-black);}
+.medical .inner-wide {max-width:1920px; padding:0 calc(150 * var(--px));}
+.medical span.trim {display:block;}
+.medical strong {font-weight:600;}
+
+/* sect-medical-visual: 1620x594 영역을 grid 1칸에 겹치고 margin 으로 배치, 값은 --g 기준 */
+.sect-medical-visual {padding-top:calc(160 * var(--px));}
+.sect-medical-visual .inner-wide::after {height:1px; background-color:var(--color-black);}
+.medical-visual-area {--g:var(--px); display:grid; grid-template-columns:100%; grid-template-rows:100%; align-items:start; justify-items:start; height:calc(594 * var(--g)); margin-bottom:calc(120 * var(--px));}
+.medical-visual-area > *,
+.medical-visual-area .tit > * {grid-area:1 / 1;}
+.medical-visual-area .focus-frame {--corner:calc(40 * var(--g)); width:calc(940 * var(--g)); height:calc(519 * var(--g)); margin:calc(75 * var(--g)) 0 0 calc(340 * var(--g));}
+.medical-visual-area .img-area {transition-property:opacity, filter; width:calc(900 * var(--g)); height:calc(480 * var(--g)); margin:calc(95 * var(--g)) 0 0 calc(360 * var(--g));}
+.medical-visual-area .img-area img {display:block; width:100%; height:100%; object-fit:cover;}
+.medical-visual-area .tit {display:contents; font-family:var(--font-family-bebas); font-size:calc(160 * var(--g)); font-weight:400; letter-spacing:-0.01em; line-height:normal; white-space:nowrap;}
+.medical-visual-area .tit .reveal-mask {z-index:2; height:0.72em; font-size:calc(160 * var(--g));}
+.medical-visual-area .line-01 {margin:calc(14.4 * var(--g)) 0 0;}
+.medical-visual-area .line-02 {margin:calc(424.4 * var(--g)) 0 0 calc(1011 * var(--g));}
+.medical-visual-area .sub {z-index:2; display:flex; flex-direction:column; gap:calc(7 * var(--g)); margin-top:calc(303 * var(--g)); font-size:calc(24 * var(--g)); font-weight:500; letter-spacing:-0.05em; line-height:calc(29 * var(--g)); white-space:nowrap;}
+/* 등장 순서: MEDICAL → ADVERTISING(0.3s) → 한글 1줄(0.6s) → 한글 2줄(0.75s) */
+.medical-visual-area.reveal-area.on .line-02 .reveal-txt {transition-delay:0.3s;}
+.medical-visual-area.reveal-area.on .sub .reveal-mask .reveal-txt {transition-delay:0.6s;}
+.medical-visual-area.reveal-area.on .sub .reveal-mask:nth-child(2) .reveal-txt {transition-delay:0.75s;}
+.medical-visual-area .arrow {width:calc(19.3287 * var(--g)); margin:calc(314 * var(--g)) 0 0 calc(1601.336 * var(--g)); animation:medicalArrow 1.6s ease-in-out infinite;}
+.medical-visual-area .arrow img {display:block; width:100%; height:auto;}
+@keyframes medicalArrow {
+	0%, 100% {transform:translateY(0);}
+	50% {transform:translateY(10px);}
+}
+@media (prefers-reduced-motion:reduce) {
+	.medical-visual-area .arrow {animation:none;}
+}
+
+/* article: 좌측 목차(sticky) + 우측 본문 1060 */
+.article-area {position:relative; display:flex; gap:calc(100 * var(--px)); margin-top:calc(36 * var(--px)); padding-bottom:calc(30 * var(--px));}
+.article-area::before {content:""; position:absolute; top:calc(89 * var(--px)); bottom:0; left:calc(420 * var(--px)); width:1px; background-color:var(--border-color-on-light-primary);}
+.article-side {flex-shrink:0; width:calc(400 * var(--px));}
+.article-cont {flex:0 0 auto; width:calc(1060 * var(--px)); margin-top:calc(100 * var(--px));}
+
+/* article control: 목차 + 읽기 진행률 (활성 항목·진행률은 sub.js articleControlAction) */
+.article-control {position:sticky; top:0; display:flex; flex-direction:column; gap:calc(40 * var(--px)); padding:calc(60 * var(--px)) calc(30 * var(--px));}
+.contents-area .tit-area {display:flex; align-items:flex-end; justify-content:space-between; padding:calc(40 * var(--px)) 0 calc(25 * var(--px)); border-bottom:1px solid var(--color-black);}
+.contents-area .tit {font-family:var(--font-family-bebas); font-size:calc(60 * var(--px)); letter-spacing:-0.01em; line-height:1;}
+.contents-area .page {display:flex; gap:3px; font-size:max(12px, calc(14 * var(--px))); letter-spacing:-0.05em; line-height:1;}
+.contents-link {display:flex; align-items:center; height:calc(64 * var(--px)); padding:0 calc(15 * var(--px)); border-bottom:1px solid var(--border-color-on-light-primary); color:var(--font-color-on-dark-secondary); font-size:max(14px, calc(18 * var(--px))); letter-spacing:-0.05em; line-height:2; transition:color 0.3s ease;}
+.contents-link::before {content:""; flex-shrink:0; width:4px; height:4px; margin-right:calc(15 * var(--px)); background:url("../images/marketing/ico/ico_dot.svg") center/100% no-repeat; opacity:0; transition:opacity 0.3s ease;}
+.contents-link::after {content:""; flex-shrink:0; width:calc(25 * var(--px)); height:calc(10 * var(--px)); margin-left:auto; background:url("../images/marketing/ico/ico_arrow_right.svg") center/100% no-repeat; opacity:0; transition:opacity 0.3s ease;}
+.contents-link .num {width:20px; margin-right:3px; font-family:var(--font-family-bebas);}
+.contents-link .txt {white-space:nowrap;}
+.contents-item.on .contents-link {color:var(--font-color-black);}
+.contents-item.on .contents-link::before,
+.contents-item.on .contents-link::after {opacity:1;}
+@media (hover:hover) and (min-width:1280px) {
+	.contents-link:hover,
+	.insights-link:hover {color:var(--font-color-black);}
+	.btn-article-top:hover img {transform:translateY(-4px);}
+}
+.reading-area {display:flex; flex-direction:column; gap:calc(15 * var(--px)); padding:calc(25 * var(--px)) calc(20 * var(--px)); background-color:var(--color-black); color:var(--font-color-white);}
+.reading-tit {display:flex; align-items:flex-end; justify-content:space-between; line-height:1.5;}
+.reading-tit .tit {font-family:var(--font-family-bebas); font-size:max(18px, calc(24 * var(--px))); letter-spacing:-0.01em;}
+.reading-tit .per {font-size:max(12px, calc(14 * var(--px))); letter-spacing:-0.01em;}
+.reading-bar {width:calc(280 * var(--px)); height:3px; background-color:var(--font-color-on-dark-primary);}
+.reading-bar .bar {display:block; width:100%; height:100%; background-color:var(--color-white); transform:scaleX(0); transform-origin:left center;}
+
+/* insights */
+.medical .box-tit {font-family:var(--font-family-bebas); font-size:max(24px, calc(30 * var(--px))); letter-spacing:-0.01em; line-height:1.5;}
+.insights-tit-area {display:flex; flex-direction:column; align-items:flex-start; gap:calc(50 * var(--px)); padding-bottom:calc(50 * var(--px)); border-bottom:1px solid var(--color-black);}
+.insights-tit-area .label {font-family:var(--font-family-bebas); font-size:calc(60 * var(--px)); letter-spacing:-0.01em; line-height:1;}
+.insights-tit-area .tit-area {display:flex; flex-direction:column; gap:calc(30 * var(--px));}
+.insights-tit-area .tit {font-size:calc(42 * var(--px)); font-weight:600; letter-spacing:-0.05em; line-height:1.2857;}
+.insights-tit-area .sub {font-size:max(15px, calc(20 * var(--px))); letter-spacing:-0.05em; line-height:1.6;}
+.reading-time {display:flex; align-items:center; gap:10px; min-height:37px; padding:10px 20px; border:1px solid var(--color-black); border-radius:100px; font-size:max(14px, calc(16 * var(--px))); letter-spacing:-0.05em; line-height:1.5;}
+.reading-time img {display:block; width:15px; height:15px;}
+.insights-table {display:flex; flex-direction:column; gap:calc(30 * var(--px)); padding:calc(50 * var(--px)) 0 calc(40 * var(--px)); border-bottom:1px solid var(--border-color-on-light-primary);}
+.insights-list {display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); row-gap:calc(10 * var(--px));}
+.insights-link {display:flex; align-items:center; gap:16px; min-height:calc(40 * var(--px)); padding:calc(10 * var(--px)) 0; color:var(--font-color-on-dark-primary); font-size:max(14px, calc(16 * var(--px))); letter-spacing:-0.05em; line-height:1.5; transition:color 0.3s ease;}
+.insights-link .num {flex-shrink:0; width:25px; color:var(--font-color-black); font-family:var(--font-family-bebas); font-size:max(22px, calc(28 * var(--px))); letter-spacing:-0.01em;}
+
+/* issue: 본문 간격 기본 50, 예외만 따로 지정 */
+.sect-issue {margin-top:calc(150 * var(--px)); padding-top:calc(80 * var(--px)); border-top:1px solid var(--color-black);}
+.sect-issue-01 {padding-top:0; border-top:0;}
+.sect-issue-04 {padding-bottom:calc(150 * var(--px)); border-bottom:1px solid var(--color-black);}
+.sect-issue > * + * {margin-top:calc(50 * var(--px));}
+.sect-issue-01 > .issue-tit-area + * {margin-top:calc(40 * var(--px));}
+.sect-issue > .issue-img,
+.sect-issue > .channel-area {margin-top:calc(100 * var(--px));}
+.sect-issue > .threads-area,
+.sect-issue > .survey-area + *,
+.sect-issue > .threads-area + * {margin-top:calc(80 * var(--px));}
+.sect-issue > .issue-mid-tit {margin-top:calc(130 * var(--px));}
+.sect-issue-02 > .issue-mid-tit {margin-top:calc(120 * var(--px));}
+.sect-issue-02 > .issue-txt + .issue-mid-tit {margin-top:calc(110 * var(--px));}
+.sect-issue > .issue-mid-tit + * {margin-top:calc(60 * var(--px));}
+.sect-issue > .issue-line-txt + * {margin-top:calc(48 * var(--px));}
+
+.issue-tit-area {display:flex; align-items:center; gap:calc(32 * var(--px));}
+.issue-tit-area .num-area {display:flex; flex-shrink:0; flex-direction:column; gap:calc(10 * var(--px)); width:calc(48 * var(--px)); font-family:var(--font-family-bebas); letter-spacing:-0.01em; line-height:1;}
+.issue-tit-area .label {font-size:calc(18 * var(--px));}
+.issue-tit-area .num {font-size:calc(60 * var(--px));}
+.issue-tit-area .tit {font-size:calc(30 * var(--px)); font-weight:600; letter-spacing:-0.05em; line-height:1.5333;}
+.issue-txt {font-size:max(15px, calc(18 * var(--px))); letter-spacing:-0.05em; line-height:1.6667;}
+.issue-lead {font-size:max(16px, calc(20 * var(--px))); font-weight:600; letter-spacing:-0.05em; line-height:1.7;}
+.issue-quote {width:fit-content; padding:calc(10 * var(--px)) 0 calc(10 * var(--px)) calc(20 * var(--px)); border-left:2px solid var(--color-black); font-size:max(16px, calc(20 * var(--px))); font-weight:600; letter-spacing:-0.05em; line-height:1.7;}
+.sect-issue-01 .issue-quote {color:var(--color-surface-dark);}
+.issue-quote-small {display:flex; flex-direction:column; gap:calc(25 * var(--px)); color:var(--color-surface-dark); font-size:max(15px, calc(18 * var(--px))); font-weight:400;}
+.issue-mid-tit {font-size:calc(28 * var(--px)); font-weight:600; letter-spacing:-0.05em; line-height:1.4286; text-align:center;}
+.issue-mid-tit::before {content:""; display:block; width:40px; height:3px; margin:0 auto calc(40 * var(--px)); background-color:var(--color-black);}
+.issue-img {overflow:hidden; aspect-ratio:1060 / 540;}
+.issue-img img {display:block; width:100%; height:100%; object-fit:cover;}
+.issue-img-02 img {object-position:50% 89%;}
+.issue-line-txt {padding-bottom:calc(50 * var(--px)); border-bottom:1px solid var(--border-color-on-light-primary);}
+
+/* voices */
+.voice-area {padding-top:calc(30 * var(--px)); border-top:1px solid var(--color-black); border-bottom:1px solid var(--color-black);}
+.voice-list {margin-top:calc(10 * var(--px));}
+.voice-item {display:flex; align-items:flex-start; gap:20px; padding:calc(30 * var(--px)) 0; letter-spacing:-0.05em; line-height:1.5;}
+.voice-item + .voice-item {border-top:1px solid var(--border-color-on-light-primary);}
+.voice-item .icon {display:block; flex-shrink:0; width:12px; height:10px;}
+.voice-item .txt-area {display:flex; flex-direction:column; gap:calc(20 * var(--px));}
+.voice-item .info {color:var(--font-color-on-dark-secondary); font-size:max(13px, calc(14 * var(--px)));}
+.voice-item .txt {color:var(--font-color-on-dark-primary); font-size:max(14px, calc(16 * var(--px)));}
+
+/* table (survey, channel) */
+.issue-table {width:100%; table-layout:fixed; border-top:1px solid var(--color-black); border-bottom:1px solid var(--color-black); letter-spacing:-0.05em; text-align:center;}
+.issue-table tbody tr + tr {border-top:1px solid var(--border-color-on-light-primary);}
+.issue-table thead {border-bottom:1px solid var(--color-black); background-color:var(--color-surface-light);}
+.issue-table th {font-weight:600;}
+.issue-table thead th {height:calc(62 * var(--px)); font-size:max(14px, calc(16 * var(--px)));}
+.survey-table tbody th,
+.survey-table tbody td {height:calc(65 * var(--px)); font-size:max(15px, calc(18 * var(--px)));}
+.survey-area::before {content:""; display:block; width:20px; height:1px; background-color:var(--color-black);}
+.survey-tit {margin:calc(30 * var(--px)) 0 calc(15 * var(--px)); font-size:max(14px, calc(16 * var(--px))); font-weight:600; letter-spacing:-0.05em; line-height:1.5;}
+.survey-txt {margin-top:calc(20 * var(--px)); color:var(--font-color-on-dark-primary); font-size:max(12px, calc(14 * var(--px))); letter-spacing:-0.05em; line-height:1.7143;}
+.channel-table tbody th {font-size:max(15px, calc(18 * var(--px)));}
+.channel-table tbody td {height:calc(97 * var(--px)); padding:calc(12 * var(--px)) 0; font-size:max(14px, calc(16 * var(--px))); line-height:1.5;}
+
+/* threads */
+.threads-area {display:flex; align-items:center; gap:calc(40 * var(--px));}
+.threads-area .img-area {flex-shrink:0; width:calc(380 * var(--px));}
+.threads-area .img-area img {display:block; width:100%; height:auto;}
+.threads-area .txt-area {display:flex; flex-direction:column; gap:calc(30 * var(--px));}
+.threads-area .issue-quote {font-weight:700;}
+
+/* deliverables */
+.deliver-area {padding:calc(40 * var(--px)) 0 calc(10 * var(--px)); border-top:1px solid var(--color-black); border-bottom:1px solid var(--color-black);}
+.deliver-tit {display:flex; align-items:center; gap:8px;}
+.deliver-tit .sub {font-size:max(16px, calc(20 * var(--px))); font-weight:600; letter-spacing:-0.05em; line-height:1.5;}
+.deliver-list {display:flex; gap:calc(30 * var(--px)); margin-top:calc(20 * var(--px)); padding:calc(30 * var(--px)) 0;}
+.deliver-item {flex:1 0 0; min-width:0; padding-right:calc(30 * var(--px)); border-right:1px solid var(--border-color-on-light-primary); letter-spacing:-0.05em; line-height:1.5;}
+.deliver-item:last-child {padding-right:0; border-right:0;}
+.deliver-item .label,
+.deliver-item .count span {color:var(--font-color-on-dark-primary); font-size:max(14px, calc(16 * var(--px)));}
+.deliver-item .count {display:flex; align-items:flex-end; gap:5px; margin-top:calc(20 * var(--px));}
+.deliver-item .count strong {display:block; font-size:max(20px, calc(26 * var(--px)));}
+.deliver-item .bar-area {display:flex; gap:4px; margin-top:calc(40 * var(--px));}
+.deliver-item .bar-area span {flex:1 0 0; height:3px; background-color:var(--border-color-on-light-primary);}
+.deliver-item .bar-area span:last-child {background-color:var(--font-color-on-dark-primary);}
+
+/* line list (BLOG·META·SHORTS / 01·02) */
+.line-list {border-top:1px solid var(--color-black); border-bottom:1px solid var(--color-black);}
+.line-item {display:flex; align-items:center; padding:calc(30 * var(--px)) 0;}
+.line-item + .line-item {border-top:1px solid var(--border-color-on-light-primary);}
+.line-item .num {flex-shrink:0; width:calc(150 * var(--px)); font-family:var(--font-family-bebas); font-size:max(24px, calc(30 * var(--px))); letter-spacing:-0.01em; line-height:1.5;}
+.line-item .txt {font-size:max(15px, calc(18 * var(--px))); letter-spacing:-0.05em; line-height:1.6667;}
+.line-list-num .num {width:calc(100 * var(--px)); font-size:max(30px, calc(40 * var(--px)));}
+.line-list-num .txt {font-size:max(16px, calc(20 * var(--px))); line-height:1.5;}
+
+/* article end */
+.article-end {display:flex; align-items:center; justify-content:space-between; margin-top:calc(30 * var(--px)); font-family:var(--font-family-bebas); font-size:max(18px, calc(24 * var(--px))); letter-spacing:-0.01em; line-height:1.25;}
+.btn-article-top {display:flex; align-items:flex-end; gap:10px; padding:10px 0; background:none; color:var(--font-color-black); font-family:inherit; letter-spacing:inherit; line-height:inherit;}
+.btn-article-top img {display:block; transition:transform 0.3s ease;}
+
+/* responsive: 태블릿·모바일 (1279px 이하) — 목차는 상단 고정 가로 탭 + 진행률 선, 채널 표는 가로 스크롤 */
+@media screen and (max-width:1279px) {
+	.medical {padding-bottom:100px; word-break:keep-all;}
+	.medical .inner-wide {padding:0 3.846%;}
+
+	/* visual: 360x390 영역, --m 은 폭 기준 최대 2배 (sect-studio-visual 과 동일) */
+	.sect-medical-visual {padding-top:98px; container-type:inline-size;}
+	.sect-medical-visual .inner-wide {--m:min(calc(100cqw / 390), 2px);}
+	.medical-visual-area {--g:var(--m); width:calc(360 * var(--g)); height:calc(390 * var(--g)); margin:0 auto 60px;}
+	.medical-visual-area .tit .reveal-mask {font-size:calc(90 * var(--g));}
+	.medical-visual-area .focus-frame {--corner:calc(25 * var(--g)); width:calc(350 * var(--g)); height:calc(230 * var(--g)); margin:calc(40 * var(--g)) 0 0 calc(5 * var(--g));}
+	.medical-visual-area .img-area {width:calc(330 * var(--g)); height:calc(210 * var(--g)); margin:calc(50 * var(--g)) 0 0 calc(15 * var(--g));}
+	.medical-visual-area .line-01 {margin:0 0 0 calc(-2 * var(--g));}
+	.medical-visual-area .line-02 {margin:calc(240 * var(--g)) 0 0 calc(16 * var(--g));}
+	.medical-visual-area .sub {gap:calc(2 * var(--g)); margin-top:calc(338 * var(--g)); font-size:calc(16 * var(--g)); line-height:calc(24 * var(--g));}
+	.medical-visual-area .arrow {width:calc(14 * var(--g)); margin:calc(345 * var(--g)) 0 0 calc(340 * var(--g));}
+
+	/* article control */
+	.article-area {display:block; margin-top:0; padding-bottom:0;}
+	.article-area::before {display:none;}
+	.article-side {display:contents;}
+	.article-control {z-index:10; gap:0; padding:58px 4.167% 0; margin:0 -4.167%; background-color:var(--color-white);}
+	.contents-area .tit-area,
+	.reading-tit {display:none;}
+	.contents-list {position:relative; display:flex; gap:24px; overflow-x:auto; scrollbar-width:none;}
+	.contents-list::-webkit-scrollbar {display:none;}
+	.contents-item {flex-shrink:0;}
+	.contents-link {height:48px; padding:0; border-bottom:0; font-size:15px;}
+	.contents-link::before,
+	.contents-link::after {display:none;}
+	.reading-area {display:block; padding:0; margin:0 -4.168%; background:none;}
+	.reading-bar {width:100%; height:2px; background-color:var(--border-color-on-light-primary);}
+	.reading-bar .bar {background-color:var(--color-black);}
+	.article-cont {width:100%; margin-top:60px;}
+
+	/* insights */
+	.insights-tit-area {gap:30px; padding-bottom:40px;}
+	.insights-tit-area .label {font-size:46px;}
+	.insights-tit-area .tit-area {gap:24px;}
+	.insights-tit-area .tit {font-size:clamp(28px, 4vw, 38px);}
+	.insights-tit-area .sub {font-size:16px;}
+	.insights-table {gap:20px; padding:40px 0 30px;}
+	.insights-list {row-gap:6px;}
+	.insights-link {min-height:40px; padding:8px 0; font-size:15px;}
+
+	/* issue */
+	.sect-issue {margin-top:100px; padding-top:60px;}
+	.sect-issue-01 {padding-top:0;}
+	.sect-issue-04 {padding-bottom:80px;}
+	.sect-issue > * + *,
+	.sect-issue-01 > .issue-tit-area + * {margin-top:40px;}
+	.sect-issue > .issue-img,
+	.sect-issue > .channel-area,
+	.sect-issue > .threads-area,
+	.sect-issue > .survey-area + *,
+	.sect-issue > .threads-area + * {margin-top:60px;}
+	.sect-issue > .issue-mid-tit,
+	.sect-issue-02 > .issue-mid-tit,
+	.sect-issue-02 > .issue-txt + .issue-mid-tit {margin-top:80px;}
+	.sect-issue > .issue-mid-tit + *,
+	.sect-issue > .issue-line-txt + * {margin-top:40px;}
+	.issue-tit-area {gap:20px;}
+	.issue-tit-area .num-area {gap:8px; width:40px;}
+	.issue-tit-area .label {font-size:15px;}
+	.issue-tit-area .num {font-size:48px;}
+	.issue-tit-area .tit {font-size:clamp(20px, 3vw, 28px); line-height:1.4;}
+	.issue-txt {font-size:16px; line-height:1.75;}
+	.issue-lead,
+	.issue-quote {font-size:17px;}
+	.issue-quote {padding:6px 0 6px 16px; line-height:1.6;}
+	.issue-quote-small {gap:24px; font-size:16px;}
+	.issue-mid-tit {font-size:clamp(20px, 3vw, 28px); line-height:1.45;}
+	.issue-mid-tit::before {margin-bottom:30px;}
+	.issue-line-txt {padding-bottom:40px;}
+
+	.medical .box-tit {font-size:26px;}
+	.voice-area {padding-top:30px;}
+	.voice-list {margin-top:6px;}
+	.voice-item {gap:14px; padding:26px 0;}
+	.voice-item .txt-area {gap:16px;}
+	.voice-item .txt {font-size:15px;}
+
+	.issue-table thead th {height:52px;}
+	.survey-table tbody th,
+	.survey-table tbody td {height:54px; font-size:16px;}
+	.survey-tit {margin:24px 0 16px;}
+	.survey-txt {margin-top:20px;}
+	.channel-area {overflow-x:auto;}
+	.channel-table {min-width:680px;}
+	.channel-table tbody th {font-size:16px;}
+	.channel-table tbody td {height:84px; padding:12px 0; font-size:15px;}
+
+	.threads-area {gap:30px;}
+	.threads-area .img-area {width:38%;}
+	.threads-area .txt-area {gap:24px;}
+	.deliver-area {padding:36px 0 6px;}
+	.deliver-list {gap:24px; margin-top:6px; padding:30px 0;}
+	.deliver-item {padding-right:24px;}
+	.deliver-item .count {margin-top:18px;}
+	.deliver-item .bar-area {margin-top:30px;}
+	.line-item {padding:26px 0;}
+	.line-item .num {width:110px; font-size:26px;}
+	.line-item .txt {font-size:16px;}
+	.line-list-num .num {width:70px; font-size:32px;}
+	.article-end {margin-top:20px; font-size:20px;}
+}
+
+@media screen and (max-width:767px) {
+	.insights-list {grid-template-columns:100%;}
+	.threads-area {flex-direction:column; align-items:flex-start;}
+	.threads-area .img-area {width:100%;}
+	.deliver-tit {flex-wrap:wrap;}
+	.deliver-list {flex-direction:column; gap:30px;}
+	.deliver-item {flex:none; padding:0 0 30px; border-right:0; border-bottom:1px solid var(--border-color-on-light-primary);}
+	.deliver-item:last-child {padding-bottom:0; border-bottom:0;}
+	.deliver-item .bar-area {margin-top:24px;}
+	.line-list-media .line-item {flex-direction:column; align-items:flex-start; gap:18px;}
+	.line-list-media .num {width:auto;}
+	.line-list-num .num {width:56px;}
+}
+
+/* responsive: 390px 미만 */
+@media screen and (max-width:389px) {
+	.insights-tit-area .tit {font-size:24px;}
+	.issue-mid-tit {font-size:18px;}
+	.insights-link {font-size:14px;}
+}

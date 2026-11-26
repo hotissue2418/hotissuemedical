@@ -8,6 +8,7 @@ $(function() {
     strengthWaveAction();
     strengthTouchAction();
     growthDotAction();
+    articleControlAction();
 });
 
 /* .strength-icon-03: 03번 카드에 마우스를 올린 동안 선의 가장 높은 지점(마루)이 오른쪽 → 왼쪽으로 이동 (마우스 환경 PC 1280px 이상, 1279px 이하는 strengthTouchAction 의 strengthOn·strengthOff)
@@ -553,4 +554,83 @@ function strengthTouchAction(){
     mq.addEventListener("change", function(){
         activeSet($());
     });
+}
+
+/* .article-control (marketing_01): 스크롤 위치에 맞춰 목차 활성(.on)·쪽수·읽기 진행률을 갱신, 목차를 누르면 해당 ISSUE 로 이동
+   - 활성 기준선: 화면 높이의 40% 지점을 지난 마지막 ISSUE
+   - 진행률: 본문 시작이 화면 맨 위에 닿을 때 0%, 본문 끝이 화면 맨 아래에 닿을 때 100% */
+function articleControlAction(){
+    const $control = $(".article-control"),
+        $cont = $(".article-cont"),
+        $issues = $(".sect-issue"),
+        $list = $control.find(".contents-list"),
+        $items = $control.find(".contents-item"),
+        $page = $control.find(".page-now"),
+        $per = $control.find(".reading-tit .per"),
+        $progress = $control.find(".reading-bar"),
+        $bar = $progress.find(".bar"),
+        mq = window.matchMedia("(max-width:1279px)");
+    let nowIndex = 0;
+
+    if(!$control.length) return;
+
+    function scrollMove(top, duration){
+        if(lenis){
+            lenis.scrollTo(top, {duration:duration});
+        } else {
+            $("html, body").stop().animate({scrollTop:top}, duration * 1000);
+        }
+    }
+
+    function activeSet(index){
+        if(index === nowIndex) return;
+
+        const $item = $items.eq(index);
+
+        nowIndex = index;
+        $items.removeClass("on").find("a").removeAttr("aria-current");
+        $item.addClass("on").find("a").attr("aria-current", "true");
+        $page.text("0" + (index + 1));
+
+        /* 1279px 이하 가로 탭: 활성 항목을 가운데로 (.contents-list 가 position:relative 라 offsetLeft 는 목록 기준) */
+        if(mq.matches) $list.stop().animate({scrollLeft:$item[0].offsetLeft - ($list.width() - $item.width()) / 2}, 300);
+    }
+
+    function controlUpdate(){
+        const winTop = $(window).scrollTop(),
+            winH = window.innerHeight,
+            rate = Math.min(Math.max((winTop - $cont.offset().top) / Math.max($cont.outerHeight() - winH, 1), 0), 1),
+            per = Math.round(rate * 100);
+        let index = 0;
+
+        $issues.each(function(i){
+            if($(this).offset().top <= winTop + winH * 0.4) index = i;
+        });
+
+        activeSet(index);
+        $bar.css("transform", "scaleX(" + rate + ")");
+        $per.text(per + "%");
+        $progress.attr("aria-valuenow", per);
+    }
+
+    $(".contents-link, .insights-link").on("click", function(e){
+        const $target = $($(this).attr("href")),
+            gap = mq.matches ? $control.outerHeight() + 30 : 100;
+
+        if(!$target.length) return;
+
+        e.preventDefault();
+        scrollMove(Math.round($target.find(".issue-tit-area").offset().top - gap), 1);
+    });
+
+    $(".btn-article-top").on("click", function(){
+        scrollMove(0, 0.8);
+    });
+
+    $(window).on("scroll resize load", controlUpdate);
+    mq.addEventListener("change", function(){
+        nowIndex = -1;
+        controlUpdate();
+    });
+    controlUpdate();
 }
